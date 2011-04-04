@@ -11,6 +11,7 @@ set ruler
 set incsearch
 set dir=/tmp
 set tw=78
+set history=1000
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -34,6 +35,18 @@ set formatoptions-=t
 set formatoptions+=c
 " Leave existing long lines alone
 set formatoptions+=l
+
+" Allow arbitrary cursor placement in block mode (ctrl+v)
+set virtualedit+=block
+
+" Character to denote wrapped lines
+set showbreak=↪
+
+" Lines of context to keep above and below cursor
+set scrolloff=3
+
+set list
+set listchars=tab:▸\ ,eol:¬
 
 " * Text Formatting -- Specific File Formats
 

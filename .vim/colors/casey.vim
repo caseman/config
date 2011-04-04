@@ -39,10 +39,10 @@ hi IncSearch	guifg=slategrey guibg=khaki
 "hi LineNr
 hi ModeMsg	guifg=goldenrod
 hi MoreMsg	guifg=SeaGreen
-hi NonText	guifg=LightBlue guibg=grey30
+hi NonText	guifg=#444466
+hi SpecialKey	guifg=#444466
 hi Question	guifg=springgreen
 hi Search	guibg=peru guifg=wheat
-hi SpecialKey	guifg=yellowgreen
 hi StatusLine	guibg=#c2bfa5 guifg=black gui=none
 hi StatusLineNC	guibg=#c2bfa5 guifg=grey50 gui=none
 hi Title	guifg=indianred
