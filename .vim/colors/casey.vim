@@ -42,7 +42,7 @@ hi MoreMsg	guifg=SeaGreen
 hi NonText	guifg=#444466
 hi SpecialKey	guifg=#444466
 hi Question	guifg=springgreen
-hi Search	guibg=peru guifg=wheat
+hi Search	guibg=khaki guifg=gray10
 hi StatusLine	guibg=#c2bfa5 guifg=black gui=none
 hi StatusLineNC	guibg=#c2bfa5 guifg=grey50 gui=none
 hi Title	guifg=indianred

@@ -9,6 +9,7 @@ set showcmd
 set showmatch
 set ruler
 set incsearch
+set hlsearch
 set dir=/tmp
 set tw=78
 set history=1000
@@ -50,6 +51,9 @@ set listchars=tab:▸\ ,eol:¬
 
 " Replace current visual selection with yank buffer contents with "r"
 vmap r "_dP
+
+" Press Space to turn off highlighting and clear any message already displayed.
+:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 " * Text Formatting -- Specific File Formats
 
