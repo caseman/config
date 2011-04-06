@@ -48,6 +48,9 @@ set scrolloff=3
 set list
 set listchars=tab:▸\ ,eol:¬
 
+" Replace current visual selection with yank buffer contents with "r"
+vmap r "_dP
+
 " * Text Formatting -- Specific File Formats
 
 " enable filetype detection:
