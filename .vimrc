@@ -55,6 +55,9 @@ vmap r "_dP
 " Press Space to turn off highlighting and clear any message already displayed.
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
+"setup grep to be recursive
+set grepprg=grep\ -rn\ --color=never\ --exclude=.svn\ --exclude=.hg\ --exclude=.git
+
 " * Text Formatting -- Specific File Formats
 
 " enable filetype detection:
