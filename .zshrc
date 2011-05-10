@@ -61,22 +61,25 @@ setopt HIST_REDUCE_BLANKS
 setopt HIST_IGNORE_DUPS
 alias h='history'
 
+# git prompt functions
+source ~/.zsh/git-prompt/git.zsh
+
 # Prompt
 if [ $USER != casey ]; then
 	PROMPT="%n@%m%# "
 else
 	PROMPT="%m%# "
 fi
-RPROMPT=" %~ %h"
+RPROMPT=" %~"
 
 # Set window title and tab to user@hostname:dir
 if [ $USER != casey ]; then
     precmd () {
-         print -Pn "\033]1;%n@%m:%~%(?..(%?%))\033]2;%n@%m:%~ %(?..(%?%)) %h"
+         print -Pn "\033]1;%n@%m:%~%(?..(%?%))\033]2;%n@%m:%~ %(?..(%?%)) $__CURRENT_GIT_STATUS[1]"
     }
 else
     precmd () {
-         print -Pn "\033]1;%m:%~%(?..(%?%))\033]2;%m:%~ %(?..(%?%)) %h"
+         print -Pn "\033]1;%m:%~%(?..(%?%))\033]2;%m:%~ %(?..(%?%)) $__CURRENT_GIT_STATUS[1]"
     }
 fi
 export EDITOR=vim
