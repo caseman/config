@@ -5,7 +5,6 @@ set gfn=DejaVu\ Sans\ Mono:h13.00
 set guioptions-=T
 "set gfn=Menlo:h13.00
 set virtualedit+=onemore
-set autochdir
 syntax on
 colors casey
 

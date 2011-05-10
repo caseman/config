@@ -36,6 +36,8 @@ set formatoptions-=t
 set formatoptions+=c
 " Leave existing long lines alone
 set formatoptions+=l
+" Indent paragraphs to 2nd line
+set formatoptions+=2
 
 " Allow arbitrary cursor placement in block mode (ctrl+v)
 set virtualedit+=block

@@ -36,6 +36,12 @@ bindkey '[3~' delete-char            # Del
 bindkey '[5~' backward-word # Page Up
 bindkey '[6~' forward-word  # Page Down
 
+# history nav
+bindkey -M viins "^N" up-line-or-search
+bindkey -M viins "^P" down-line-or-search
+bindkey -M viins "^[[A" up-line-or-search
+bindkey -M viins "^[[B" down-line-or-search
+
 #set ignoreeof=1
 
 type uname > /dev/null 2>&1
