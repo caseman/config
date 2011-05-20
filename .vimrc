@@ -49,7 +49,7 @@ set showbreak=↪
 set scrolloff=3
 
 set list
-set listchars=tab:▸\ ,eol:¬
+set listchars=tab:▸\ ,eol:¬,trail:·
 
 " Replace current visual selection with yank buffer contents with "r"
 vmap r "_dP
