@@ -85,6 +85,5 @@ augroup filetypedetect
   au BufNewFile,BufRead *.pig set filetype=pig syntax=pig 
 augroup END 
 
-":let g:detectindent_preferred_expandtab = 1
-":let g:detectindent_preferred_indent = 4
-":autocmd BufReadPost * :DetectIndent
+" Where to look for tags
+set tags+=./TAGS;,$HOME/.cache/tags
