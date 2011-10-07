@@ -15,13 +15,18 @@ set incsearch
 set hlsearch
 set dir=/tmp
 set tw=78
+set hidden
 set history=1000
+let mapleader = ","
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
 " Tab complete like shell
 set wildmode=list:longest,full
+
+" Don't interrupt so much
+set shortmess=atI
 
 " Redraw immediately when replacing text within a line
 set cpoptions-=$
@@ -67,6 +72,7 @@ set grepprg=grep\ -rn\ --color=never\ --exclude=.svn\ --exclude=.hg\ --exclude=.
 
 " enable filetype detection:
 filetype on
+filetype plugin on
 
 " in text files, automatically format everything at 76 chars:
 autocmd FileType text set formatoptions+=t textwidth=76
@@ -84,6 +90,8 @@ autocmd FileType html set formatoptions+=tl
 augroup filetypedetect 
   au BufNewFile,BufRead *.pig set filetype=pig syntax=pig 
 augroup END 
+
+runtime macros/matchit.vim
 
 " Where to look for tags
 set tags+=./TAGS;,$HOME/.cache/tags
