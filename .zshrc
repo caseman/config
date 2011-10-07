@@ -123,6 +123,10 @@ alias sbv="sync && build && vm sync"
 alias tf='tail -F'
 alias iostat='iostat -k'
 alias pgstat='pg psql postgres -c "select * from pg_stat_activity"'
+alias p4d='p4 diff -du ...'
+alias p4d='p4 diff -du ...'
+alias p4r='p4 resolve ...'
+alias p4s='p4 submit ...'
 tfs() {tail -F $* | sed 's/^.*> //'}
 s() {
 	if [ "$#" -eq "0" ]; then
