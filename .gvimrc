@@ -38,3 +38,8 @@ inoremap <expr> <Down>     pumvisible()?"\<C-N>":"\<Down>"
 inoremap <expr> <Up>       pumvisible()?"\<C-P>":"\<Up>" 
 inoremap <expr> <PageDown> pumvisible()?"\<PageDown>\<C-P>\<C-N>":"\<PageDown>" 
 inoremap <expr> <PageUp>   pumvisible()?"\<PageUp>\<C-P>\<C-N>":"\<PageUp>"
+
+if (&diff)
+    " Maximize when opening diffs
+    set lines=999 columns=999
+endif
