@@ -43,3 +43,5 @@ if (&diff)
     " Maximize when opening diffs
     set lines=999 columns=999
 endif
+
+:nnoremap <leader>e :execute "!p4 edit %" <CR>
