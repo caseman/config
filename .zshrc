@@ -85,7 +85,7 @@ fi
 export EDITOR=vim
 export VISUAL=vim
 export CVS_RSH=ssh
-export PATH=/Users/$USER/bin:/Users/$USER/opt/bin:$PATH
+export PATH=$HOME/bin:$HOME/opt/bin:$PATH
 
 alias -g L='| less'
 alias -g G='| grep'
