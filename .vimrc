@@ -61,6 +61,8 @@ set listchars=tab:▸\ ,eol:¬,trail:·
 
 " Replace current visual selection with yank buffer contents with "r"
 vmap r "_dP
+" Don't clobber the unnamed register when pasting over text in visual mode. 
+vnoremap p pgvy
 
 " Press Space to turn off highlighting and clear any message already displayed.
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
