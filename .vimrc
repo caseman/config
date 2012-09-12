@@ -95,6 +95,11 @@ autocmd FileType make set noexpandtab shiftwidth=8
 " alone when editing:
 autocmd FileType html set formatoptions+=tl
 
+" Less indenting for json, js, and html
+autocmd FileType html set et ts=2 sw=2 sts=2
+autocmd FileType json set et ts=2 sw=2 sts=2
+autocmd FileType javascript set et ts=2 sw=2 sts=2
+
 " autocmd syntax * SpaceHi
 
 augroup filetypedetect 
