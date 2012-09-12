@@ -61,6 +61,8 @@ set listchars=tab:▸\ ,eol:¬,trail:·
 
 " Replace current visual selection with yank buffer contents with "r"
 vmap r "_dP
+" Don't clobber the unnamed register when pasting over text in visual mode. 
+vnoremap p pgvy
 
 " Make F1 == ESC
 map  <F1> <Esc>
@@ -75,8 +77,11 @@ nmap <silent> <T-F1> :nohlsearch<CR>
 " Press Space to turn off highlighting and clear any message already displayed.
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
-"setup grep to be recursive
-set grepprg=grep\ -rn\ --color=never\ --exclude=.svn\ --exclude=.hg\ --exclude=.git
+" Setup grep to be recursive, ignore binaries, and version control metadata
+set grepprg=grep\ -srn\ --binary-files=without-match\ --color=never\ --exclude=.svn\ --exclude=.hg\ --exclude=.git
+
+" ,g to grep the word under the cursor
+:nnoremap <leader>g :execute 'grep '.expand('<cword>').' .' <BAR> cw<CR>
 
 " * Text Formatting -- Specific File Formats
 
