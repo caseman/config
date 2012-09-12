@@ -62,6 +62,16 @@ set listchars=tab:▸\ ,eol:¬,trail:·
 " Replace current visual selection with yank buffer contents with "r"
 vmap r "_dP
 
+" Make F1 == ESC
+map  <F1> <Esc>
+imap <F1> <Esc>
+vmap <F1> <Esc>
+nmap <silent> <F1> :nohlsearch<CR>
+map  <T-F1> <Esc>
+imap <T-F1> <Esc>
+vmap <T-F1> <Esc>
+nmap <silent> <T-F1> :nohlsearch<CR>
+
 " Press Space to turn off highlighting and clear any message already displayed.
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
