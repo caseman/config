@@ -5,6 +5,7 @@
   , "laxcomma": true
   , "laxbreak": true
   , "unused": true
+  , "undef": true
   , "trailing": true
 
 }
