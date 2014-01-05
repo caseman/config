@@ -65,7 +65,7 @@ alias h='history'
 source ~/.zsh/git-prompt/git.zsh
 
 # Prompt
-if [ $USER != casey ]; then
+if [ $USER != casey -a $USER != caseman ]; then
 	PROMPT="%n@%m%# "
 else
 	PROMPT="%m%# "
@@ -139,6 +139,7 @@ alias sls='screen -ls'
 bs() {
 	build $* && vm sync
 }
+alias get='sudo apt-get -y install'
 
 # complete hostnames out of ssh's ~/.ssh/known_hosts
 autoload -U compinit; compinit

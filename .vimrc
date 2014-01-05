@@ -66,6 +66,16 @@ vmap r "_dP
 " Don't clobber the unnamed register when pasting over text in visual mode. 
 vnoremap p pgvy
 
+" Make F1 == ESC
+map  <F1> <Esc>
+imap <F1> <Esc>
+vmap <F1> <Esc>
+nmap <silent> <F1> :nohlsearch<CR>
+map  <T-F1> <Esc>
+imap <T-F1> <Esc>
+vmap <T-F1> <Esc>
+nmap <silent> <T-F1> :nohlsearch<CR>
+
 " Press Space to turn off highlighting and clear any message already displayed.
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
@@ -94,6 +104,11 @@ autocmd FileType make set noexpandtab shiftwidth=8
 " for HTML, generally format text, but if a long line has been created leave it
 " alone when editing:
 autocmd FileType html set formatoptions+=tl
+
+" Less indenting for json, js, and html
+autocmd FileType html set et ts=2 sw=2 sts=2
+autocmd FileType json set et ts=2 sw=2 sts=2
+autocmd FileType javascript set et ts=2 sw=2 sts=2
 
 " autocmd syntax * SpaceHi
 
