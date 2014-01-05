@@ -2,6 +2,7 @@ winpos 80 60
 set lines=70 columns=100
 "set gfn=ProFontWindows:h12
 set gfn=DejaVu\ Sans\ Mono:h13.00
+" set gfn=Source\ Code\ Pro:h13.00
 set guioptions-=T
 "set gfn=Menlo:h13.00
 set virtualedit+=onemore
@@ -44,4 +45,17 @@ if (&diff)
     set lines=999 columns=999
 endif
 
-:nnoremap <leader>e :execute "!p4 edit %" <CR>
+:nnoremap <leader>e :execute "!p4 edit %" <CR><BAR>:w!<CR>
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_auto_loc_list = 1
+highlight SyntasticErrorSign guifg=white guibg=red
+highlight SyntasticError guibg=#2f0000
+let g:syntastic_javascript_jshint_conf = "/Users/casey/.jshintrc"
+
+:nnoremap <leader>s :SyntasticCheck<CR>
+:nnoremap <leader>l :lnext<CR>
+

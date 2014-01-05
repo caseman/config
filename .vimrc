@@ -19,6 +19,8 @@ set hidden
 set history=1000
 let mapleader = ","
 
+call pathogen#infect()
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -72,6 +74,9 @@ set grepprg=grep\ -srn\ --binary-files=without-match\ --color=never\ --exclude=.
 
 " ,g to grep the word under the cursor
 :nnoremap <leader>g :execute 'grep '.expand('<cword>').' .' <BAR> cw<CR>
+
+" switch between last two files
+:nnoremap <leader><leader> <c-^>
 
 " * Text Formatting -- Specific File Formats
 
