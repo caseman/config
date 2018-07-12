@@ -1,6 +1,6 @@
-colors pablo
-syntax on
-set noerrorbells
+" Note this assumes sensible.vim
+
+" 4 space tabs
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
@@ -8,27 +8,23 @@ set shiftwidth=4
 set expandtab
 set autoindent
 set smarttab
+
 set showcmd
 set showmatch
-set ruler
-set incsearch
 set hlsearch
 set dir=/tmp
 set tw=78
 set hidden
-set history=1000
 let mapleader = ","
 
 call pathogen#infect()
-
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
 
 " Tab complete like shell
 set wildmode=list:longest,full
 
 " Don't interrupt so much
 set shortmess=atI
+set noerrorbells
 
 " Redraw immediately when replacing text within a line
 set cpoptions-=$
@@ -67,14 +63,14 @@ vmap r "_dP
 vnoremap p pgvy
 
 " Make F1 == ESC
-map  <F1> <Esc>
-imap <F1> <Esc>
-vmap <F1> <Esc>
-nmap <silent> <F1> :nohlsearch<CR>
-map  <T-F1> <Esc>
-imap <T-F1> <Esc>
-vmap <T-F1> <Esc>
-nmap <silent> <T-F1> :nohlsearch<CR>
+"map  <F1> <Esc>
+"imap <F1> <Esc>
+"vmap <F1> <Esc>
+"nmap <silent> <F1> :nohlsearch<CR>
+"map  <T-F1> <Esc>
+"imap <T-F1> <Esc>
+"vmap <T-F1> <Esc>
+"nmap <silent> <T-F1> :nohlsearch<CR>
 
 " Press Space to turn off highlighting and clear any message already displayed.
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
@@ -90,12 +86,8 @@ set grepprg=grep\ -srn\ --binary-files=without-match\ --color=never\ --exclude=.
 
 " * Text Formatting -- Specific File Formats
 
-" enable filetype detection:
-filetype on
-filetype plugin on
-
 " in text files, automatically format everything at 76 chars:
-autocmd FileType text set formatoptions+=t textwidth=76
+" autocmd FileType text set formatoptions+=t textwidth=76
 
 " in makefiles, don't expand tabs to spaces, since actual tab characters are
 " needed, and have indentation at 8 chars to be sure that all indents are tabs
@@ -106,16 +98,11 @@ autocmd FileType make set noexpandtab shiftwidth=8
 autocmd FileType html set formatoptions+=tl
 
 " Less indenting for json, js, and html
-autocmd FileType html set et ts=2 sw=2 sts=2
-autocmd FileType json set et ts=2 sw=2 sts=2
-autocmd FileType javascript set et ts=2 sw=2 sts=2
+"autocmd FileType html set et ts=2 sw=2 sts=2
+"autocmd FileType json set et ts=2 sw=2 sts=2
+"autocmd FileType javascript set et ts=2 sw=2 sts=2
 
 " autocmd syntax * SpaceHi
-
-augroup filetypedetect 
-  au BufNewFile,BufRead *.pig set filetype=pig syntax=pig 
-augroup END 
-
 runtime macros/matchit.vim
 
 " Where to look for tags

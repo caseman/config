@@ -1,10 +1,10 @@
 winpos 80 60
 set lines=70 columns=100
 "set gfn=ProFontWindows:h12
-set gfn=DejaVu\ Sans\ Mono:h13.00
-" set gfn=Source\ Code\ Pro:h13.00
+"set gfn=DejaVu\ Sans\ Mono:h13.00
+"set gfn=Source\ Code\ Pro:h13.00
+set gfn=Menlo:h14.00
 set guioptions-=T
-"set gfn=Menlo:h13.00
 set virtualedit+=onemore
 syntax on
 colors casey
@@ -44,8 +44,6 @@ if (&diff)
     " Maximize when opening diffs
     set lines=999 columns=999
 endif
-
-:nnoremap <leader>e :execute "!p4 edit %" <CR><BAR>:w!<CR>
 
 " Syntastic
 set statusline+=%#warningmsg#
