@@ -9,6 +9,9 @@ set virtualedit+=onemore
 syntax on
 colors casey
 
+" reload config while running
+:nnoremap <leader>r :so $MYVIMRC <bar> :so $MYGVIMRC<CR>
+
 " Enable spellcheck for creatin files
 autocmd BufNewFile,BufRead *.rst,*.txt,*.html,README set spell
 
@@ -28,9 +31,9 @@ nmap <D-9> 9gt
 nmap <D-t> :tabnew<CR> 
 nmap <D-w> :tabclose<CR>
 nmap <D-Left> :tabp<CR>
-nmap <D-Up> :tabp<CR>
+nmap <D-Up> :tabfirst<CR>
 nmap <D-Right> :tabn<CR>
-nmap <D-Down> :tabn<CR>
+nmap <D-Down> :tablast<CR>
 
 " Autocomplete pop-up (http://www.vim.org/tips/tip.php?tip_id=1228)
 inoremap <expr> <Esc>      pumvisible()?"\<C-E>":"\<Esc>" 
@@ -52,8 +55,16 @@ set statusline+=%*
 let g:syntastic_auto_loc_list = 1
 highlight SyntasticErrorSign guifg=white guibg=red
 highlight SyntasticError guibg=#2f0000
-let g:syntastic_javascript_jshint_conf = "/Users/casey/.jshintrc"
+let g:syntastic_javascript_checkers = ["eslint"]
+let g:syntastic_go_checkers = ["gometalinter"]
+" gometalinter is supa-slow by default, so pass it the fast flag
+let g:syntastic_go_gometalinter_args = "--fast"
 
 :nnoremap <leader>s :SyntasticCheck<CR>
 :nnoremap <leader>l :lnext<CR>
+:nnoremap <leader>h :lprevious<CR>
+
+" ALE https://github.com/w0rp/ale
+" 7/16 ALE not working (hangs mvim on open)
+"let g:ale_linters = ['eslint']
 
