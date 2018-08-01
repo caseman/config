@@ -33,6 +33,13 @@ set cpoptions-=v
 " Undo is not undone
 set cpoptions-=u
 
+" Persistent Undo
+if has('persistent_undo') && isdirectory(expand('~').'/.vim/backups')
+  silent !mkdir ~/.vim/backups > /dev/null 2>&1
+  set undodir=~/.vim/backups
+  set undofile
+endif
+
 " Auto-insert comment leaders on wrap-around
 set formatoptions+=c
 " Allow comment rewrapping
@@ -107,3 +114,5 @@ runtime macros/matchit.vim
 
 " Where to look for tags
 set tags+=./TAGS;,$HOME/.cache/tags
+
+
