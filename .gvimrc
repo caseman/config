@@ -68,3 +68,7 @@ let g:syntastic_go_gometalinter_args = "--fast"
 " 7/16 ALE not working (hangs mvim on open)
 "let g:ale_linters = ['eslint']
 
+let g:airline_powerline_fonts = 1
+let g:airline_theme='luna'
+
+map <C-n> :NERDTreeToggle<CR>
