@@ -23,9 +23,33 @@ alias grep='egrep'
 alias rgrep='egrep -r'
 alias top='top -c'
 alias tf='tail -F'
-alias goog='google'
 
 alias h='history'
 alias zshrc='$EDITOR ~/.zshrc'
+alias localrc='$EDITOR ~/.localrc'
 alias src='source  ~/.zshrc'
 alias aliases='$EDITOR ~/.oh-my-zsh/custom/aliases.zsh'
+
+dbr() { 
+    tag="$(basename $(pwd))-test"
+    echo "build and run: $tag"
+    docker build -t "$tag" . && docker run --rm $@ "$tag"
+}
+
+dkill() {
+    tag="$(basename $(pwd))-test"
+    id="$(docker ps -q --filter ancestor="$tag")"
+    if [ "$id" != "" ]; then
+        echo -n "kill container image $tag "
+        docker kill "$id"
+    else
+        echo "No running container for $tag"
+    fi
+}
+
+up() {
+    find . -type d -name ".git" | while read dir; do
+        echo "--- Updating $(dirname $dir)"
+        (cd $dir/../ && git up)
+    done
+}
