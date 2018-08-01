@@ -6,6 +6,8 @@
 	aa = add -A
 	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
 	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+    prb = pull --rebase --autostash origin master
+    unstage = reset HEAD
 	cob = checkout -b
 	cm = !git add -A && git commit -m
 	save = !git add -A && git commit -m 'SAVEPOINT'
@@ -14,3 +16,5 @@
 [user]
 	name = Casey Duncan
 	email = casey.duncan@gmail.com
+[core]
+	editor = vim
