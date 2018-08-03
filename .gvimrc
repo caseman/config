@@ -1,4 +1,3 @@
-winpos 80 60
 set lines=70 columns=113
 "set gfn=ProFontWindows:h12
 "set gfn=DejaVu\ Sans\ Mono:h13.00
