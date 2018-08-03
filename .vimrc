@@ -59,29 +59,26 @@ set formatoptions+=2
 " Allow arbitrary cursor placement in block mode (ctrl+v)
 set virtualedit+=block
 
-" Character to denote wrapped lines
-set showbreak=↪
-
 " Lines of context to keep above and below cursor
 set scrolloff=3
 
+" Character to denote wrapped lines
+set showbreak=↪
+
+" Visible whitespace
 set list
-set listchars=tab:▸\ ,eol:¬,trail:·
+set listchars=tab:▸\ ,eol:↲,nbsp:␣,trail:⬤,extends:⟫,precedes:⟪
 
 " Replace current visual selection with yank buffer contents with "r"
 vmap r "_dP
-" Don't clobber the unnamed register when pasting over text in visual mode. 
+" Don't clobber the unnamed register when pasting over text in visual mode.
 vnoremap p pgvy
 
-" Make F1 == ESC
-"map  <F1> <Esc>
-"imap <F1> <Esc>
-"vmap <F1> <Esc>
-"nmap <silent> <F1> :nohlsearch<CR>
-"map  <T-F1> <Esc>
-"imap <T-F1> <Esc>
-"vmap <T-F1> <Esc>
-"nmap <silent> <T-F1> :nohlsearch<CR>
+" Remove training wheels you weak minded fool
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 
 " Press Space to turn off highlighting and clear any message already displayed.
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
