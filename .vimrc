@@ -15,12 +15,14 @@ set hlsearch
 set dir=/tmp
 set tw=78
 set hidden
+set encoding=utf-8
 let mapleader = ","
 
 call pathogen#infect()
 
 " Tab complete like shell
 set wildmode=list:longest,full
+set wildignore+=*/tmp/*,*.so,*.swp,*.pyc
 
 " Don't interrupt so much
 set shortmess=atI
@@ -82,14 +84,45 @@ vnoremap p pgvy
 " Press Space to turn off highlighting and clear any message already displayed.
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
-" Setup grep to be recursive, ignore binaries, and version control metadata
-set grepprg=grep\ -srn\ --binary-files=without-match\ --color=never\ --exclude=.svn\ --exclude=.hg\ --exclude=.git
+if executable('ag')
+    " Use ag over grep if installed
+    set grepprg=ag\ --nogroup\ --nocolor
+
+    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+    " ag is fast enough that CtrlP doesn't need to cache
+    let g:ctrlp_use_caching = 0
+
+    " bind \ (backward slash) to grep shortcut
+    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+    nnoremap \ :Ag<SPACE>
+else
+    " Setup grep to be recursive, ignore binaries, and version control metadata
+    set grepprg=egrep\ -srn\ --binary-files=without-match\ --color=never\ --exclude=.svn\ --exclude=.hg\ --exclude=.git --exclude=node_modules
+endif
 
 " ,g to grep the word under the cursor
-:nnoremap <leader>g :execute 'grep '.expand('<cword>').' .' <BAR> cw<CR>
+:nnoremap <leader>g :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
-" switch between last two files
-:nnoremap <leader><leader> <c-^>
+" split shortcuts
+nnoremap <leader>v :split<CR>
+nnoremap <leader>c :close<CR>
+
+" Fast buffer switching
+nnoremap <leader><leader> <c-^>
+nnoremap <leader>1 :b1<CR>
+nnoremap <leader>2 :b2<CR>
+nnoremap <leader>3 :b3<CR>
+nnoremap <leader>4 :b4<CR>
+nnoremap <leader>5 :b5<CR>
+nnoremap <leader>6 :b6<CR>
+nnoremap <leader>7 :b7<CR>
+nnoremap <leader>8 :b8<CR>
+nnoremap <leader>9 :b9<CR>
+nnoremap <Tab> :bnext!<CR>
+nnoremap <S-Tab> :bprev!<CR>
+nnoremap <leader>b :buffers<CR>:buffer<Space>
 
 " * Text Formatting -- Specific File Formats
 
@@ -115,4 +148,18 @@ runtime macros/matchit.vim
 " Where to look for tags
 set tags+=./TAGS;,$HOME/.cache/tags
 
+" * Plugin config
+
+" Use ctlrp mixed mode by default
+:nnoremap <c-p> :CtrlPMixed<CR>
+
+set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:airline_theme='solarized'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+"let g:airline_symbols.branch = "" 
+let g:airline#extensions#syntastic#enabled = 1
+
+map <C-n> :NERDTreeToggle<CR>
 
