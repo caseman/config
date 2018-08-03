@@ -12,7 +12,11 @@ alias notes="(cd ~/notes && mvim --servername NOTES --remote-silent . NUL)"
 
 # Default hub to use cbhq github enterprise 
 export GITHUB_HOST="github.cbhq.net"
-alias ghpr="hub pull-request"
+alias ghpr="gpsup && hub pull-request --browse"
+alias prs='hub browse -- pulls'
+alias mprs='hub browse -- pulls/$USER'
+alias ish='hub browse -- issues'
+alias gh="hub browse"
 
 # setup nvm
 export NVM_DIR="$HOME/.nvm"
