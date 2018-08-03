@@ -13,7 +13,7 @@ alias notes="(cd ~/notes && mvim --servername NOTES --remote-silent . NUL)"
 # Default hub to use cbhq github enterprise 
 export GITHUB_HOST="github.cbhq.net"
 alias ghpr="gpsup && hub pull-request --browse"
-alias ghurl="git config --get remote.origin.url | sed -e 's/.*@//' -e 's/.git*$//' -e 's/:/\//'"
+alias ghurl="git config --get remote.origin.url | sed -e 's/.*@//' -e 's/.git$//' -e 's/:/\//'"
 alias prs='open "https://$(ghurl)/pulls"'
 alias mprs='open "https://$(ghurl)/pulls/$USER"'
 alias ish='open "https://$(ghurl)/issues"'
