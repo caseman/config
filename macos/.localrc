@@ -37,7 +37,7 @@ v() {
 }
 
 vf() {
-    FILES=$(find . -type fl -name "$1" -print)
+    FILES=$(ag --nocolor -g "$1" -print)
     if [ "$FILES" != "" ]; then
         echo "$FILES"
         v "$FILES"
