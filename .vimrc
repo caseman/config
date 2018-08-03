@@ -45,11 +45,12 @@ endif
 
 " Auto-insert comment leaders on wrap-around
 set formatoptions+=c
+" Don't insert comments leaders when inserting lines with o or O
+set formatoptions-=o
 " Allow comment rewrapping
 set formatoptions+=q
 " Don't wrap text, only comments
 set formatoptions-=t
-set formatoptions+=c
 " Leave existing long lines alone
 set formatoptions+=l
 " Indent paragraphs to 2nd line
