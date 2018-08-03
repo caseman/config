@@ -16,7 +16,7 @@ alias ghpr="gpsup && hub pull-request --browse"
 alias ghurl="git config --get remote.origin.url | sed -e 's/.*@//' -e 's/.git*$//' -e 's/:/\//'"
 alias prs='open "https://$(ghurl)/pulls"'
 alias mprs='open "https://$(ghurl)/pulls/$USER"'
-alias ish='open "https://$(ghurl)/pulls/issues"'
+alias ish='open "https://$(ghurl)/issues"'
 alias gh='open "https://$(ghurl)"'
 
 # setup nvm
