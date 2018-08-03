@@ -106,9 +106,20 @@ endif
 " ,g to grep the word under the cursor
 :nnoremap <leader>g :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><CR>
 
-" split shortcuts
-nnoremap <leader>v :split<CR>
-nnoremap <leader>c :close<CR>
+" Quick jumping between splits
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-H> <C-W>h
+map <C-L> <C-W>l
+" Open and close splits easily
+nnoremap <silent> vv :set columns=205<BAR>:vsplit<CR>
+nnoremap ss <C-W>s
+nnoremap Q  <C-W>q
+" Resize splits efficiently
+nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <silent> _ :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <silent> = <C-W>=
 
 " Fast buffer switching
 nnoremap <leader><leader> <c-^>
@@ -121,6 +132,7 @@ nnoremap <leader>6 :b6<CR>
 nnoremap <leader>7 :b7<CR>
 nnoremap <leader>8 :b8<CR>
 nnoremap <leader>9 :b9<CR>
+nnoremap <leader>0 :blast<CR>
 nnoremap <Tab> :bnext!<CR>
 nnoremap <S-Tab> :bprev!<CR>
 nnoremap <leader>b :buffers<CR>:buffer<Space>
@@ -137,11 +149,6 @@ autocmd FileType make set noexpandtab shiftwidth=8
 " for HTML, generally format text, but if a long line has been created leave it
 " alone when editing:
 autocmd FileType html set formatoptions+=tl
-
-" Less indenting for json, js, and html
-"autocmd FileType html set et ts=2 sw=2 sts=2
-"autocmd FileType json set et ts=2 sw=2 sts=2
-"autocmd FileType javascript set et ts=2 sw=2 sts=2
 
 " autocmd syntax * SpaceHi
 runtime macros/matchit.vim
