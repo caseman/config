@@ -29,7 +29,11 @@ v() {
     else
         SERVER="$(basename $(pwd))"
     fi
-    mvim --servername "$SERVER" --remote-silent $@ NUL
+    if [ "$#" == "0" ]; then
+        mvim --servername "$SERVER" -c NERDTree --remote-silent .
+    else
+        mvim --servername "$SERVER" --remote-silent $@ NUL
+    fi
 }
 
 vf() {
