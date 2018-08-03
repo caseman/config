@@ -83,18 +83,20 @@ noremap <Right> <NOP>
 " Press Space to turn off highlighting and clear any message already displayed.
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
+" Grepping
 if executable('ag')
     " Use ag over grep if installed
-    set grepprg=ag\ --nogroup\ --nocolor
+    set grepprg=ag\ --vimgrep\ --nogroup\ --nocolor\ --ignore\ \"*.lock\"
+    set grepformat=%f:%l:%c:%m
 
     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    let g:ctrlp_user_command = 'ag --nocolor -g ""'
 
     " ag is fast enough that CtrlP doesn't need to cache
     let g:ctrlp_use_caching = 0
 
     " bind \ (backward slash) to grep shortcut
-    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+    command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
     nnoremap \ :Ag<SPACE>
 else
     " Setup grep to be recursive, ignore binaries, and version control metadata
@@ -102,7 +104,7 @@ else
 endif
 
 " ,g to grep the word under the cursor
-:nnoremap <leader>g :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+:nnoremap <leader>g :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><CR>
 
 " split shortcuts
 nnoremap <leader>v :split<CR>
