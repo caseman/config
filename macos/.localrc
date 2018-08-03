@@ -4,7 +4,8 @@ export GOPATH="$(go env GOPATH)"
 export PATH="$HOME/bin:$GOPATH/bin:$PATH"
 
 alias pg="pg_ctl -D /usr/local/var/postgres"
-alias f="find . -iname"
+alias ag="ag --ignore-dir node_modules"
+alias f="ag -g"
 
 alias notes="(cd ~/notes && mvim --servername NOTES --remote-silent . NUL)"
 

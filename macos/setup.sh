@@ -18,6 +18,7 @@ brew install nvm
 brew install yarn
 brew install postgres
 brew install go
+mkdir -p ~/go/bin ~/go/pkg ~/go/src
 brew install dep
 brew install moreutils
 brew install ag
