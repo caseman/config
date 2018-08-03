@@ -164,16 +164,26 @@ set tags+=./TAGS;,$HOME/.cache/tags
 
 " * Plugin config
 
-" Use ctlrp mixed mode by default
-:nnoremap <c-p> :CtrlPMixed<CR>
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeAutoDeleteBuffer = 1
 
-set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled = 1
-"let g:airline_symbols.branch = "" 
 let g:airline#extensions#syntastic#enabled = 1
 
+" Right split for undo tree with full width diff at bottom
+let g:undotree_WindowLayout = 4
+let g:undotree_ShortIndicators = 1
+let g:undotree_HelpLine = 0
+
+" key mappings for plugins
+map <C-p> :CtrlPMixed<CR>
 map <C-n> :NERDTreeToggle<CR>
+nnoremap <silent> <leader>n :NERDTreeFind<CR>
+map <C-u> :UndotreeToggle<CR>
+nnoremap <silent> <leader>v :Gstatus<CR>
 
