@@ -20,7 +20,10 @@ call pathogen#infect()
 
 " Tab complete like shell
 set wildmode=list:longest,full
-set wildignore+=*/tmp/*,*.so,*.swp,*.pyc
+set wildignore+=*/.git/**/*,*/.hg/**/*,*/.svn/**/*
+set wildignore+=*/min/*,*/vendor/*,*/node_modules/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.pyc,*.lock
+set wildignore+=*.tar.*,*.zip,*.gz,*.bz
 
 " Don't interrupt so much
 set shortmess=atI
