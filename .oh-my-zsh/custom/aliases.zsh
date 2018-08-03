@@ -25,8 +25,6 @@ alias top='top -c'
 alias tf='tail -F'
 
 alias h='history'
-alias zshrc='$EDITOR ~/.zshrc'
-alias localrc='$EDITOR ~/.localrc'
 alias src='source  ~/.zshrc'
 alias aliases='$EDITOR ~/.oh-my-zsh/custom/aliases.zsh'
 
