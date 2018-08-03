@@ -13,6 +13,7 @@ xcodebuild -license accept
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew install wget
 brew cask install docker
+brew install hub
 brew install node
 brew install nvm
 brew install yarn
@@ -39,10 +40,11 @@ brew install macvim --env-std --with-override-system-vim
 mkdir -p ~/.vim/autoload ~/.vim/bundle ~/.vim/backups
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 git clone https://github.com/tpope/vim-sensible.git ~/.vim/bundle/vim-sensible
+git clone https://tpope.io/vim/unimpaired.git ~/.vim/bundle/unimpaired
 git clone https://github.com/tpope/vim-fugitive.git ~/vim/bundle/vim-fugitive
 git clone --depth=1 https://github.com/vim-syntastic/syntastic.git ~/.vim/bundle/syntastic
 git clone https://github.com/Xuyuanp/nerdtree-git-plugin.git ~/.vim/bundle/nerdtree-git-plugin
 git clone https://github.com/ctrlpvim/ctrlp.vim.git  ~/.vim/bundle/ctrlp.vim
 git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline
 git clone https://github.com/vim-airline/vim-airline-themes ~/.vim/bundle/vim-airline-themes
-
+git clone https://github.com/mbbill/undotree.git ~/.vim/bundle/undotree
