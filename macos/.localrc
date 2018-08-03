@@ -1,0 +1,37 @@
+# local-relevant zsh aliases and funcs
+
+export GOPATH="$(go env GOPATH)"
+export PATH="$HOME/bin:$GOPATH/bin:$PATH"
+
+alias pg="pg_ctl -D /usr/local/var/postgres"
+alias f="find . -iname"
+
+alias notes="(cd ~/notes && mvim --servername NOTES --remote-silent . NUL)"
+
+# Default hub to use cbhq github enterprise 
+export GITHUB_HOST="github.cbhq.net"
+alias ghpr="hub pull-request"
+
+# setup nvm
+export NVM_DIR="$HOME/.nvm"
+source "/usr/local/opt/nvm/nvm.sh"
+
+v() {
+    # Group windows by git repo or base directory
+    if git rev-parse --is-inside-work-tree NUL; then
+        SERVER="$(basename $(git rev-parse --show-toplevel))"
+    else
+        SERVER="$(basename $(pwd))"
+    fi
+    mvim --servername "$SERVER" --remote-silent $@ NUL
+}
+
+vf() {
+    FILES=$(find . -type fl -name "$1" -print)
+    if [ "$FILES" != "" ]; then
+        echo "$FILES"
+        v "$FILES"
+    else
+        echo >&2 "No files found"
+    fi
+}
