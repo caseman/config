@@ -137,6 +137,12 @@ nnoremap <Tab> :bnext!<CR>
 nnoremap <S-Tab> :bprev!<CR>
 nnoremap <leader>b :buffers<CR>:buffer<Space>
 
+" diff shortcuts
+nnoremap <leader>< :diffget<CR>
+nnoremap <leader>> :diffput<CR>
+" Make diffing faster
+let g:diff_translations = 0
+
 " * Text Formatting -- Specific File Formats
 
 " in text files, automatically format everything at 76 chars:
