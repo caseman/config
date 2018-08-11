@@ -24,6 +24,8 @@ set wildignore+=*/.git/**/*,*/.hg/**/*,*/.svn/**/*
 set wildignore+=*/min/*,*/vendor/*,*/node_modules/*
 set wildignore+=*/tmp/*,*.so,*.swp,*.pyc,*.lock
 set wildignore+=*.tar.*,*.zip,*.gz,*.bz
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
+set wildignore+=*.DS_Store
 
 " Don't interrupt so much
 set shortmess=atI
