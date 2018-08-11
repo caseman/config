@@ -65,6 +65,7 @@ let g:syntastic_go_checkers = ["gometalinter"]
 let g:syntastic_go_gometalinter_args = "--fast"
 
 :nnoremap <leader>s :SyntasticCheck<CR>
+:nnoremap <leader>S :SyntasticToggleMode<CR>
 :nnoremap <leader>l :lnext<CR>
 :nnoremap <leader>h :lprevious<CR>
 
