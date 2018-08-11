@@ -175,7 +175,6 @@ set tags+=./TAGS;,$HOME/.cache/tags
 
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
-let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeAutoDeleteBuffer = 1
 
 let g:airline_powerline_fonts = 1
