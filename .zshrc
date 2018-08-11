@@ -5,6 +5,7 @@ fi
 
 # Minimal, but sensible vim as an external editor
 export EDITOR='vim -u ~/.minimal-vimrc'
+export VISUAL="$EDITOR"
 
 # Customizations
 
@@ -32,16 +33,12 @@ POWERLEVEL9K_VI_INSERT_MODE_STRING=''
 POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='yellow'
 POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='black'
 
-# Edit command line in a real editor
-bindkey -M vicmd "^V" edit-command-line
 # Still allow some emacs movment bindings and reverse inc search
 bindkey '^a' vi-beginning-of-line
 bindkey '^e' vi-end-of-line
 bindkey '^r' history-incremental-search-backward
-# Remove annoying delay switching to vi command mode using ESC
-export KEYTIMEOUT=1
-# ESC in command mode does nothing
-bindkey -M vicmd '^[' undefined-key
+# ESC in command mode opens editor
+bindkey -M vicmd '^[' edit-command-line
 # Disable conflicting self-insert mode
 bindkey -rM viins '^X'
 
@@ -78,3 +75,5 @@ bindkey ' '    _expand-ealias
 bindkey '^ '   magic-space          # control-space to bypass expansion
 bindkey -M isearch " "  magic-space # normal space during searches
 
+# Remove annoying delay switching to vi command mode using ESC
+export KEYTIMEOUT=1
