@@ -71,6 +71,9 @@ set showbreak=↪
 set list
 set listchars=tab:▸\ ,eol:↲,nbsp:␣,trail:⬤,extends:⟫,precedes:⟪
 
+" Highlight VCS conflict markers.
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
 " Replace current visual selection with yank buffer contents with "r"
 vmap r "_dP
 " Don't clobber the unnamed register when pasting over text in visual mode.
