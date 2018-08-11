@@ -45,7 +45,8 @@ alias tf='tail -F'
 
 alias h='history'
 alias src='source  ~/.zshrc'
-alias aliases='$EDITOR ~/.oh-my-zsh/custom/aliases.zsh'
+alias aliases='$EDITOR ~/.aliases.zsh'
+alias debugzsh='zsh -xv |& ts "%.S"'
 
 dbr() { 
     tag="$(basename $(pwd))-test"
