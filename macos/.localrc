@@ -6,13 +6,15 @@ export PATH="$HOME/bin:$GOPATH/bin:$PATH"
 alias pg="pg_ctl -D /usr/local/var/postgres"
 alias ag="ag --ignore-dir node_modules"
 alias f="ag -g"
-alias vrc="(cd ~/git/config && v .*rc)"
+alias vrc="(cd ~/git/config && v .*rc macos/.localrc macos/*.sh)"
 
 alias notes="(cd ~/notes && mvim --servername NOTES --remote-silent . NUL)"
 
 # Default hub to use cbhq github enterprise 
 export GITHUB_HOST="github.cbhq.net"
 alias ghpr="gpsup && hub pull-request --browse"
+
+export SCROLLS_PRETTY_PRINT=1
 
 # setup nvm
 export NVM_DIR="$HOME/.nvm"
