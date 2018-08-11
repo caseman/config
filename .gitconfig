@@ -17,4 +17,4 @@
 	name = Casey Duncan
 	email = casey.duncan@gmail.com
 [core]
-	editor = vim
+	editor = $EDITOR

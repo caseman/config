@@ -1,0 +1,39 @@
+" Minimal config for external editors in shell, no plugins
+
+" Start with something 'Sensible'
+source ~/.vim/bundle/vim-sensible/plugin/sensible.vim
+
+" Add syntax highlighting
+syntax on
+
+" Redraw immediately when replacing text within a line
+set cpoptions-=$
+" Erase backspaced chars immediately
+set cpoptions-=v
+" Undo is not undone
+set cpoptions-=u
+
+" Persistent Undo
+if has('persistent_undo') && isdirectory(expand('~').'/.vim/backups')
+  silent !mkdir ~/.vim/backups > /dev/null 2>&1
+  set undodir=~/.vim/backups
+  set undofile
+endif
+
+" Press Space to turn off highlighting and clear any message already displayed.
+:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
+" Tab to indent in visual mode.
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+
+" Allow arbitrary cursor placement in block mode (ctrl+v)
+set virtualedit+=block
+
+" Lines of context to keep above and below cursor
+set scrolloff=3
+
+" Replace current visual selection with yank buffer contents with "r"
+vmap r "_dP
+" Don't clobber the unnamed register when pasting over text in visual mode.
+vnoremap p pgvy
