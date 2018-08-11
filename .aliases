@@ -17,6 +17,25 @@ alias ll='ls -lh'
 alias la='ls -AF'
 alias ls='ls -F'
 
+# Git
+alias gpsup='git push --set-upstream origin $(git-branch-current)'
+alias gcm='git checkout master'
+alias gcob='git checkout -b'
+alias gst='git status'
+alias gss='git status -s'
+alias gchanged='(git diff --name-only master... && git diff --name-only) | sort -u'
+alias ghurl="git config --get remote.origin.url | sed -e 's/.*@//' -e 's/.git$//' -e 's/:/\//'"
+alias prs='open "https://$(ghurl)/pulls"'
+alias mprs='open "https://$(ghurl)/pulls/$USER"'
+alias ish='open "https://$(ghurl)/issues"'
+alias gh='open "https://$(ghurl)"'
+gbdp() {
+    BRANCH="${$1:-$(git-branch-current)}"
+    git checkout master && \
+    git branch --delete $BRANCH && \
+    git push origin --delete $BRANCH
+}
+
 alias pd='popd >/dev/null'
 alias psg='ps awx | grep'
 alias grep='egrep'
