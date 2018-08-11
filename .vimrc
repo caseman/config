@@ -88,6 +88,13 @@ noremap <Right> <NOP>
 " Press Space to turn off highlighting and clear any message already displayed.
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
+" Tab to indent in visual mode.
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+
+" Faster substitute.
+nnoremap <Leader>% :%s//<left>
+
 " Grepping
 if executable('ag')
     " Use ag over grep if installed
