@@ -205,5 +205,5 @@ map <C-p> :CtrlPMixed<CR>
 map <C-n> :NERDTreeToggle<CR>
 nnoremap <silent> <leader>n :NERDTreeFind<CR>
 map <C-u> :UndotreeToggle<CR>
-nnoremap <silent> <leader>v :Gstatus<CR>
+nnoremap <silent> <leader>v :set columns=205<BAR>:Gstatus<CR>
 
