@@ -92,6 +92,19 @@ noremap <Right> <NOP>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
+" Tab in insert mode either indents or autocompletes
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <expr> <tab> InsertTabWrapper()
+" Shift tab reverts completion
+inoremap <s-tab> <c-n>
+
 " Faster substitute.
 nnoremap <Leader>% :%s//<left>
 
