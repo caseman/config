@@ -168,9 +168,6 @@ autocmd FileType make set noexpandtab shiftwidth=8
 " alone when editing:
 autocmd FileType html set formatoptions+=tl
 
-" autocmd syntax * SpaceHi
-runtime macros/matchit.vim
-
 " Where to look for tags
 set tags+=./TAGS;,$HOME/.cache/tags
 
