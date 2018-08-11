@@ -4,6 +4,7 @@ export GOPATH="$(go env GOPATH)"
 export PATH="$HOME/bin:$GOPATH/bin:$PATH"
 
 alias pg="pg_ctl -D /usr/local/var/postgres"
+alias pglh="psql -U postgres -h localhost -p 5432"
 alias ag="ag --ignore-dir node_modules"
 alias f="ag -g"
 alias vrc="(cd ~/git/config && v .*rc macos/.localrc macos/*.sh)"
