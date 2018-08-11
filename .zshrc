@@ -55,9 +55,17 @@ fi
 
 # Non-annoying alias expansion
 typeset -a ealiases
-# Note cd, ls, rm, "nocorrect" and "noglob" aliases are not expanded
+# Never expand these commands
+noexpand="\
+ls
+cd
+cp
+mv
+ln
+rm"
+# commands above, "nocorrect" and "noglob" aliases are not expanded
 ealiases=($(alias | sed -e "/'nocorrect /d" -e "/'noglob /d" \
-    -e 's/=.*//' -e '/^cd$/d' -e '/^ls$/d' -e '/^rm$/d'))
+    -e 's/=.*//' -e "$(echo $noexpand | sed -e 's:.*:/^&$/d:')"))
 echo $eaaliases
 
 _expand-ealias() {
