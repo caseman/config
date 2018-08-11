@@ -171,6 +171,18 @@ autocmd FileType html set formatoptions+=tl
 " Where to look for tags
 set tags+=./TAGS;,$HOME/.cache/tags
 
+" Open URL under cursor
+command! -bar -nargs=1 OpenURL :!open <args>
+function! OpenURLUnderCursor()
+    let l:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;:]*')
+    if l:uri != ""
+        exec '!open "' . l:uri . '"'
+    else
+        echo 'No URL found in line'
+    endif
+endfunction
+nmap <silent> <Leader>o :call OpenURLUnderCursor()<CR><CR>
+
 " * Plugin config
 
 let g:NERDTreeMinimalUI = 1
