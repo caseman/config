@@ -37,3 +37,11 @@ set scrolloff=3
 vmap r "_dP
 " Don't clobber the unnamed register when pasting over text in visual mode.
 vnoremap p pgvy
+
+" Minimal, but useful status line
+" Note filename is omitted since it is generally a tmp file
+set laststatus=2
+set statusline =%y                 " File type
+set statusline +=\ %1*%m%0*        " modified flag
+set statusline +=%=%-14.(%l,%c%V%) " Line, column-virtual column
+set statusline +=%=lines:\ %-5L    " Lines in the buffer
