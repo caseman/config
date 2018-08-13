@@ -20,6 +20,7 @@ alias ls='ls -F'
 # Git
 alias gpsup='git push --set-upstream origin $(git-branch-current)'
 alias gcm='git checkout master'
+alias gcmup='git checkout master && git up'
 alias gcob='git checkout -b'
 alias gst='git status'
 alias gss='git status -s'
