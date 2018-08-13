@@ -196,6 +196,9 @@ function! OpenURLUnderCursor()
 endfunction
 nmap <silent> <Leader>o :call OpenURLUnderCursor()<CR><CR>
 
+" Copy current file path to clipboard
+nnoremap <silent> <leader>% :let @+=expand('%:p')<CR>
+
 " * Plugin config
 
 let g:NERDTreeMinimalUI = 1
