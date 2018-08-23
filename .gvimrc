@@ -1,4 +1,4 @@
-set lines=70 columns=113
+set lines=70 columns=210
 "set gfn=ProFontWindows:h12
 "set gfn=DejaVu\ Sans\ Mono:h13.00
 "set gfn=Source\ Code\ Pro:h13.00
