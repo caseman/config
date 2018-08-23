@@ -181,6 +181,12 @@ autocmd FileType make set noexpandtab shiftwidth=8
 " alone when editing:
 autocmd FileType html set formatoptions+=tl
 
+" for Go, use tabs
+autocmd FileType go set noexpandtab shiftwidth=4
+
+" Shorcut to manually set filetype
+nnoremap <leader>t :set syntax=
+
 " Where to look for tags
 set tags+=./TAGS;,$HOME/.cache/tags
 
