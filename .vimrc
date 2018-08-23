@@ -197,7 +197,11 @@ endfunction
 nmap <silent> <Leader>o :call OpenURLUnderCursor()<CR><CR>
 
 " Copy current file path to clipboard
-nnoremap <silent> <leader>% :let @+=expand('%:p')<CR>
+nnoremap <silent> <leader>f :let @+=expand('%:p')<CR>
+
+" Toggle line numbers
+nnoremap <silent> <leader># :set invnumber<CR>
+nnoremap <silent> <leader>@ :set invrelativenumber<CR>
 
 " * Plugin config
 
