@@ -107,6 +107,7 @@ inoremap <s-tab> <c-n>
 
 " Faster substitute.
 nnoremap <Leader>% :%s//<left>
+vnoremap <Leader>% :s//<left>
 
 " Grepping
 if executable('ag')
