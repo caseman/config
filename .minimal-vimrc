@@ -38,6 +38,12 @@ vmap r "_dP
 " Don't clobber the unnamed register when pasting over text in visual mode.
 vnoremap p pgvy
 
+" Quick jumping between splits
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-H> <C-W>h
+map <C-L> <C-W>l
+
 " Minimal, but useful status line
 " Note filename is omitted since it is generally a tmp file
 set laststatus=2
