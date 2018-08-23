@@ -163,8 +163,8 @@ nnoremap <S-Tab> :bprev!<CR>
 nnoremap <leader>b :buffers<CR>:buffer<Space>
 
 " diff shortcuts
-nnoremap <leader>< :diffget<CR>
-nnoremap <leader>> :diffput<CR>
+noremap <leader>< :diffget<CR>
+noremap <leader>> :diffput<CR>
 " Make diffing faster
 let g:diff_translations = 0
 
