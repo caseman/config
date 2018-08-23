@@ -47,7 +47,9 @@ map <C-L> <C-W>l
 " Minimal, but useful status line
 " Note filename is omitted since it is generally a tmp file
 set laststatus=2
-set statusline =%y                 " File type
-set statusline +=\ %1*%m%0*        " modified flag
-set statusline +=%=%-14.(%l,%c%V%) " Line, column-virtual column
-set statusline +=%=lines:\ %-5L    " Lines in the buffer
+set statusline+=\[%{mode()}\]    " Current mode
+set statusline+=\ %y                          " File type
+set statusline+=\ %1*%m%0*                  " modified flag
+set statusline+=%=%-14.(%l,%c%V%)           " Line, column-virtual column
+set statusline+=%=lines:\ %-5L              " Lines in the buffer
+
