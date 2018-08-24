@@ -40,7 +40,7 @@ gbdp() {
 goog() {
     Q=$(python -c "import urllib; print urllib.quote(raw_input())" <<< "$@") && \
     /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
-        "https://www.google.com/search?q=$Q" --new-window
+        "https://www.google.com/search?q=$Q" --new-window NUL
 }
 
 alias pd='popd >/dev/null'
