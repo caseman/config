@@ -78,3 +78,6 @@ up() {
         (cd $dir/../ && git up)
     done
 }
+
+# vi: ft=zsh
+
