@@ -1,7 +1,6 @@
 " Note this assumes sensible.vim: https://github.com/tpope/vim-sensible
 
 " 4 space tabs
-set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
