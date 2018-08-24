@@ -35,6 +35,7 @@ v() {
     fi
 }
 
+# Find files by name and open in vim
 vf() {
     FILES=$(ag --nocolor -g "$1" -print)
     if [ "$FILES" != "" ]; then
@@ -43,4 +44,9 @@ vf() {
     else
         echo >&2 "No files found"
     fi
+}
+
+# Launch vim and grep for easy browsing
+vg() {
+    vim -u ~/.minimal-vimrc +":so ~/.vim/scripts/grep.vim | :Ag $@"
 }
