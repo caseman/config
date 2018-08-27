@@ -184,6 +184,9 @@ autocmd FileType html set formatoptions+=tl
 " for Go, use tabs
 autocmd FileType go set noexpandtab shiftwidth=4
 
+" for js, use indent folding o_O
+autocmd FileType javascript set foldmethod=indent
+
 " Shorcut to manually set filetype
 nnoremap <leader>t :set syntax=
 
@@ -208,6 +211,14 @@ nnoremap <silent> <leader>f :let @+=expand('%:p')<CR>
 " Toggle line numbers
 nnoremap <silent> <leader># :set invnumber<CR>
 nnoremap <silent> <leader>@ :set invrelativenumber<CR>
+
+" Toggle syntax folding, defaults off
+nnoremap <silent> <leader>f :setlocal foldenable!<CR>
+set foldmethod=syntax
+set foldignore=
+set foldnestmax=1
+set foldminlines=3
+set nofoldenable
 
 " Lightweight embedded shell
 nmap <silent> <leader>z :term /usr/bin/env ZDOTDIR=/Users/caseyduncan/.minimal zsh<CR>
