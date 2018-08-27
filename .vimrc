@@ -209,6 +209,9 @@ nnoremap <silent> <leader>f :let @+=expand('%:p')<CR>
 nnoremap <silent> <leader># :set invnumber<CR>
 nnoremap <silent> <leader>@ :set invrelativenumber<CR>
 
+" Lightweight embedded shell
+nmap <silent> <leader>z :term /usr/bin/env ZDOTDIR=/Users/caseyduncan/.minimal zsh<CR>
+
 " * Plugin config
 
 let g:NERDTreeMinimalUI = 1
