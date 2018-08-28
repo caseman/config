@@ -36,6 +36,10 @@ gbdp() {
     git branch --delete $BRANCH && \
     git push origin --delete $BRANCH
 }
+gac() {
+    git add "$@" && \
+    git commit --verbose
+}
 
 goog() {
     Q=$(python -c "import urllib; print urllib.quote(raw_input())" <<< "$@") && \
