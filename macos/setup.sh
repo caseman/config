@@ -37,9 +37,27 @@ chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
-mkdir ~/git
-git clone https://github.com/powerline/fonts.git ~/git/fonts
-git/fonts/install.sh
+# alacritty
+git clone https://github.com/jwilm/alacritty.git ~/git/alacritty
+curl https://sh.rustup.rs -sSf | sh
+source $HOME/.cargo/env
+rustup override set stable
+rustup update stable
+(
+    cd alacritty;
+    make app;
+    cp -r target/release/osx/Alacritty.app /Applications/
+)
+
+# tmux
+brew install tmux
+brew install reattach-to-user-namespace
+(
+    cd
+    git clone https://github.com/gpakosz/.tmux.git
+    ln -s -f .tmux/.tmux.conf
+    ln -s -f git/config/.tmux.conf.local
+)
 
 # vim
 brew install macvim --env-std --with-override-system-vim
