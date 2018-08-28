@@ -42,6 +42,7 @@ update_git_prompt() {
         stashes=$(git stash list 2>/dev/null | wc -l | tr -d '[:space:]')
         ahead=$(git rev-list "${branch_name}"@{upstream}..HEAD 2>/dev/null | wc -l | tr -d '[:space:]')
         behind=$(git rev-list HEAD.."${branch_name}"@{upstream} 2>/dev/null | wc -l | tr -d '[:space:]')
+        dead=$(git branch -vv 2>/dev/null | \grep -E ': gone]' | wc -l | tr -d '[:space:]')
 
         if [[ -n $gstatus ]]; then 
             git_prompt+='%F{black}%K{yellow}'
@@ -59,6 +60,7 @@ update_git_prompt() {
         [[ "$stashes" != "0" ]] && git_prompt+=" *"
         [[ "$ahead" != "0" ]] && git_prompt+=" ${ahead}↑"
         [[ "$behind" != "0" ]] && git_prompt+=" ${behind}↓"
+        [[ "$dead" != "0" ]] && git_prompt+=" ${dead}⚰︎"
         git_prompt+="%f%k"
     fi
     if [[ $git_prompt != $last_status ]]; then
