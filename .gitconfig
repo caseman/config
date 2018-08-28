@@ -19,3 +19,4 @@
 	email = casey.duncan@gmail.com
 [core]
 	editor = $EDITOR
+	hooksPath = ~/.githooks
