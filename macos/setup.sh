@@ -24,6 +24,11 @@ brew install dep
 brew install moreutils
 brew install ag
 
+# powerline fonts
+mkdir ~/git
+git clone https://github.com/powerline/fonts.git ~/git/fonts
+~/git/fonts/install.sh
+
 # zsh
 brew install zsh
 ln -s ./.localrc ~/.localrc
