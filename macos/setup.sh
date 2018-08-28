@@ -31,6 +31,7 @@ git clone https://github.com/powerline/fonts.git ~/git/fonts
 
 # zsh
 brew install zsh
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "~/.zprezto"
 ln -s ./.localrc ~/.localrc
 chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
