@@ -7,7 +7,11 @@ fi
 export EDITOR='vim -u ~/.minimal-vimrc'
 export VISUAL="$EDITOR"
 
+# Load custom prompt
+source ~/.zsh/prompt.zsh
+
 # Customizations
+# TODO These can go away
 
 DEFAULT_USER="caseyduncan"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context root_indicator dir dir_writable vcs)
