@@ -42,7 +42,7 @@ update_git_prompt() {
         stashes=$(git stash list 2>/dev/null | wc -l | tr -d '[:space:]')
         ahead=$(git rev-list "${branch_name}"@{upstream}..HEAD 2>/dev/null | wc -l | tr -d '[:space:]')
         behind=$(git rev-list HEAD.."${branch_name}"@{upstream} 2>/dev/null | wc -l | tr -d '[:space:]')
-        dead=$(git branch -vv 2>/dev/null | \grep -E ': gone]' | wc -l | tr -d '[:space:]')
+        dead=$(git branch -vv 2>/dev/null | \grep -E ': gone]' --count)
 
         if [[ -n $gstatus ]]; then 
             git_prompt+='%F{black}%K{yellow}'
@@ -50,7 +50,7 @@ update_git_prompt() {
                 count=$(echo "$gstatus" | \grep -E "^$1" | wc -l | tr -d '[:space:]')
                 [[ "$count" != "0" ]] && echo "${count}${2}"
             }
-            git_prompt+="⋲ ${branch_name}❲$(status_for 'M.' 's ')$(status_for '.M' 'm ')$(status_for 'D' 'd ')$(status_for 'R' 'r ')$(status_for '\?\?' '?')"
+            git_prompt+="⋲ ${branch_name}❲$(status_for '.?A' 'a ')$(status_for 'M.' 's ')$(status_for '.M' 'm ')$(status_for 'D' 'd ')$(status_for 'R' 'r ')$(status_for '\?\?' '?')"
             # Trim trailing space and cap
             git_prompt="$(echo $git_prompt | xargs echo)❳%F{yellow}%K{black}"
         else
