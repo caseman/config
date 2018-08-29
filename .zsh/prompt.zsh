@@ -27,6 +27,17 @@ reset_prompt_status() {
 }
 add-zsh-hook chpwd reset_prompt_status
 
+# Reset git prompt status if a git command is invoked that can affect it
+check_for_git_cmd() {
+    [[ ${2:0:3} == "git" && \
+       ${2:0:10} != "git status" && \
+       ${2:0:7} != "git log" && \
+       ${2:0:8} != "git diff" && \
+       ${2:0:8} != "git grep" && \
+       ${2:0:9} != "git blame" ]] && reset_prompt_status
+}
+add-zsh-hook preexec check_for_git_cmd
+
 # cleanup on exit
 cleanup_prompt_status() {
     rm -f $_git_prompt_file
