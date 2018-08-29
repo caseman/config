@@ -47,15 +47,15 @@ update_git_prompt() {
         if [[ -n $gstatus ]]; then 
             git_prompt+='%F{black}%K{yellow}'
             status_for() {
-                count=$(echo "$gstatus" | \grep -E "^$1" | wc -l | tr -d '[:space:]')
-                [[ "$count" != "0" ]] && echo "${count}${2}"
+                count=$(echo "$gstatus" | \grep -E "^$1" --count)
+                [[ "$count" != "0" ]] && echo "${count}${2} "
             }
-            git_prompt+="⋲ ${branch_name}❲$(status_for '.?A' 'a ')$(status_for 'M.' 's ')$(status_for '.M' 'm ')$(status_for 'D' 'd ')$(status_for 'R' 'r ')$(status_for '\?\?' '?')"
+            git_prompt+="⋲ ${branch_name}❲$(status_for '.?A' 'a')$(status_for 'M.' 's')$(status_for '.M' 'm')$(status_for 'D' 'd')$(status_for 'R' 'r')$(status_for '\?\?' '?')"
             # Trim trailing space and cap
             git_prompt="$(echo $git_prompt | xargs echo)❳%F{yellow}%K{black}"
         else
             git_prompt+='%F{83}'
-            git_prompt+="⋲ $branch_name "
+            git_prompt+="⋲ $branch_name"
         fi
         [[ "$stashes" != "0" ]] && git_prompt+=" *"
         [[ "$ahead" != "0" ]] && git_prompt+=" ${ahead}↑"
