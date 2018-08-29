@@ -36,6 +36,7 @@ add-zsh-hook zshexit cleanup_prompt_status
 update_git_prompt() {
     local git_prompt branch status stashes ahead behind
     git_prompt=''
+    prompt_end=''
     last_status=$(cat $_git_prompt_file)
     if branch_name=$(git rev-parse --abbrev-ref HEAD 2>/dev/null); then
         gstatus=$(git status --porcelain --ignore-submodules=dirty 2>/dev/null)
@@ -44,7 +45,7 @@ update_git_prompt() {
         behind=$(git rev-list HEAD.."${branch_name}"@{upstream} 2>/dev/null | wc -l | tr -d '[:space:]')
         dead=$(git branch -vv 2>/dev/null | \grep -E ': gone]' --count)
 
-        if [[ -n $gstatus ]]; then 
+        if [[ -n $gstatus ]]; then
             git_prompt+='%F{black}%K{yellow}'
             status_for() {
                 count=$(echo "$gstatus" | \grep -E "^$1" --count)
@@ -52,7 +53,8 @@ update_git_prompt() {
             }
             git_prompt+="⋲ ${branch_name}❲$(status_for '.?A' 'a')$(status_for 'M.' 's')$(status_for '.M' 'm')$(status_for 'D' 'd')$(status_for 'R' 'r')$(status_for '\?\?' '?')"
             # Trim trailing space and cap
-            git_prompt="$(echo $git_prompt | xargs echo)❳%F{yellow}%K{black}"
+            git_prompt="$(echo $git_prompt | xargs echo)❳"
+            prompt_end="%F{yellow}%K{black}"
         else
             git_prompt+='%F{83}'
             git_prompt+="⋲ $branch_name"
@@ -61,7 +63,7 @@ update_git_prompt() {
         [[ "$ahead" != "0" ]] && git_prompt+=" ${ahead}↑"
         [[ "$behind" != "0" ]] && git_prompt+=" ${behind}↓"
         [[ "$dead" != "0" ]] && git_prompt+=" ${dead}⚰︎"
-        git_prompt+="%f%k"
+        git_prompt+="${prompt_end}%f%k"
     fi
     if [[ $git_prompt != $last_status ]]; then
         echo "$git_prompt" >! $_git_prompt_file
