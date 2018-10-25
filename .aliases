@@ -62,7 +62,7 @@ alias debugzsh='zsh -xv |& ts "%.S"'
 dbr() { 
     tag="$(basename $(pwd))-test"
     echo "build and run: $tag"
-    docker build -t "$tag" . && docker run --rm $@ "$tag"
+    docker build -t "$tag" . && docker run --rm "$tag" $@
 }
 
 dkill() {
@@ -79,7 +79,7 @@ dkill() {
 up() {
     find . -type d -name ".git" | while read dir; do
         echo "--- Updating $(dirname $dir)"
-        (cd $dir/../ && git up)
+        (cd $dir/../ && git up && git prunelocal)
     done
 }
 
