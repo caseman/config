@@ -16,6 +16,9 @@ alias x='chmod +x'
 alias ll='ls -lh'
 alias la='ls -AF'
 alias ls='ls -F'
+md() {
+    mkdir -p "$1" && pushd "$1"
+}
 
 # Git
 alias gpsup='git push --set-upstream origin $(git-branch-current)'
