@@ -19,7 +19,7 @@ export SCROLLS_PRETTY_PRINT=1
 
 # setup nvm
 export NVM_DIR="$HOME/.nvm"
-source "/usr/local/opt/nvm/nvm.sh"
+source "/usr/local/opt/nvm/nvm.sh" &!
 
 v() {
     # Group windows by git repo or base directory
@@ -28,7 +28,7 @@ v() {
     else
         SERVER="$(basename $(pwd))"
     fi
-    if [ "$#" == "0" ]; then
+    if [[ "$#" == "0" ]]; then
         mvim --servername "$SERVER" -c NERDTree --remote-silent .
     else
         mvim --servername "$SERVER" --remote-silent $@ NUL
@@ -38,7 +38,7 @@ v() {
 # Find files by name and open in vim
 vf() {
     FILES=$(ag --nocolor -g "$1" -print)
-    if [ "$FILES" != "" ]; then
+    if [[ "$FILES" != "" ]]; then
         echo "$FILES"
         v "$FILES"
     else
