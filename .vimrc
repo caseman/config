@@ -108,6 +108,10 @@ inoremap <s-tab> <c-n>
 nnoremap <Leader>% :%s//<left>
 vnoremap <Leader>% :s//<left>
 
+" Strip trailing whitespace
+nnoremap <Leader>w :%s/\s\+$//g<CR>
+vnoremap <Leader>w :s/\s\+$//g<CR>
+
 " Grepping
 if executable('ag')
     " Use ag over grep if installed
