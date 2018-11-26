@@ -3,11 +3,16 @@
 autoload -U add-zsh-hook
 setopt PROMPT_SUBST
 
+_git_prompt_file=$(mktemp "${TMPDIR:-/tmp}/prompt-git-async-XXXXXXXXXX")
+git_prompt_status() {
+    [[ ! -a $_git_prompt_file ]] && echo >! $_git_prompt_file
+    cat $_git_prompt_file
+}
+
 # Running man icon for bkgnd jobs
 PROMPT='%2(j.🏃.)%1(j.🏃 .)'
 # Git status
-_git_prompt_file=$(mktemp "${TMPDIR:-/tmp}/prompt-git-async-XXXXXXXXXX")
-PROMPT+='$(cat $_git_prompt_file)'
+PROMPT+='$(git_prompt_status)'
 # Change symbol color depending on last command success
 PROMPT+='%(?.%F{82}.%F{red})%(!.#.)'
 # Reset colors
@@ -48,7 +53,7 @@ update_git_prompt() {
     local git_prompt branch status stashes ahead behind
     git_prompt=''
     prompt_end=''
-    last_status=$(cat $_git_prompt_file)
+    last_status=$(git_prompt_status)
     if branch_name=$(git rev-parse --abbrev-ref HEAD 2>/dev/null); then
         gstatus=$(git status --porcelain --ignore-submodules=dirty 2>/dev/null)
         stashes=$(git stash list 2>/dev/null | wc -l | tr -d '[:space:]')
