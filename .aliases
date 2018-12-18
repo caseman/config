@@ -57,6 +57,12 @@ alias rgrep='egrep -r'
 alias top='top -c'
 alias tf='tail -F'
 
+redis-del() {
+    PATTERN=${@:$#}
+    OPTIONS=${@:1:-1}
+    eval "redis-cli $OPTIONS KEYS '$PATTERN' | xargs redis-cli $OPTIONS DEL"
+}
+
 alias h='history'
 alias src='source  ~/.zshrc'
 alias aliases='$EDITOR ~/.aliases.zsh'
