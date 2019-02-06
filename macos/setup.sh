@@ -12,6 +12,7 @@ xcodebuild -license accept
 # homebrew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew install wget
+brew install telnet
 brew cask install docker
 brew install hub
 brew install node
@@ -23,6 +24,7 @@ mkdir -p ~/go/bin ~/go/pkg ~/go/src
 brew install dep
 brew install moreutils
 brew install ag
+brew install jq
 
 # powerline fonts
 mkdir ~/git
