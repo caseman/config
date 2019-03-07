@@ -19,6 +19,9 @@ alias ls='ls -F'
 md() {
     mkdir -p "$1" && pushd "$1"
 }
+c() {
+	pushd "$1" && ls -F
+}
 
 # Git
 alias gpsup='git push --set-upstream origin $(git-branch-current)'
@@ -28,6 +31,7 @@ alias gcob='git checkout -b'
 alias gst='git status'
 alias gss='git status -s'
 alias gchanged='(git diff --name-only master... && git diff --name-only) | sort -u'
+alias gmerge='git fetch origin master && git merge origin master'
 alias ghurl="git config --get remote.origin.url | sed -e 's/.*@//' -e 's/.git$//' -e 's/:/\//'"
 alias prs='open "https://$(ghurl)/pulls"'
 alias mprs='open "https://$(ghurl)/pulls/$USER"'
