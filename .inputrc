@@ -1,0 +1,17 @@
+# vim mode
+set editing-mode vi
+set show-mode-in-prompt on
+set vi-ins-mode-string \1\e[6 q\2
+set vi-cmd-mode-string \1\e[2 q\2
+# vim command line bindings
+"\C-b": beginning-of-line
+"\C-e": end-of-line
+# keep this emacs key binding
+"\C-a": beginning-of-line
+# completions
+set colored-stats On
+set completion-prefix-display-length 3
+set show-all-if-ambiguous On
+set show-all-if-unmodified On
+set visible-stats On
+TAB: menu-complete
