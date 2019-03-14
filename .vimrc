@@ -1,5 +1,7 @@
 " Note this assumes sensible.vim: https://github.com/tpope/vim-sensible
 
+filetype plugin indent on
+
 " 4 space tabs
 set tabstop=4
 set softtabstop=4
@@ -209,6 +211,9 @@ function! OpenURLUnderCursor()
 endfunction
 nmap <silent> <Leader>o :call OpenURLUnderCursor()<CR><CR>
 
+" Open current directory in Finder
+nnoremap <leader>O :!open .<cr>
+
 " Copy current file path to clipboard
 nnoremap <silent> <leader>f :let @+=expand('%:p')<CR>
 
@@ -226,6 +231,15 @@ set nofoldenable
 
 " Lightweight embedded shell
 nmap <silent> <leader>z :term /usr/bin/env ZDOTDIR=/Users/caseyduncan/.minimal zsh<CR>
+
+" fugitive
+nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>ga :Gadd<cr>
+nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gco :Gcheckout<cr>
+nnoremap <leader>gci :Gcommit<cr>
 
 " * Plugin config
 
