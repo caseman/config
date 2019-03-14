@@ -35,9 +35,10 @@ git clone https://github.com/powerline/fonts.git ~/git/fonts
 brew install zsh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "~/.zprezto"
 ln -s ./.localrc ~/.localrc
+ln -s ./.zshrc ~/.zshrc
+ln -s ./.aliases ~/.aliases
+ln -s ./.minimal ~/.minimal
 chsh -s $(which zsh)
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
 # alacritty
 git clone https://github.com/jwilm/alacritty.git ~/git/alacritty
@@ -62,6 +63,7 @@ brew install reattach-to-user-namespace
 )
 
 # vim
+ln -s ./.vimrc ~/.vimrc
 brew install macvim --env-std --with-override-system-vim
 mkdir -p ~/.vim/autoload ~/.vim/bundle ~/.vim/backups
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim

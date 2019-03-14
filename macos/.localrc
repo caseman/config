@@ -1,7 +1,8 @@
 # local-relevant zsh aliases and funcs
 
 export GOPATH="$(go env GOPATH)"
-export PATH="$HOME/bin:$GOPATH/bin:$PATH"
+export PATH="$HOME/bin:$HOME/cbhq/bin:$GOPATH/bin:$PATH"
+export PYTHONUSERBASE="$HOME"
 
 alias pg="pg_ctl -D /usr/local/var/postgres"
 alias pglh="psql -U postgres -h localhost -p 5432"
@@ -11,15 +12,31 @@ alias vrc="(cd ~/git/config && v .*rc macos/.localrc macos/*.sh)"
 
 alias notes="(cd ~/notes && mvim --servername NOTES --remote-silent . NUL)"
 
+alias pgb="pgbadger --prefix='%t:%r:%u@%d:[%p]:'"
+alias yt="yarn run mocha --inspect -g"
+
 # Default hub to use cbhq github enterprise 
 export GITHUB_HOST="github.cbhq.net"
 alias ghpr="gpsup && hub pull-request --browse"
 
-export SCROLLS_PRETTY_PRINT=1
+# bootstrap nvm on-demand only when needed
+if [[ -z "$NVM_BIN" ]]; then
+    # note sourcing nvm.sh replaces this function
+    nvm() {
+        export NVM_DIR="$HOME/.nvm"
+        source "/usr/local/opt/nvm/nvm.sh"
+        nvm $@
+    }
+fi
 
-# setup nvm
-export NVM_DIR="$HOME/.nvm"
-source "/usr/local/opt/nvm/nvm.sh" &!
+# Automatically switch to the right node version
+yarn() {
+    if [[ -f .nvmrc ]]; then
+        I=$(expr "$NVM_BIN" : ".*\/v$(cat .nvmrc)\/")
+        [[ "$I" == "" || "$I" == "0" ]] && nvm use
+    fi
+    /usr/local/bin/yarn $@
+}
 
 v() {
     # Group windows by git repo or base directory
@@ -50,3 +67,8 @@ vf() {
 vg() {
     vim -u ~/.minimal-vimrc +":so ~/.vim/scripts/grep.vim | :Ag $@"
 }
+
+alias aliases="(cd ~/git/config && v .aliases)"
+alias config="(cd ~/git/config && v .*rc */.*rc .aliases)"
+
+# vi: ft=zsh
