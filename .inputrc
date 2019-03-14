@@ -6,6 +6,9 @@ set vi-cmd-mode-string \1\e[2 q\2
 # vim command line bindings
 "\C-b": beginning-of-line
 "\C-e": end-of-line
+# Shift + left/right
+"\e[1;2C": forward-word
+"\e[1;2D": backward-word
 # keep this emacs key binding
 "\C-a": beginning-of-line
 # completions
