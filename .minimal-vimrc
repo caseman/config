@@ -52,4 +52,3 @@ set statusline+=\ %y                          " File type
 set statusline+=\ %1*%m%0*                  " modified flag
 set statusline+=%=%-14.(%l,%c%V%)           " Line, column-virtual column
 set statusline+=%=lines:\ %-5L              " Lines in the buffer
-
