@@ -60,6 +60,7 @@ alias grep='egrep'
 alias rgrep='egrep -r'
 alias top='top -c'
 alias tf='tail -F'
+alias ymd='date +%Y%m%d'
 
 redis-del() {
     PATTERN=${@:$#}
@@ -69,7 +70,7 @@ redis-del() {
 
 alias h='history'
 alias src='source  ~/.zshrc'
-alias aliases='$EDITOR ~/.aliases.zsh'
+namedir() { eval $1=\"$PWD\" ;  : ~$1 }
 alias debugzsh='zsh -xv |& ts "%.S"'
 
 dbr() { 
