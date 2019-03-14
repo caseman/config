@@ -51,10 +51,13 @@ if [[ -f ~/.aliases ]]; then
     . ~/.aliases
 fi
 
-# Execute local config if any
+# Execute local configs if any
 # so that .zshrc can remain the same on all systems
 if [[ -f ~/.localrc ]]; then
     . ~/.localrc
+fi
+if [[ -f ~/.privaterc ]]; then
+    . ~/.privaterc
 fi
 
 # Non-annoying alias expansion
