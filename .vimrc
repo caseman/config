@@ -240,6 +240,7 @@ nnoremap <leader>ga :Gadd<cr>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gco :Gcheckout<cr>
 nnoremap <leader>gci :Gcommit<cr>
+nnoremap <leader>gp :Gpush<cr>
 
 " * Plugin config
 
