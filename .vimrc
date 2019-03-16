@@ -177,6 +177,12 @@ let g:diff_translations = 0
 " press return in normal mode to click links for help nav
 nnoremap <CR> <C-]>
 
+" curly brace movement (overrides default requiring them to be flush left)
+:map [[ ?{<CR>w99[{<Space>
+:map ][ /}<CR>b99]}<Space>
+:map ]] j0[[%/{<CR><Space>
+:map [] k$][%?}<CR><Space>
+
 " * Text Formatting -- Specific File Formats
 
 " in text files, automatically format everything at 76 chars:
@@ -243,6 +249,7 @@ nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gco :Gcheckout<cr>
 nnoremap <leader>gci :Gcommit --verbose<cr>
 nnoremap <leader>gp :Gpush<cr>
+nnoremap <leader>pr :term ++close<cr>ghpr<cr>
 
 " * Plugin config
 
