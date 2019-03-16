@@ -5,6 +5,10 @@ current_branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
 
 if [[ $current_branch == "master" ]]
 then
+    root=$(git rev-parse --show-toplevel)
+    if grep "^MASTER-OK$" $root/.gitignore 2>&1 >/dev/null; then
+        exit 0
+    fi
     read -p "Really commit to master? [y|n] " -n 1 -r < /dev/tty
     echo
     if echo $REPLY | grep -E '^[Yy]$' > /dev/null
