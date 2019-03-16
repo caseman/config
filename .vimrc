@@ -230,7 +230,7 @@ set foldminlines=3
 set nofoldenable
 
 " Lightweight embedded shell
-nmap <silent> <leader>z :term /usr/bin/env ZDOTDIR=/Users/caseyduncan/.minimal zsh<CR>
+nmap <silent> <leader>z :term ++close /usr/bin/env ZDOTDIR=/Users/caseyduncan/.minimal zsh<CR>
 
 " fugitive
 nnoremap <leader>gd :Gdiff<cr>
