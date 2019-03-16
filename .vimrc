@@ -178,10 +178,10 @@ let g:diff_translations = 0
 nnoremap <CR> <C-]>
 
 " curly brace movement (overrides default requiring them to be flush left)
-:map [[ ?{<CR>w99[{<Space>
-:map ][ /}<CR>b99]}<Space>
-:map ]] j0[[%/{<CR><Space>
-:map [] k$][%?}<CR><Space>
+:map [[ ?{$<CR>w99[{<Space>
+:map ][ /}$<CR>b99]}<Space>
+:map ]] j0[[%/{$<CR><Space>
+:map [] k$][%?}$<CR><Space>
 
 " * Text Formatting -- Specific File Formats
 
