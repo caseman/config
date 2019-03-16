@@ -174,6 +174,9 @@ noremap <leader>> :diffput<CR>
 " Make diffing faster
 let g:diff_translations = 0
 
+" press return in normal mode to click links for help nav
+nnoremap <CR> <C-]>
+
 " * Text Formatting -- Specific File Formats
 
 " in text files, automatically format everything at 76 chars:
