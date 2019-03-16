@@ -238,7 +238,7 @@ nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gco :Gcheckout<cr>
-nnoremap <leader>gci :Gcommit<cr>
+nnoremap <leader>gci :Gcommit --verbose<cr>
 nnoremap <leader>gp :Gpush<cr>
 
 " * Plugin config
