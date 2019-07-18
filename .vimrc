@@ -134,8 +134,10 @@ else
     set grepprg=egrep\ -srn\ --binary-files=without-match\ --color=never\ --exclude=.svn\ --exclude=.hg\ --exclude=.git --exclude=node_modules
 endif
 
-" ,g to grep the word under the cursor
-:nnoremap <leader>g :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><CR>
+" ,gr to grep the word under the cursor
+:nnoremap <leader>gr :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><CR>
+" grep for selection
+:vnoremap <leader>gr :grep! "<c-r>"" %<CR>:cw<CR><CR>
 
 " Quick jumping between splits
 map <C-J> <C-W>j
