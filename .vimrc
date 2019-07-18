@@ -168,7 +168,8 @@ nnoremap <leader>9 :b9<CR>
 nnoremap <leader>0 :blast<CR>
 nnoremap <Tab> :bnext!<CR>
 nnoremap <S-Tab> :bprev!<CR>
-nnoremap <leader>b :buffers<CR>:buffer<Space>
+nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>B :buffers<CR>:buffer<Space>
 
 " diff shortcuts
 noremap <leader>< :diffget<CR>
@@ -176,8 +177,8 @@ noremap <leader>> :diffput<CR>
 " Make diffing faster
 let g:diff_translations = 0
 
-" press return in normal mode to click links for help nav
-nnoremap <CR> <C-]>
+" press CTRL-return in normal mode to click links for help nav
+nnoremap <c-CR> <C-]>
 
 " curly brace movement (overrides default requiring them to be flush left)
 :map [[ ?{$<CR>w99[{<Space>
