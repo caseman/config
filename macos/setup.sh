@@ -25,6 +25,8 @@ brew install dep
 brew install moreutils
 brew install ag
 brew install jq
+brew install fzf
+brew install rlwrap
 
 # powerline fonts
 mkdir ~/git
