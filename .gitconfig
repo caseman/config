@@ -12,6 +12,7 @@
 	cm = !git add -A && git commit -m
 	save = !git add -A && git commit -m 'SAVEPOINT'
 	restore = reset HEAD~1 --mixed
+    uncommit = reset --soft HEAD~1
 	amend = commit -a --amend
 	prunelocal = !git checkout master && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
 [user]
