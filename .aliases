@@ -11,6 +11,8 @@ alias -g VV='2>&1 | vim -'
 alias -g HD='| head'
 alias -g TL='| tail'
 alias -g NUL='> /dev/null 2>&1'
+alias -g F='| fzf'
+alias -g C='| cut -f1 -d'
 
 alias x='chmod +x'
 alias ll='ls -lh'
