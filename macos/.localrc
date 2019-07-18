@@ -52,15 +52,9 @@ v() {
     fi
 }
 
-# Find files by name and open in vim
+# Fuzzy find files by name and open in vim
 vf() {
-    FILES=$(ag --nocolor -g "$1" -print)
-    if [[ "$FILES" != "" ]]; then
-        echo "$FILES"
-        v "$FILES"
-    else
-        echo >&2 "No files found"
-    fi
+    v $(ag --nocolor -g "$1" -print | fzf -0 -1)
 }
 
 # Launch vim and grep for easy browsing
