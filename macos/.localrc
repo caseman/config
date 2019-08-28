@@ -53,6 +53,11 @@ v() {
 }
 
 # Fuzzy find files by name and open in vim
+vfg() {
+    v $(fgr $@ -l | fzf -0 -1 --preview="egrep --context=3 $2 {}" --preview-window="right:80%")
+}
+
+# Fuzzy find files by name and open in vim
 vf() {
     v $(ag --nocolor -g "$1" -print | fzf -0 -1)
 }
