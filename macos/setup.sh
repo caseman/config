@@ -21,7 +21,6 @@ brew install yarn
 brew install postgres
 brew install go
 mkdir -p ~/go/bin ~/go/pkg ~/go/src
-brew install dep
 brew install moreutils
 brew install ag
 brew install jq
@@ -36,10 +35,12 @@ git clone https://github.com/powerline/fonts.git ~/git/fonts
 # zsh
 brew install zsh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "~/.zprezto"
-ln -s ./.localrc ~/.localrc
-ln -s ./.zshrc ~/.zshrc
-ln -s ./.aliases ~/.aliases
-ln -s ./.minimal ~/.minimal
+dir=$(git rev-parse --show-toplevel)
+ln -s $dir/macos/.localrc ~/.localrc
+ln -s $dir/.zshrc ~/.zshrc
+ln -s $dir/.aliases ~/.aliases
+ln -s $dir/.inputrc ~/.inputrc
+ln -s $dir/.minimal ~/.minimal
 chsh -s $(which zsh)
 
 # alacritty
@@ -65,7 +66,7 @@ brew install reattach-to-user-namespace
 )
 
 # vim
-ln -s ./.vimrc ~/.vimrc
+ln -s $dir/.vimrc ~/.vimrc
 brew install macvim --env-std --with-override-system-vim
 mkdir -p ~/.vim/autoload ~/.vim/bundle ~/.vim/backups
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
@@ -80,3 +81,6 @@ git clone https://github.com/vim-airline/vim-airline-themes ~/.vim/bundle/vim-ai
 git clone https://github.com/mbbill/undotree.git ~/.vim/bundle/undotree
 git clone https://github.com/airblade/vim-gitgutter.git ~/.vim/bundle/vim-gitgutter
 git clone https://github.com/kshenoy/vim-signature.git  ~/.vim/bundle/vim-signature
+git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
+vim +GoInstallBinaries
+
