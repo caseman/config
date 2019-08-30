@@ -278,3 +278,9 @@ nnoremap <silent> <leader>n :NERDTreeFind<CR>
 map <C-u> :UndotreeToggle<CR>
 nnoremap <silent> <leader>v :set columns=205<BAR>:Gstatus<CR>
 
+" vim-gitgutter
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
+nmap <Leader>ha <Plug>GitGutterStageHunk
+nmap <Leader>hr <Plug>GitGutterUndoHunk
+
