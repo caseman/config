@@ -26,6 +26,7 @@ brew install ag
 brew install jq
 brew install fzf
 brew install rlwrap
+brew install up
 
 # powerline fonts
 mkdir ~/git

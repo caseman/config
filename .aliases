@@ -13,6 +13,8 @@ alias -g TL='| tail'
 alias -g NUL='> /dev/null 2>&1'
 alias -g F='| fzf'
 alias -g C='| cut -f1 -d'
+alias -g U='| up'
+alias -g UU='2>&1 | up'
 
 alias x='chmod +x'
 alias ll='ls -lh'
@@ -92,7 +94,7 @@ dkill() {
     fi
 }
 
-up() {
+gup() {
     find . -type d -name ".git" | while read dir; do
         echo "--- Updating $(dirname $dir)"
         (cd $dir/../ && git up && git prunelocal)
