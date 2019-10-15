@@ -22,7 +22,7 @@ RPROMPT='%F{236}%K{236}%F{222}%64<..<%~%f%k'
 
 # Bkgnd git status update
 update_prompt_status() {
-    update_git_prompt &!
+    update_git_prompt
 }
 add-zsh-hook precmd update_prompt_status
 
@@ -83,11 +83,11 @@ update_git_prompt() {
     fi
     if [[ $git_prompt != $last_status ]]; then
         echo "$git_prompt" >! $_git_prompt_file
-        zle && zle reset-prompt
+		zle && zle reset-prompt
     fi
 }
 
 # Ensure the prompt is updated
-TMOUT=1
+TMOUT=5
 TRAPALRM() { zle reset-prompt }
 
