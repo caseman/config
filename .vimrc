@@ -147,7 +147,6 @@ map <C-L> <C-W>l
 " Open and close splits easily
 nnoremap <silent> vv :set columns=205<BAR>:vsplit<CR>
 nnoremap ss <C-W>s
-nnoremap Q  <C-W>q
 " Resize splits efficiently
 nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
