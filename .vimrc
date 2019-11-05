@@ -115,6 +115,18 @@ inoremap <expr> <tab> Smart_TabComplete()
 " Shift tab reverts completion
 inoremap <s-tab> <c-n>
 
+" Autocomplete pop-up keybindings
+inoremap <expr> <Esc>   pumvisible()?"\<C-E>":"\<Esc>"
+inoremap <expr> <CR>    pumvisible()?"\<C-Y>":"\<CR>"
+inoremap <expr> l       pumvisible()?"\<C-L>":"\l"
+inoremap <expr> h       pumvisible()?"\<C-H>":"\h"
+inoremap <expr> j       pumvisible()?"\<C-N>":"\j"
+inoremap <expr> k       pumvisible()?"\<C-P>":"\k"
+inoremap <expr> <Up>    pumvisible()?"\<C-P>":"\<Up>"
+inoremap <expr> <Down>  pumvisible()?"\<C-N>":"\<Down>"
+inoremap <expr> <c-f>   pumvisible()?"\<PageDown>\<C-P>\<C-N>":"\<PageDown>"
+inoremap <expr> <c-b>   pumvisible()?"\<PageUp>\<C-P>\<C-N>":"\<PageUp>"
+
 " Faster substitute.
 nnoremap <Leader>% :%s//<left>
 vnoremap <Leader>% :s//<left>
