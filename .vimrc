@@ -305,3 +305,14 @@ nmap [h <Plug>GitGutterPrevHunk
 nmap <Leader>ha <Plug>GitGutterStageHunk
 nmap <Leader>hr <Plug>GitGutterUndoHunk
 
+" vim-go
+nnoremap <leader>gob :w<CR>:GoBuild<CR>
+nnoremap <leader>got :w<CR>:GoTest<CR>
+nnoremap <leader>gof :w<CR>:GoTestFunc<CR>
+nnoremap <leader>goi :GoImport<CR>
+nnoremap <leader>god :GoDelsDir<CR>
+nnoremap <leader>goa :GoAlternate<CR>
+let g:go_test_timeout =  '30s'
+let g:go_fmt_command = 'gofmt' " don't auto-delete imports!
+" nnoremap <leader>gol :GoLint<BAR>:GoVet<CR>
+
