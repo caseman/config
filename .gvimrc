@@ -3,7 +3,7 @@ set lines=70 columns=210
 "set gfn=DejaVu\ Sans\ Mono:h13.00
 "set gfn=Source\ Code\ Pro:h13.00
 "set gfn=Menlo:h14.00
-set gfn=Meslo\ LG\ S\ DZ\ for\ Powerline:h13.00
+set gfn=Meslo\ LG\ S\ DZ\ for\ Powerline:h15.00
 set guioptions-=T
 set virtualedit+=onemore
 syntax on
