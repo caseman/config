@@ -27,6 +27,7 @@ brew install jq
 brew install fzf
 brew install rlwrap
 brew install up
+brew install grpcurl
 
 # powerline fonts
 mkdir ~/git
