@@ -18,7 +18,7 @@ PROMPT+='%(?.%F{82}.%F{red})%(!.#.)'
 # Reset colors
 PROMPT+='%f%k '
 # PWD limited to 64 chars
-RPROMPT='%F{236}%K{236}%F{222}%64<..<%~%f%k'
+RPROMPT='%F{236}%K{236}%F{222}%64<..<%(5~|%-2~/…/%3~|%4~)%f%k'
 
 # Bkgnd git status update
 update_prompt_status() {
