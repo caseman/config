@@ -70,7 +70,7 @@ set showbreak=↪
 
 " Visible whitespace
 set list
-set listchars=tab:▸\ ,eol:↲,nbsp:␣,trail:⬤,extends:⟫,precedes:⟪
+set listchars=tab:▸\ ,eol:↲,nbsp:␣,trail:•,extends:⟫,precedes:⟪
 
 " Highlight VCS conflict markers.
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -338,3 +338,5 @@ let g:go_fmt_command = 'gofmt' " don't auto-delete imports!
 let g:go_auto_type_info = 1    " get signature/type info for object under cursor
 " nnoremap <leader>gol :GoLint<BAR>:GoVet<CR>
 
+" conoline
+let g:conoline_auto_enable = 1
