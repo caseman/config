@@ -24,7 +24,7 @@ let g:colors_name="desert"
 hi Normal	guifg=White guibg=grey15
 
 " highlight groups
-hi Cursor	guibg=khaki guifg=slategrey
+hi Cursor	guibg=white guifg=gray15
 "hi CursorIM
 "hi Directory
 "hi DiffAdd
