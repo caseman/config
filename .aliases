@@ -28,6 +28,10 @@ c() {
 }
 
 # Git
+git-branch-fzf() {
+    git --no-pager branch -vv --sort='-committerdate:iso8601' | fzf +m | awk '{print $1}'
+}
+alias gbr='BRANCH=$(git-branch-fzf) && git checkout $BRANCH'
 alias gpsup='git push --set-upstream origin $(git-branch-current)'
 alias gcm='git checkout master'
 alias gcmup='git checkout master && git up'
@@ -50,8 +54,7 @@ gbdp() {
     git push origin --delete $BRANCH
 }
 gac() {
-    git add "$@" && \
-    git commit --verbose
+    git --no-pager status -s | fzf -m | awk '{print $2}' | xargs git add && git commit --verbose
 }
 
 goog() {
