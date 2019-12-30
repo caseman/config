@@ -31,7 +31,7 @@ c() {
 git-branch-fzf() {
     git --no-pager branch -vv --sort='-committerdate:iso8601' | fzf +m | awk '{print $1}'
 }
-alias gbr='BRANCH=$(git-branch-fzf) && git checkout $BRANCH'
+alias gbr='git-branch-fzf | xargs git checkout'
 alias gpsup='git push --set-upstream origin $(git-branch-current)'
 alias gcm='git checkout master'
 alias gcmup='git checkout master && git up'
