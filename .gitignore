@@ -4,3 +4,4 @@ MASTER-OK
 .vim/bundle*
 .vim/.*
 .vim/debug.log
+.minimal/.zhistory
