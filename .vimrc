@@ -127,9 +127,13 @@ inoremap <expr> <Down>  pumvisible()?"\<C-N>":"\<Down>"
 inoremap <expr> <c-f>   pumvisible()?"\<PageDown>\<C-P>\<C-N>":"\<PageDown>"
 inoremap <expr> <c-b>   pumvisible()?"\<PageUp>\<C-P>\<C-N>":"\<PageUp>"
 
-" Faster substitute.
+" Faster substitute
 nnoremap <Leader>% :%s//<left>
 vnoremap <Leader>% :s//<left>
+
+" Faster normal magic
+nnoremap <Leader>n :%g//norm <Left><Left><Left><Left><Left>
+vnoremap <Leader>n :norm 
 
 " Strip trailing whitespace
 nnoremap <Leader>w :%s/\s\+$//g<CR>
