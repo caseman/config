@@ -33,9 +33,10 @@ git-branch-fzf() {
 }
 alias gbr='git-branch-fzf | xargs git checkout'
 alias gpsup='git push --set-upstream origin $(git-branch-current)'
+alias gdob='git diff origin/$(git-branch-current)...$(git-branch-current)'
 alias gcm='git checkout master'
 alias gcmup='git checkout master && git up'
-alias gcob='git checkout -b'
+alias gcob='git checkout -b casey/'
 alias gst='git status'
 alias gss='git status -s'
 alias gs='git stash -u'
