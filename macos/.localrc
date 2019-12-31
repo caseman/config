@@ -38,28 +38,33 @@ yarn() {
     /usr/local/bin/yarn $@
 }
 
-v() {
-    # Group windows by git repo or base directory
+mvim-server-name() {
+    # Group servers by git repo or base directory
     if git rev-parse --is-inside-work-tree NUL; then
-        SERVER="$(basename $(git rev-parse --show-toplevel))"
+        basename $(git rev-parse --show-toplevel)
     else
-        SERVER="$(basename $(pwd))"
-    fi
-    if [[ "$#" == "0" ]]; then
-        mvim --servername "$SERVER" -c NERDTree --remote-silent .
-    else
-        mvim --servername "$SERVER" --remote-silent $@ NUL
+        basename $(pwd)
     fi
 }
 
-# Fuzzy find files by name and open in vim
-vfg() {
-    v $(fgr $@ -l | fzf -0 -1 --preview="egrep --context=3 $2 {}" --preview-window="right:80%")
+alias mvim='/usr/local/bin/mvim --servername "$(mvim-server-name)" --remote-silent'
+
+v() {
+    if [[ "$#" == "0" ]]; then
+        mvim -c NERDTree .
+    else
+        mvim $@ NUL
+    fi
+}
+
+# Fuzzy find files by content and open in vim
+vg() {
+    ag --count $@ | sed 's/\(.*\):/\1 /' | sort -r -k2 -n | fzf -0 -1 -m --preview="egrep --context=3 $@ {1}" | awk '{print $1}' | xargs mvim --servername "$(mvim-server-name)" --remote-silent
 }
 
 # Fuzzy find files by name and open in vim
 vf() {
-    v $(ag --nocolor -g "$1" -print | fzf -0 -1)
+    ag --nocolor -g "$1" -print | fzf -0 -1 -m --preview='head {} && echo "\n---" && tail {}' | xargs mvim --servername "$(mvim-server-name)" --remote-silent
 }
 
 
