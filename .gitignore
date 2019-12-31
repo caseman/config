@@ -3,3 +3,4 @@ MASTER-OK
 .vim/backups
 .vim/bundle*
 .vim/.*
+.vim/debug.log
