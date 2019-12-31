@@ -57,7 +57,6 @@ gbdp() {
 gac() {
     git --no-pager status -s | fzf -m --preview='git diff {2}' | awk '{print $2}' | xargs git add && git commit --verbose
 }
-unalias gd
 gd() {
     git --no-pager status -s | fzf -m --preview='git diff {2}' | awk '{print $2}' | xargs git diff
 }
