@@ -327,12 +327,12 @@ nmap <Leader>ha <Plug>GitGutterStageHunk
 nmap <Leader>hr <Plug>GitGutterUndoHunk
 
 " vim-go
-nnoremap <leader>gob :w<CR>:GoBuild<CR>
-nnoremap <leader>got :w<CR>:GoTest<CR>
-nnoremap <leader>gof :w<CR>:GoTestFunc<CR>
-nnoremap <leader>goi :GoImport<CR>
-nnoremap <leader>god :GoDelsDir<CR>
-nnoremap <leader>goa :GoAlternate<CR>
+au FileType go nmap <leader>gob :w<CR>:GoBuild<CR>
+au FileType go nmap <leader>got :w<CR>:GoTest<CR>
+au FileType go nmap <leader>gof :w<CR>:GoTestFunc<CR>
+au FileType go nmap <leader>goi :GoImport<CR>
+au FileType go nmap <leader>god :GoDelsDir<CR>
+au FileType go nmap <leader>goa :GoAlternate<CR>
 let g:go_test_timeout =  '30s'
 let g:go_fmt_command = 'gofmt' " don't auto-delete imports!
 let g:go_auto_type_info = 1    " get signature/type info for object under cursor
