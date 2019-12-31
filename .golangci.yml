@@ -1,0 +1,3 @@
+run:
+  # limit concurrency so it doesn't use all cpu
+  concurrency: 4
