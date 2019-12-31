@@ -82,6 +82,7 @@ git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline
 git clone https://github.com/vim-airline/vim-airline-themes ~/.vim/bundle/vim-airline-themes
 git clone https://github.com/mbbill/undotree.git ~/.vim/bundle/undotree
 git clone https://github.com/airblade/vim-gitgutter.git ~/.vim/bundle/vim-gitgutter
+git clone https://github.com/miyakogi/conoline.vim.git ~/.vim/bundle/conoline
 git clone https://github.com/kshenoy/vim-signature.git  ~/.vim/bundle/vim-signature
 git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
 vim +GoInstallBinaries
