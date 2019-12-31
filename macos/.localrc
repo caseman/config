@@ -62,10 +62,8 @@ vf() {
     v $(ag --nocolor -g "$1" -print | fzf -0 -1)
 }
 
-# Launch vim and grep for easy browsing
-vg() {
-    vim -u ~/.minimal-vimrc +":so ~/.vim/scripts/grep.vim | :Ag $@"
-}
+
+export FZF_DEFAULT_OPTS="--preview-window=up"
 
 alias aliases="(cd ~/git/config && v .aliases)"
 alias config="(cd ~/git/config && v .*rc */.*rc .aliases)"
