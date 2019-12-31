@@ -64,7 +64,9 @@ vg() {
 
 # Fuzzy find files by name and open in vim
 vf() {
-    ag --nocolor -g "$1" -print | fzf -0 -1 -m --preview='head {} && echo "\n---" && tail {}' | xargs mvim --servername "$(mvim-server-name)" --remote-silent
+    local PREVIEW_CMD
+    PREVIEW_CMD="bat --color always --style snip --line-range :100 {}"
+    ag --nocolor -g "$1" -print | fzf -0 -1 -m --preview="$PREVIEW_CMD" | xargs mvim --servername "$(mvim-server-name)" --remote-silent
 }
 
 
