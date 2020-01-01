@@ -13,6 +13,7 @@ alias -g TL='| tail'
 alias -g NUL='> /dev/null 2>&1'
 alias -g F='| fzf'
 alias -g C='| cut -f1 -d'
+alias -g B='| bat --color always --plain'
 alias -g U='| up'
 alias -g UU='2>&1 | up'
 
