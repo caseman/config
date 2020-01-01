@@ -34,6 +34,12 @@ git-branch-fzf() {
     | fzf +m --preview="git --no-pager log --abbrev-commit -5 {1} | bat --color always --plain" \
     | awk '{print $1}'
 }
+git-stash-fzf() {
+	git --no-pager stash list | sed 's/: / /' \
+    | fzf +m --preview-window='top:75%' \
+    	     --preview='git stash show {1} && echo "---" && git --no-pager stash show --color=always -p {1}' \
+    | cut -f1 -d ' '
+}
 alias gbr='git-branch-fzf | xargs git checkout'
 alias gpsup='git push --set-upstream origin $(git-branch-current)'
 alias gdob='git diff origin/$(git-branch-current)...$(git-branch-current)'
@@ -43,9 +49,9 @@ alias gcob='git checkout -b casey/'
 alias gst='git status'
 alias gss='git status -s'
 alias gs='git stash -u'
-alias git-stash-fzf="git --no-pager stash list | sed 's/: / /' | fzf +m --preview='git --no-pager stash show -p {1}' | cut -f1 -d ' '"
 alias gsa='git-stash-fzf | xargs git stash apply'
 alias gsd='git-stash-fzf | xargs git stash drop'
+alias gsh='git-stash-fzf | xargs git stash show -p'
 alias ga='git add -A'
 alias gchanged='(git diff --name-only master... && git diff --name-only) | sort -u'
 alias gmerge='git fetch origin master && git merge origin master && git push'
