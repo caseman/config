@@ -30,7 +30,7 @@ c() {
 
 # Git
 git-branch-fzf() {
-    git --no-pager branch -vv --sort='-committerdate:iso8601' | fzf +m | awk '{print $1}'
+    git --no-pager branch -vv --sort='-committerdate:iso8601' | fzf +m --preview="git --no-pager log --abbrev-commit -5 {1} | bat --color always --plain" | awk '{print $1}'
 }
 alias gbr='git-branch-fzf | xargs git checkout'
 alias gpsup='git push --set-upstream origin $(git-branch-current)'
