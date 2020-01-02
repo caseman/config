@@ -40,6 +40,10 @@ git-stash-fzf() {
     	     --preview='git stash show {1} && echo "---" && git --no-pager stash show --color=always -p {1}' \
     | cut -f1 -d ' '
 }
+git-status-fzf() {
+    git --no-pager status -s | fzf -m --preview='git diff {2}' | awk '{print $2}'
+}
+
 alias gbr='git-branch-fzf | xargs git checkout'
 alias gpsup='git push --set-upstream origin $(git-branch-current)'
 alias gdob='git diff origin/$(git-branch-current)...$(git-branch-current)'
@@ -48,10 +52,9 @@ alias gcmup='git checkout master && git up'
 alias gcob='git checkout -b casey/'
 alias gst='git status'
 alias gss='git status -s'
+alias gstatus='git-status-fzf | xargs git'
+alias gstash='git-stash-fzf | xargs git stash'
 alias gs='git stash -u'
-alias gsa='git-stash-fzf | xargs git stash apply'
-alias gsd='git-stash-fzf | xargs git stash drop'
-alias gsh='git-stash-fzf | xargs git stash show -p'
 alias ga='git add -A'
 alias gchanged='(git diff --name-only master... && git diff --name-only) | sort -u'
 alias gmerge='git fetch origin master && git merge origin master && git push'
@@ -67,10 +70,7 @@ gbdp() {
     git push origin --delete $BRANCH
 }
 gac() {
-    git --no-pager status -s | fzf -m --preview='git diff {2}' | awk '{print $2}' | xargs git add && git commit --verbose
-}
-gd() {
-    git --no-pager status -s | fzf -m --preview='git diff {2}' | awk '{print $2}' | xargs git diff
+    git-status-fzf | xargs git add && git commit --verbose
 }
 
 goog() {
