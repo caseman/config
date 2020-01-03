@@ -43,6 +43,10 @@ git-stash-fzf() {
 git-status-fzf() {
     git --no-pager status -s | fzf -m --preview='git diff {2}' | awk '{print $2}'
 }
+git-log-fzf() {
+    git --no-pager log --oneline \
+    | fzf +m --preview-window='top:75%' --preview='git show --color=always {1}' | awk '{print $1}'
+}
 
 alias gbr='git-branch-fzf | xargs git checkout'
 alias gpsup='git push --set-upstream origin $(git-branch-current)'
@@ -54,6 +58,7 @@ alias gst='git status'
 alias gss='git status -s'
 alias gstatus='git-status-fzf | xargs git'
 alias gstash='git-stash-fzf | xargs git stash'
+alias glog='git-log-fzf | xargs git'
 alias gs='git stash -u'
 alias ga='git add -A'
 alias gchanged='(git diff --name-only master... && git diff --name-only) | sort -u'
