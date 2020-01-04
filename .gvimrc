@@ -11,7 +11,7 @@ colors casey
 
 " Mark 80 columns
 set colorcolumn=80
-highlight ColorColumn ctermbg=gray guibg=#222222
+highlight ColorColumn ctermbg=gray guibg=#181818
 
 " reload config while running
 :nnoremap <leader>r :so $MYVIMRC <bar> :so $MYGVIMRC<CR>
