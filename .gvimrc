@@ -36,8 +36,9 @@ highlight SyntasticErrorSign guifg=white guibg=red
 highlight SyntasticError guibg=#2f0000
 let g:syntastic_javascript_checkers = ["eslint"]
 let g:syntastic_go_checkers = ["gometalinter"]
-" gometalinter is supa-slow by default, so pass it the fast flag
-let g:syntastic_go_gometalinter_args = "--skip=vendor --fast"
+let g:syntastic_mode_map = {
+    \ "mode": "active",
+    \ "passive_filetypes": ["go"] }
 
 :nnoremap <leader>s :SyntasticCheck<CR>
 :nnoremap <leader>S :SyntasticToggleMode<CR>
