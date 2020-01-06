@@ -87,7 +87,10 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 " Press Space to turn off highlighting and clear any message already displayed.
-:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+" Save and restore search higlighting when entering and leaving insert mode
+autocmd InsertEnter * :let b:_search=@/|let @/=''
+autocmd InsertLeave * :let @/=get(b:,'_search','')
 
 " Tab to indent in visual mode.
 vnoremap <Tab> >gv
