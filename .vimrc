@@ -270,10 +270,10 @@ endfunction
 nmap <silent> <Leader>o :call OpenURLUnderCursor()<CR><CR>
 
 " Open current directory in Finder
-nnoremap <leader>O :!open .<cr>
+command! O !open .
 
 " Copy current file path to clipboard
-nnoremap <silent> <leader>f :let @+=expand('%:p')<CR>
+command! File let @+=expand('%:p')
 
 " Toggle line numbers
 nnoremap <silent> <leader># :set invnumber<CR>
@@ -289,7 +289,7 @@ set foldminlines=3
 set nofoldenable
 
 " Lightweight embedded shell
-nmap <silent> <leader>z :term ++close /usr/bin/env ZDOTDIR=/Users/caseyduncan/.minimal zsh<CR>
+command! Term term ++close /usr/bin/env ZDOTDIR=/Users/caseyduncan/.minimal zsh
 
 " fugitive
 nnoremap <leader>gd :Gdiff<cr>
@@ -321,7 +321,6 @@ let g:undotree_HelpLine = 0
 " key mappings for plugins
 map <C-p> :CtrlPMixed<CR>
 map <C-n> :NERDTreeToggle<CR>
-nnoremap <silent> <leader>n :NERDTreeFind<CR>
 map <C-u> :UndotreeToggle<CR>
 nnoremap <silent> <leader>v :set columns=205<BAR>:Gstatus<CR>
 
