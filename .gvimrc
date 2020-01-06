@@ -14,7 +14,11 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=gray guibg=#181818
 
 " reload config while running
-:nnoremap <leader>r :so $MYVIMRC <bar> :so $MYGVIMRC<CR>
+command! R so $MYVIMRC <BAR> so $MYGVIMRC
+
+" Fix for redraw bug on write
+command! W write<BAR>redraw!
+cabbrev w W
 
 " Enable spellcheck for content files
 autocmd BufNewFile,BufRead *.md,*.rst,*.txt,*.html,README set spell
