@@ -14,6 +14,7 @@ alias notes="(cd ~/notes && mvim --servername NOTES --remote-silent . NUL)"
 
 alias pgb="pgbadger --prefix='%t:%r:%u@%d:[%p]:'"
 alias yt="yarn run mocha --inspect -g"
+alias ash='bazel run //infra/clients/artifact-shipper:artifact-shipper --'
 
 # Default hub to use cbhq github enterprise 
 export GITHUB_HOST="github.cbhq.net"
