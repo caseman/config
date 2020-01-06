@@ -278,6 +278,7 @@ nnoremap <silent> <leader>f :let @+=expand('%:p')<CR>
 " Toggle line numbers
 nnoremap <silent> <leader># :set invnumber<CR>
 nnoremap <silent> <leader>@ :set invrelativenumber<CR>
+set invrelativenumber
 
 " Toggle syntax folding, defaults off
 nnoremap <silent> <leader>f :setlocal foldenable!<CR>
