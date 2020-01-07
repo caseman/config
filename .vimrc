@@ -314,7 +314,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#ale = 1
 
 " Right split for undo tree with full width diff at bottom
 let g:undotree_WindowLayout = 4
