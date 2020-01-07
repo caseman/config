@@ -295,13 +295,13 @@ set nofoldenable
 command! Term term ++close /usr/bin/env ZDOTDIR=/Users/caseyduncan/.minimal zsh
 
 " fugitive
-nnoremap <silent> <leader>gd :gdiff<cr>
-nnoremap <silent> <leader>gs :gstatus<cr>
-nnoremap <silent> <leader>gw :gwrite<cr>
-nnoremap <silent> <leader>gb :gblame<cr>
-nnoremap <silent> <leader>gco :gcheckout<cr>
-nnoremap <silent> <leader>gci :gcommit --verbose<cr>
-nnoremap <silent> <leader>gp :gpush<cr>
+nnoremap <silent> <leader>gd :Gdiff<cr>
+nnoremap <silent> <leader>gs :Gstatus<cr>
+nnoremap <silent> <leader>gw :Gwrite<cr>
+nnoremap <silent> <leader>gb :Gblame<cr>
+nnoremap <silent> <leader>gco :Gcheckout<cr>
+nnoremap <silent> <leader>gci :Gcommit --verbose<cr>
+nnoremap <silent> <leader>gp :Gpush<cr>
 nnoremap <silent> <leader>pr :term ++close<cr>ghpr<cr>
 
 
@@ -335,12 +335,12 @@ nmap <Leader>ha <Plug>GitGutterStageHunk
 nmap <Leader>hr <Plug>GitGutterUndoHunk
 
 " vim-go
-au FileType go nmap <leader>gob :w<CR>:GoBuild<CR>
-au FileType go nmap <leader>got :w<CR>:GoTest<CR>
-au FileType go nmap <leader>gof :w<CR>:GoTestFunc<CR>
-au FileType go nmap <leader>goi :GoImport<CR>
-au FileType go nmap <leader>god :GoDelsDir<CR>
-au FileType go nmap <leader>goa :GoAlternate<CR>
+au FileType go nmap <silent> <leader>gob :w<CR>:GoBuild<CR>
+au FileType go nmap <silent> <leader>got :w<CR>:GoTest<CR>
+au FileType go nmap <silent> <leader>gof :w<CR>:GoTestFunc<CR>
+au FileType go nmap <silent> <leader>goi :GoImport<CR>
+au FileType go nmap <silent> <leader>god :GoDelsDir<CR>
+au FileType go nmap <silent> <leader>goa :GoAlternate<CR>
 let g:go_test_timeout =  '30s'
 let g:go_fmt_command = 'gofmt' " don't auto-delete imports!
 let g:go_auto_type_info = 1    " get signature/type info for object under cursor
