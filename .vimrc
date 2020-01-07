@@ -131,8 +131,8 @@ inoremap <expr> <c-f>   pumvisible()?"\<PageDown>\<C-P>\<C-N>":"\<PageDown>"
 inoremap <expr> <c-b>   pumvisible()?"\<PageUp>\<C-P>\<C-N>":"\<PageUp>"
 
 " Faster substitute
-nnoremap <Leader>% :%s//<left>
-vnoremap <Leader>% :s//<left>
+nnoremap <Leader>% :%s/
+vnoremap <Leader>% :s/
 
 " Faster normal magic
 nnoremap <Leader>n :%g//norm <Left><Left><Left><Left><Left>
