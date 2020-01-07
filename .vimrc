@@ -101,7 +101,7 @@ function! Smart_TabComplete()
   let line = getline('.')
   let substr = strpart(line, -1, col('.')+1)
   let substr = matchstr(substr, "[^ \t]*$")
-  if (strlen(substr)==0)
+  if (col('.') == 1 || line[col('.') - 2] !~ '\k')
     return "\<tab>"
   endif
   let has_period = match(substr, '\.') != -1
