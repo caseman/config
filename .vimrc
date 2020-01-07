@@ -295,14 +295,15 @@ set nofoldenable
 command! Term term ++close /usr/bin/env ZDOTDIR=/Users/caseyduncan/.minimal zsh
 
 " fugitive
-nnoremap <leader>gd :Gdiff<cr>
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gw :Gwrite<cr>
-nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gco :Gcheckout<cr>
-nnoremap <leader>gci :Gcommit --verbose<cr>
-nnoremap <leader>gp :Gpush<cr>
-nnoremap <leader>pr :term ++close<cr>ghpr<cr>
+nnoremap <silent> <leader>gd :gdiff<cr>
+nnoremap <silent> <leader>gs :gstatus<cr>
+nnoremap <silent> <leader>gw :gwrite<cr>
+nnoremap <silent> <leader>gb :gblame<cr>
+nnoremap <silent> <leader>gco :gcheckout<cr>
+nnoremap <silent> <leader>gci :gcommit --verbose<cr>
+nnoremap <silent> <leader>gp :gpush<cr>
+nnoremap <silent> <leader>pr :term ++close<cr>ghpr<cr>
+
 
 " * Plugin config
 
