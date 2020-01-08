@@ -114,7 +114,7 @@ function! Smart_TabComplete()
     return "\<C-X>\<C-O>"
   endif
 endfunction
-inoremap <expr> <tab> Smart_TabComplete()
+inoremap <expr> <tab> Smart_TabComplete()|!pumvisible()?"\<C-X>\<C-P>":""
 " Shift tab reverts completion
 inoremap <s-tab> <c-n>
 
