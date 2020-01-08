@@ -344,10 +344,10 @@ map <C-u> :UndotreeToggle<CR>
 nnoremap <silent> <leader>v :set columns=205<BAR>:Gstatus<CR>
 
 " vim-gitgutter
-nmap ]h <Plug>GitGutterNextHunk
-nmap [h <Plug>GitGutterPrevHunk
-nmap <Leader>ha <Plug>GitGutterStageHunk
-nmap <Leader>hr <Plug>GitGutterUndoHunk
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+nmap <Leader>ha <Plug>(GitGutterStageHunk)
+nmap <Leader>hr <Plug>(GitGutterUndoHunk)
 
 " vim-go
 au FileType go nmap <silent> <leader>gob :w<CR>:GoBuild<CR>
