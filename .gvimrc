@@ -20,12 +20,6 @@ command! R so $MYVIMRC <BAR> so $MYGVIMRC
 command! W write<BAR>redraw!
 cabbrev w W
 
-" Enable spellcheck for content files
-autocmd BufNewFile,BufRead *.md,*.rst,*.txt,*.html,README set spell
-
-" Use pgsql highlighting
-autocmd BufNewFile,BufRead *.sql set filetype=pgsql
-
 if (&diff)
     " Maximize when opening diffs
     set lines=999 columns=999

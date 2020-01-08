@@ -260,7 +260,13 @@ autocmd FileType go set noexpandtab shiftwidth=4
 " for js, use indent folding o_O
 autocmd FileType javascript set foldmethod=indent
 
-" Shorcut to manually set filetype
+" Enable spellcheck for content files
+autocmd BufNewFile,BufRead *.md,*.rst,*.txt,*.html,README set spell
+
+" Use pgsql highlighting
+autocmd BufNewFile,BufRead *.sql set filetype=pgsql
+
+" Shortcut to manually set filetype
 nnoremap <leader>t :set syntax=
 
 " Where to look for tags
