@@ -235,6 +235,12 @@ nnoremap <c-CR> <C-]>
 :map ]] j0[[%/{$<CR><Space>
 :map [] k$][%?}$<CR><Space>
 
+" skipping through lists
+nnoremap ]l :lnext<CR>
+nnoremap [l :lprevious<CR>
+nnoremap ]c :cnext<CR>
+nnoremap [c :cprevious<CR>
+
 " * Text Formatting -- Specific File Formats
 
 " in text files, automatically format everything at 76 chars:
@@ -304,7 +310,6 @@ nnoremap <silent> <leader>gci :Gcommit --verbose<cr>
 nnoremap <silent> <leader>gp :Gpush<cr>
 nnoremap <silent> <leader>pr :term ++close<cr>ghpr<cr>
 
-
 " * Plugin config
 
 let g:NERDTreeMinimalUI = 1
@@ -351,3 +356,9 @@ let g:go_auto_type_info = 1    " get signature/type info for object under cursor
 
 " conoline
 let g:conoline_auto_enable = 1
+
+" ale
+let g:ale_linters = {
+    \   'go': ['gometalinter', 'gofmt'],
+    \   'javascript': ['eslint'],
+\}

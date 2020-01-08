@@ -30,11 +30,3 @@ if (&diff)
     " Maximize when opening diffs
     set lines=999 columns=999
 endif
-
-:nnoremap <leader>l :lnext<CR>
-:nnoremap <leader>h :lprevious<CR>
-
-let g:ale_linters = {
-    \   'go': ['gometalinter', 'gofmt'],
-    \   'javascript': ['eslint'],
-\}
