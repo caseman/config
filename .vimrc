@@ -238,6 +238,7 @@ nnoremap <c-CR> <C-]>
 " skipping through lists
 nnoremap ]l :lnext<CR>
 nnoremap [l :lprevious<CR>
+nnoremap <leader>l :lclose<CR>
 nnoremap ]c :cnext<CR>
 nnoremap [c :cprevious<CR>
 
