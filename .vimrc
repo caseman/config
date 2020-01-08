@@ -359,6 +359,10 @@ au FileType go nmap <silent> <leader>goa :GoAlternate<CR>
 let g:go_test_timeout =  '30s'
 let g:go_fmt_command = 'gofmt' " don't auto-delete imports!
 let g:go_auto_type_info = 1    " get signature/type info for object under cursor
+" syntax highlighting
+let g:go_highlight_functions = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_format_strings = 1
 " nnoremap <leader>gol :GoLint<BAR>:GoVet<CR>
 
 " conoline
