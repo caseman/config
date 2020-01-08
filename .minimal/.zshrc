@@ -1,5 +1,7 @@
 # Minimal zsh config for fast startup in embedded usage
 
+export MINIMAL_ZSH=1
+
 autoload -U add-zsh-hook
 
 # Cherry pick some prezto plugins
