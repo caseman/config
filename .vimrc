@@ -243,6 +243,8 @@ nnoremap ]c :cnext<CR>
 nnoremap [c :cprevious<CR>
 
 " * Text Formatting -- Specific File Formats
+augroup formatting
+autocmd!
 
 " in text files, automatically format everything at 76 chars:
 " autocmd FileType text set formatoptions+=t textwidth=76
@@ -266,6 +268,8 @@ autocmd BufNewFile,BufRead *.md,*.rst,*.txt,*.html,README set spell
 
 " Use pgsql highlighting
 autocmd BufNewFile,BufRead *.sql set filetype=pgsql
+
+augroup END " formatting
 
 " Shortcut to manually set filetype
 nnoremap <leader>t :set syntax=
@@ -297,13 +301,27 @@ nnoremap <silent> <leader>@ :set invrelativenumber<CR>
 set number
 set relativenumber
 
-" Toggle syntax folding, defaults off
-nnoremap <silent> <leader>f :setlocal foldenable!<CR>
+" Enable folding
+set foldenable
 set foldmethod=syntax
 set foldignore=
-set foldnestmax=1
-set foldminlines=3
-set nofoldenable
+" Toggle syntax folding locally
+nnoremap <silent> <leader>z :setlocal foldenable!<CR>
+" zM scrolls to reveal lines above
+nnoremap zM zMzz
+" zO even works when fold is partially open
+nnoremap zO zczO
+" open fold in split window
+nnoremap <silent> zs :split +foldopen!<CR>
+"set foldnestmax=1
+"set foldminlines=3
+augroup fold
+    autocmd!
+    " Don't screw up folds when inserting text that might affect them, until
+    " leaving insert mode. Foldmethod is local to the window.
+    autocmd InsertEnter * let w:last_fdm=&foldmethod | setlocal foldmethod=manual
+    autocmd InsertLeave * let &l:foldmethod=w:last_fdm
+augroup END
 
 " Lightweight embedded shell
 command! Term term ++close /usr/bin/env ZDOTDIR=/Users/caseyduncan/.minimal zsh
