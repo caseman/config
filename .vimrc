@@ -372,7 +372,7 @@ nnoremap <silent> <leader>v :set columns=205<BAR>:Gstatus<CR>
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
 nmap <Leader>ha <Plug>(GitGutterStageHunk)
-nmap <Leader>hr <Plug>(GitGutterUndoHunk)
+nmap <Leader>hu <Plug>(GitGutterUndoHunk)
 
 " vim-go
 au FileType go nmap <silent> <leader>gob :w<CR>:GoBuild<CR>
