@@ -294,7 +294,8 @@ command! File let @+=expand('%:p')
 " Toggle line numbers
 nnoremap <silent> <leader># :set invnumber<CR>
 nnoremap <silent> <leader>@ :set invrelativenumber<CR>
-set invrelativenumber
+set number
+set relativenumber
 
 " Toggle syntax folding, defaults off
 nnoremap <silent> <leader>f :setlocal foldenable!<CR>
