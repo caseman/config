@@ -266,6 +266,12 @@ autocmd FileType javascript set foldmethod=indent
 " Enable spellcheck for content files
 autocmd BufNewFile,BufRead *.md,*.rst,*.txt,*.html,README set spell
 
+" Fold text files manually
+autocmd FileType text set foldmethod=manual
+
+" Unfold gitcommits
+autocmd FileType gitcommit set foldlevel=1
+
 " Use pgsql highlighting
 autocmd BufNewFile,BufRead *.sql set filetype=pgsql
 
