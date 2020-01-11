@@ -259,6 +259,9 @@ nnoremap zO zczO
 nnoremap <silent> zs :split +foldopen!<CR>
 "set foldnestmax=1
 "set foldminlines=3
+" limit what's saved in views and sessions
+set viewoptions=folds,cursor
+set sessionoptions=folds
 augroup fold
     autocmd!
     " Don't screw up folds when inserting text that might affect them, until
