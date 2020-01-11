@@ -306,6 +306,9 @@ autocmd BufNewFile,BufRead *.md,*.rst,*.txt,*.html,README set spell
 " Fold text files manually
 autocmd FileType text set foldmethod=manual
 
+" Fold vim config files by marker
+autocmd FileType vim set foldmethod=marker
+
 " Unfold gitcommits
 autocmd FileType gitcommit set foldlevel=1
 
