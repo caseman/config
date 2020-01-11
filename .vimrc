@@ -245,7 +245,38 @@ nnoremap <leader>l :lclose<CR>
 nnoremap ]c :cnext<CR>
 nnoremap [c :cprevious<CR>
 
-" * Text Formatting -- Specific File Formats
+" Folding {{{
+set foldenable
+set foldmethod=syntax
+set foldignore=
+" Toggle syntax folding locally
+nnoremap <silent> <leader>z :setlocal foldenable!<CR>
+" zM scrolls to reveal lines above
+nnoremap zM zMzz
+" zO even works when fold is partially open
+nnoremap zO zczO
+" open fold in split window
+nnoremap <silent> zs :split +foldopen!<CR>
+"set foldnestmax=1
+"set foldminlines=3
+augroup fold
+    autocmd!
+    " Don't screw up folds when inserting text that might affect them, until
+    " leaving insert mode. Foldmethod is local to the window.
+    autocmd InsertEnter,WinLeave ?* let g:last_fdm=&foldmethod | setlocal foldmethod=manual
+    autocmd InsertLeave,WinEnter ?* let &l:foldmethod=g:last_fdm
+    " Save & restore view state when writing buffers
+    " Making the view at BufWrite is too late, so as a workaround
+    " we write one whenever the command line is used
+    autocmd CmdlineLeave ?* mkview!
+    autocmd BufWritePost ?* loadview
+    " Save & retore view state when buffers are saved and loaded
+    autocmd BufWinLeave ?* mkview!
+    autocmd BufWinEnter ?* silent loadview
+augroup END
+" }}}
+
+" Text Formatting -- Specific File Formats {{{1
 augroup formatting
 autocmd!
 
