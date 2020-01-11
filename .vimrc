@@ -325,8 +325,16 @@ augroup fold
     autocmd!
     " Don't screw up folds when inserting text that might affect them, until
     " leaving insert mode. Foldmethod is local to the window.
-    autocmd InsertEnter * let w:last_fdm=&foldmethod | setlocal foldmethod=manual
-    autocmd InsertLeave * let &l:foldmethod=w:last_fdm
+    autocmd InsertEnter,WinLeave * let g:last_fdm=&foldmethod | setlocal foldmethod=manual
+    autocmd InsertLeave,WinEnter * let &l:foldmethod=g:last_fdm
+    " Save & restore view state when writing buffers
+    " Making the view at BufWrite is too late, so as a workaround
+    " we write one whenever the command line is used
+    autocmd CmdlineLeave * mkview!
+    autocmd BufWritePost * loadview
+    " Save & retore view state when buffers are saved and loaded
+    autocmd BufWinLeave * mkview!
+    autocmd BufWinEnter * silent loadview
 augroup END
 
 " Lightweight embedded shell
