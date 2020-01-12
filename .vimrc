@@ -391,7 +391,7 @@ nnoremap <silent> <leader>gs :Gstatus<cr>
 nnoremap <silent> <leader>gw :Gwrite<cr>
 nnoremap <silent> <leader>gb :Gblame<cr>
 nnoremap <silent> <leader>gco :Gcheckout<cr>
-nnoremap <silent> <leader>gci :Gcommit --verbose<cr>
+nnoremap <silent> <leader>gci :Gcommit --verbose<cr><C-W>_
 nnoremap <silent> <leader>gp :Gpush<cr>
 nnoremap <silent> <leader>pr :term ++close<cr>ghpr<cr>
 
