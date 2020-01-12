@@ -422,6 +422,7 @@ nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
 nmap <Leader>ha <Plug>(GitGutterStageHunk)
 nmap <Leader>hu <Plug>(GitGutterUndoHunk)
+nmap <silent> <Leader>hc :GitGutterStageHunk<CR>:Gcommit<CR>
 
 " vim-go
 au FileType go nmap <silent> <leader>gob :w<CR>:GoBuild<CR>
