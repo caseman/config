@@ -385,6 +385,8 @@ augroup END
 " Lightweight embedded shell
 command! Term term ++close /usr/bin/env ZDOTDIR=/Users/caseyduncan/.minimal zsh
 
+" Plugins {{{
+
 " fugitive
 nnoremap <silent> <leader>gd :Gdiff<cr>
 nnoremap <silent> <leader>gs :Gstatus<cr>
@@ -394,8 +396,6 @@ nnoremap <silent> <leader>gco :Gcheckout<cr>
 nnoremap <silent> <leader>gci :Gcommit --verbose<cr><C-W>_
 nnoremap <silent> <leader>gp :Gpush<cr>
 nnoremap <silent> <leader>pr :term ++close<cr>ghpr<cr>
-
-" * Plugin config
 
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
@@ -459,3 +459,4 @@ let g:ale_linters = {
     \   'go': ['gometalinter', 'gofmt'],
     \   'javascript': ['eslint'],
 \}
+" }}}
