@@ -12,7 +12,7 @@ endfunction
 function! cpregisters#put(mode, str)
     call ctrlp#exit()
     let l:parts = split(a:str, "  ")
-    exec "norm " . l:parts[1] . "p"
+    silent exec "norm " . l:parts[1] . "p"
 endfunction
 
 " Register the extension
