@@ -1,6 +1,7 @@
 MASTER-OK
 *.swp
 .vim/backups
+.vim/view
 .vim/bundle*
 .vim/.*
 .vim/debug.log
