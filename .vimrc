@@ -223,6 +223,21 @@ nnoremap <S-Tab> :bprev!<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>B :buffers<CR>:buffer<Space>
 
+" Quick jumping between splits
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-H> <C-W>h
+map <C-L> <C-W>l
+" Open and close splits easily
+nnoremap <silent> vv :set columns=205<BAR>:vsplit<CR>
+nnoremap ss <C-W>s
+" Resize splits efficiently
+nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <silent> _ <C-W>_
+nnoremap <silent> = <C-W>=
+" }}}
+
 " diff shortcuts
 noremap <leader>< :diffget<CR>
 noremap <leader>> :diffput<CR>
