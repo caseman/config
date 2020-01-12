@@ -415,7 +415,13 @@ map <C-p> :CtrlPMixed<CR>
 nnoremap <leader>r :CtrlPRegisters<CR>
 map <C-n> :NERDTreeToggle<CR>
 map <C-u> :UndotreeToggle<CR>
-nnoremap <silent> <leader>v :set columns=205<BAR>:Gstatus<CR>
+
+" ctrl-p funky
+nnoremap <leader>f :CtrlPFunky<CR>
+" Find function under cursor
+nnoremap <leader>F :execute 'CtrlPFunky ' . expand('<cword>')<CR>
+let g:ctrlp_funky_syntax_highlight = 1
+let g:ctrlp_funky_after_jump = 'zo'
 
 " vim-gitgutter
 nmap ]h <Plug>(GitGutterNextHunk)
