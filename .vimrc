@@ -268,6 +268,20 @@ set foldenable
 " Auto open/close folds
 set foldopen=all
 set foldclose=all
+" Toggle automatic fold open/close
+function! AutoFoldToggle()
+    let l:cursetting = &foldclose
+    if l:cursetting == 'all'
+        set foldclose=
+        set foldopen=
+        echo 'auto-folding disabled'
+    else
+        set foldclose=all
+        set foldopen=all
+        echo 'auto-folding enabled'
+    endif
+endfunction
+nnoremap <silent> <leader>z :call AutoFoldToggle()<CR>
 " zM scrolls to reveal lines above
 nnoremap zM zMzb
 " zO even works when fold is partially open
