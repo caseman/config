@@ -33,8 +33,8 @@ hi Cursor	guibg=white guifg=gray15
 "hi DiffText
 "hi ErrorMsg
 hi VertSplit	guibg=#c2bfa5 guifg=grey50 gui=none
-hi Folded	guibg=grey30 guifg=gold
-hi FoldColumn	guibg=grey30 guifg=tan
+hi Folded	guibg=#672720 guifg=navajowhite3
+hi FoldColumn	guibg=grey20 guifg=tan
 hi IncSearch	guifg=slategrey guibg=khaki
 "hi LineNr
 hi ModeMsg	guifg=goldenrod
