@@ -313,7 +313,7 @@ function! GoFoldLevel(lnum)
     let l:line = getline(a:lnum)
     let l:lineabove = getline(a:lnum - 1)
     let l:linebelow = getline(a:lnum + 1)
-    if l:line =~# '^\<func\>'
+    if l:line =~# '^\<func\>' || l:line =~# '^\<type\>'
         return 'a1'
     endif
     if l:line =~# '\s($' && l:line !~# '^)' && l:linebelow !~# ',$'
