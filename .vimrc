@@ -170,20 +170,7 @@ endif
 " grep for selection
 :vnoremap <leader>gr :grep! "<c-r>"" %<CR>:cw<CR><CR>
 
-" Quick jumping between splits
-map <C-J> <C-W>j
-map <C-K> <C-W>k
-map <C-H> <C-W>h
-map <C-L> <C-W>l
-" Open and close splits easily
-nnoremap <silent> vv :set columns=205<BAR>:vsplit<CR>
-nnoremap ss <C-W>s
-" Resize splits efficiently
-nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
-nnoremap <silent> _ :exe "resize " . (winheight(0) * 2/3)<CR>
-nnoremap <silent> = <C-W>=
-
+" Buffers, windows, and splits {{{
 " Stolen fron yadr: https://github.com/skwp/dotfiles/blob/master/vim/settings/yadr-window-killer.vim
 " Use Q to intelligently close a window 
 " (if there are multiple windows into the same buffer)
