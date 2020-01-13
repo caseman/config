@@ -299,6 +299,45 @@ autocmd FileType make set noexpandtab shiftwidth=8
 " alone when editing:
 autocmd FileType html set formatoptions+=tl
 
+function! GoFoldLevel(lnum)
+    let l:line = getline(a:lnum)
+    let l:lineabove = getline(a:lnum - 1)
+    let l:linebelow = getline(a:lnum + 1)
+    if l:line =~# '^\<func\>'
+        return 'a1'
+    endif
+    if l:line =~# '\s($' && l:line !~# '^)' && l:linebelow !~# ',$'
+        return 'a1'
+    endif
+    if l:line =~# 'err != nil {$'
+        return 'a1'
+    endif
+    if l:line =~# '^[})]$' && l:lineabove !~# ',$'
+        return 's1'
+    endif
+    if l:line =~# '^\s*[})]$' && l:lineabove !~# ',$'
+        let l:indent = indent(a:lnum)
+        let l:cursor = a:lnum
+        while l:cursor > 0
+            let l:cursor = prevnonblank(l:cursor - 1)
+            if indent(l:cursor) == l:indent 
+                if getline(l:cursor) =~# 'err != nil {$'
+                    return 's1'
+                else
+                    return '='
+                endif
+            endif
+        endwhile
+    endif
+    if l:line != '' && l:line[0] !~# '\s' && l:line !~# '\s{$' 
+        return 0
+    endif
+    return '='
+endfunction
+
+" Debug aid for fold-expr
+nnoremap zl :echo 'expr: ' . GoFoldLevel(line('.')) .' level: ' . foldlevel(line('.'))<CR>
+
 " for Go, use tabs
 autocmd FileType go set noexpandtab shiftwidth=4
 
@@ -313,6 +352,10 @@ autocmd FileType text set foldmethod=manual
 
 " Fold vim config files by marker
 autocmd FileType vim set foldmethod=marker
+
+autocmd FileType python,c,cpp,ruby set foldmethod=syntax
+
+autocmd FileType go set foldmethod=expr foldexpr=GoFoldLevel(v:lnum)
 
 " Unfold gitcommits
 autocmd FileType gitcommit set foldlevel=1
