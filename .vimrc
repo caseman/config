@@ -265,7 +265,8 @@ nnoremap [c :cprevious<CR>
 
 " Folding {{{
 set foldenable
-" Auto close folds on exit
+" Auto open/close folds
+set foldopen=all
 set foldclose=all
 " Toggle syntax folding locally
 nnoremap <silent> <leader>z :setlocal foldenable!<CR>
