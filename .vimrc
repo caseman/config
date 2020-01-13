@@ -276,11 +276,11 @@ augroup fold
     " Save & restore view state when writing buffers
     " Making the view at BufWrite is too late, so as a workaround
     " we write one whenever the command line is used
-    autocmd CmdlineLeave ?* mkview!
-    autocmd BufWritePost ?* loadview
+    autocmd CmdlineLeave ?* silent! mkview!
+    autocmd BufWritePost ?* silent! loadview
     " Save & retore view state when buffers are saved and loaded
-    autocmd BufWinLeave ?* mkview!
-    autocmd BufWinEnter ?* silent loadview
+    autocmd BufWinLeave,BufWritePost ?* silent! mkview!
+    autocmd BufWinEnter ?* silent! loadview
 augroup END
 " }}}
 
