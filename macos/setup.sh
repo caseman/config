@@ -87,5 +87,6 @@ git clone https://github.com/kshenoy/vim-signature.git  ~/.vim/bundle/vim-signat
 git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
 git clone https://github.com/dense-analysis/ale.git ~/.vim/bundle/ale
 git clone https://github.com/tacahiroy/ctrlp-funky.git ~/.vim/bundle/ctrlp-funky
+git clone https://github.com/AndrewRadev/splitjoin.vim ~/.vim/bundle/splitjoin
 vim +GoInstallBinaries
 
