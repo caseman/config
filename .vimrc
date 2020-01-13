@@ -270,7 +270,7 @@ set foldclose=all
 " Toggle syntax folding locally
 nnoremap <silent> <leader>z :setlocal foldenable!<CR>
 " zM scrolls to reveal lines above
-nnoremap zM zMzz
+nnoremap zM zMzb
 " zO even works when fold is partially open
 nnoremap zO zczO
 " open fold in split window
