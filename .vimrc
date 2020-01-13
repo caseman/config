@@ -174,7 +174,7 @@ vnoremap <Leader>w :s/\s\+$//g<CR>
 " Grepping
 if executable('ag')
     " Use ag over grep if installed
-    set grepprg=ag\ --vimgrep\ --nogroup\ --nocolor\ --ignore\ \"*.lock\"
+    set grepprg=ag\ --vimgrep\ --nogroup\ --nocolor\ --ignore\ \'*.lock\'
     set grepformat=%f:%l:%c:%m
 
     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
@@ -188,7 +188,7 @@ if executable('ag')
     nnoremap \ :Ag<SPACE>
 else
     " Setup grep to be recursive, ignore binaries, and version control metadata
-    set grepprg=egrep\ -srn\ --binary-files=without-match\ --color=never\ --exclude=.svn\ --exclude=.hg\ --exclude=.git --exclude=node_modules
+    set grepprg=egrep\ -srn\ --binary-files=without-match\ --color=never\ --exclude=.svn\ --exclude=.hg\ --exclude=.git\ --exclude=node_modules
 endif
 
 " ,gr to grep the word under the cursor
