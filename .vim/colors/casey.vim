@@ -105,5 +105,10 @@ hi Ignore	cterm=bold ctermfg=7
 hi Ignore	ctermfg=darkgrey
 hi Error	cterm=bold ctermfg=7 ctermbg=1
 
+" Popup menu hightLight Group
+hi Pmenu     ctermbg=13 guibg=DarkBlue guifg=LightBlue
+hi PmenuSel  ctermbg=7  guibg=Blue guifg=white
+hi PmenuSbar ctermbg=7  guibg=DarkGrey
+hi PmenuThumb           guibg=Black
 
 "vim: sw=4
