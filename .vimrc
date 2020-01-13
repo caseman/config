@@ -373,7 +373,7 @@ autocmd FileType gitcommit set foldlevel=1
 " Use pgsql highlighting
 autocmd BufNewFile,BufRead *.sql set filetype=pgsql
 
-augroup END " formatting
+augroup END " formatting }}}
 
 " Shortcut to manually set filetype
 nnoremap <leader>t :set syntax=
