@@ -288,9 +288,6 @@ augroup END
 augroup formatting
 autocmd!
 
-" in text files, automatically format everything at 76 chars:
-" autocmd FileType text set formatoptions+=t textwidth=76
-
 " in makefiles, don't expand tabs to spaces, since actual tab characters are
 " needed, and have indentation at 8 chars to be sure that all indents are tabs
 autocmd FileType make set noexpandtab shiftwidth=8
