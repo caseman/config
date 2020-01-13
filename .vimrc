@@ -137,6 +137,32 @@ inoremap <expr> <c-b>   pumvisible()?"\<PageUp>\<C-P>\<C-N>":"\<PageUp>"
 nnoremap <Leader>% :%s/
 vnoremap <Leader>% :s/
 
+" Register access
+nnoremap <silent> <leader>r :registers<CR>
+map <D-'> ""p
+map <D-0> "0p
+map <D-1> "1p
+map <D-2> "2p
+map <D-3> "3p
+map <D-4> "4p
+map <D-5> "5p
+map <D-6> "6p
+map <D-7> "7p
+map <D-8> "8p
+map <D-9> "9p
+imap <D-'> <C-R>"
+imap <D-0> <C-R>0
+imap <D-1> <C-R>1
+imap <D-2> <C-R>2
+imap <D-3> <C-R>3
+imap <D-4> <C-R>4
+imap <D-5> <C-R>5
+imap <D-6> <C-R>6
+imap <D-7> <C-R>7
+imap <D-8> <C-R>8
+imap <D-9> <C-R>9
+
+nnoremap <Leader>n :%g//norm <Left><Left><Left><Left><Left>
 " Faster normal magic
 nnoremap <Leader>n :%g//norm <Left><Left><Left><Left><Left>
 vnoremap <Leader>n :norm 
