@@ -272,12 +272,12 @@ set foldclose=all
 function! AutoFoldToggle()
     let l:cursetting = &foldclose
     if l:cursetting == 'all'
-        set foldclose=
-        set foldopen=
+        setlocal foldclose=
+        setlocal foldopen=
         echo 'auto-folding disabled'
     else
-        set foldclose=all
-        set foldopen=all
+        setlocallocal foldclose=all
+        setlocal foldopen=all
         echo 'auto-folding enabled'
     endif
 endfunction
