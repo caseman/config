@@ -252,8 +252,8 @@ nnoremap [c :cprevious<CR>
 
 " Folding {{{
 set foldenable
-set foldmethod=syntax
-set foldignore=
+" Auto close folds on exit
+set foldclose=all
 " Toggle syntax folding locally
 nnoremap <silent> <leader>z :setlocal foldenable!<CR>
 " zM scrolls to reveal lines above
