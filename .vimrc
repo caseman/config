@@ -386,6 +386,13 @@ autocmd BufNewFile,BufRead *.sql set filetype=pgsql
 
 augroup END " formatting }}}
 
+" diff shortcuts
+noremap <leader>< :diffget<CR>
+noremap <leader>> :diffput<CR>
+
+" Make diffing faster
+let g:diff_translations = 0
+
 " Shortcut to manually set filetype
 nnoremap <leader>t :set syntax=
 
