@@ -79,6 +79,8 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 vmap r "_dP
 " Don't clobber the unnamed register when pasting over text in visual mode.
 vnoremap p pgvy
+" highlight last inserted text
+nnoremap gV `[v`]
 
 " Remove training wheels you weak minded fool
 noremap <Up> <NOP>
