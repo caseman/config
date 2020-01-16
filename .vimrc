@@ -98,8 +98,9 @@ augroup END
 " Tab to indent in visual mode.
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
+"}}}
 
-" Smart tab completion
+" Tab Completion {{{
 function! Smart_TabComplete()
   let line = getline('.')
   let substr = strpart(line, -1, col('.')+1)
@@ -132,6 +133,9 @@ inoremap <expr> <Up>    pumvisible()?"\<C-P>":"\<Up>"
 inoremap <expr> <Down>  pumvisible()?"\<C-N>":"\<Down>"
 inoremap <expr> <c-f>   pumvisible()?"\<PageDown>\<C-P>\<C-N>":"\<PageDown>"
 inoremap <expr> <c-b>   pumvisible()?"\<PageUp>\<C-P>\<C-N>":"\<PageUp>"
+"}}}
+
+" Search/Replace & Registers {{{
 
 " Faster substitute
 nnoremap <Leader>% :%s/
@@ -162,7 +166,6 @@ imap <D-7> <C-R>7
 imap <D-8> <C-R>8
 imap <D-9> <C-R>9
 
-nnoremap <Leader>n :%g//norm <Left><Left><Left><Left><Left>
 " Faster normal magic
 nnoremap <Leader>n :%g//norm <Left><Left><Left><Left><Left>
 vnoremap <Leader>n :norm 
@@ -195,6 +198,7 @@ endif
 :nnoremap <leader>gr :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><CR>
 " grep for selection
 :vnoremap <leader>gr :grep! "<c-r>"" %<CR>:cw<CR><CR>
+"}}}
 
 " Buffers, windows, and splits {{{
 " Stolen fron yadr: https://github.com/skwp/dotfiles/blob/master/vim/settings/yadr-window-killer.vim
