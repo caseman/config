@@ -527,4 +527,19 @@ let g:ale_go_gometalinter_options = '--fast'
 " linters can be slow, so don't invoke them needlessly
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_insert_leave = 0
+
+" vim-signature mapping config (removes conflicting [' ]' mappings)
+let g:SignatureMap = {
+    \ 'Leader'             :  "m",
+    \ 'PlaceNextMark'      :  "m,",
+    \ 'ToggleMarkAtLine'   :  "m.",
+    \ 'PurgeMarksAtLine'   :  "m-",
+    \ 'DeleteMark'         :  "dm",
+    \ 'PurgeMarks'         :  "m<Space>",
+    \ 'PurgeMarkers'       :  "m<BS>",
+    \ 'GotoNextSpotAlpha'  :  "]m",
+    \ 'GotoPrevSpotAlpha'  :  "[m",
+    \ 'ListBufferMarks'    :  "m/",
+    \ 'ListBufferMarkers'  :  "m?"
+\ }
 " }}}
