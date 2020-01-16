@@ -238,7 +238,7 @@ nnoremap ss <C-W>s
 nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <silent> _ <C-W>_
-nnoremap <silent> = <C-W>=
+nnoremap <silent> == <C-W>=
 " }}}
 
 " Navigation {{{
