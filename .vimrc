@@ -241,11 +241,7 @@ nnoremap <silent> _ <C-W>_
 nnoremap <silent> = <C-W>=
 " }}}
 
-" diff shortcuts
-noremap <leader>< :diffget<CR>
-noremap <leader>> :diffput<CR>
-" Make diffing faster
-let g:diff_translations = 0
+" Navigation {{{
 
 " press CTRL-return in normal mode to click links for help nav
 nnoremap <c-CR> <C-]>
