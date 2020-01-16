@@ -523,4 +523,8 @@ let g:ale_linters = {
     \   'go': ['gometalinter', 'gofmt'],
     \   'javascript': ['eslint'],
 \}
+let g:ale_go_gometalinter_options = '--fast'
+" linters can be slow, so don't invoke them needlessly
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_insert_leave = 0
 " }}}
