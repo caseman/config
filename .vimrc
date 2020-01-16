@@ -410,42 +410,6 @@ command! O !open .
 " Copy current file path to clipboard
 command! File let @+=expand('%:p')
 
-" Toggle line numbers
-nnoremap <silent> <leader># :set invnumber<CR>
-nnoremap <silent> <leader>@ :set invrelativenumber<CR>
-set number
-set relativenumber
-
-" Enable folding
-set foldenable
-set foldmethod=syntax
-set foldignore=
-" Toggle syntax folding locally
-nnoremap <silent> <leader>z :setlocal foldenable!<CR>
-" zM scrolls to reveal lines above
-nnoremap zM zMzz
-" zO even works when fold is partially open
-nnoremap zO zczO
-" open fold in split window
-nnoremap <silent> zs :split +foldopen!<CR>
-"set foldnestmax=1
-"set foldminlines=3
-augroup fold
-    autocmd!
-    " Don't screw up folds when inserting text that might affect them, until
-    " leaving insert mode. Foldmethod is local to the window.
-    autocmd InsertEnter,WinLeave * let g:last_fdm=&foldmethod | setlocal foldmethod=manual
-    autocmd InsertLeave,WinEnter * let &l:foldmethod=g:last_fdm
-    " Save & restore view state when writing buffers
-    " Making the view at BufWrite is too late, so as a workaround
-    " we write one whenever the command line is used
-    autocmd CmdlineLeave * mkview!
-    autocmd BufWritePost * loadview
-    " Save & retore view state when buffers are saved and loaded
-    autocmd BufWinLeave * mkview!
-    autocmd BufWinEnter * silent loadview
-augroup END
-
 " Lightweight embedded shell
 command! Term term ++close /usr/bin/env ZDOTDIR=/Users/caseyduncan/.minimal zsh
 
