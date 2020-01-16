@@ -284,6 +284,8 @@ nnoremap <silent> <leader>z :call AutoFoldToggle()<CR>
 nnoremap zM zMzb
 " zO even works when fold is partially open
 nnoremap zO zczO
+" z1 sets foldlevel to 1
+nnoremap <silent> z1 :set foldlevel=1<CR>
 " open fold in split window
 nnoremap <silent> zs :split +foldopen!<CR>
 "set foldnestmax=1
