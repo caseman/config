@@ -59,6 +59,9 @@ set formatoptions+=l
 " Indent paragraphs to 2nd line
 set formatoptions+=2
 
+" tilde acts like normal operator
+set tildeop
+
 " Allow arbitrary cursor placement in block mode (ctrl+v)
 set virtualedit+=block
 
