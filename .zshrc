@@ -4,8 +4,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Minimal, but sensible vim as an external editor
+alias vim-minimal='vim -u ~/.minimal-vimrc'
 export EDITOR='vim -u ~/.minimal-vimrc'
 export VISUAL="$EDITOR"
+export PSQL_EDITOR="$EDITOR -c 'below split ~/scratch/queries.sql | split ~/.psql_history | set ft=sql | 2wincmd k'"
 
 # Load custom prompt
 source ~/.zsh/prompt.zsh
