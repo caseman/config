@@ -1,5 +1,10 @@
 " CTRL-P Extension to fuzzy search registers for put
 
+if !( exists('g:loaded_ctrlp') && g:loaded_ctrlp )
+    " bail if ctrlp is not loaded
+	fini
+endif
+
 " Return the registers as a list
 function! cpregisters#init()
     redir => l:regs
