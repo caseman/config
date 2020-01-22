@@ -92,5 +92,19 @@ bindkey ' '    _expand-ealias
 bindkey '^ '   magic-space          # control-space to bypass expansion
 bindkey -M isearch " "  magic-space # normal space during searches
 
+# Callback for vim mode change
+function zle-keymap-select () {
+    if [ $KEYMAP = vicmd ]; then
+        # Set block cursor
+        echo -ne '\e[1 q'
+    else
+        # Set beam cursor
+        echo -ne '\e[5 q'
+    fi
+}
+
+# Bind the callback
+zle -N zle-keymap-select
+
 # Remove annoying delay switching to vi command mode using ESC
 export KEYTIMEOUT=1
