@@ -1,5 +1,7 @@
 " Minimal config for external editors in shell, no plugins
 
+set nocompatible
+
 " Start with something 'Sensible'
 source ~/.vim/bundle/vim-sensible/plugin/sensible.vim
 
