@@ -92,6 +92,21 @@ bindkey ' '    _expand-ealias
 bindkey '^ '   magic-space          # control-space to bypass expansion
 bindkey -M isearch " "  magic-space # normal space during searches
 
+# Enable text-object movements
+autoload -U select-bracketed
+autoload -U select-quoted
+zle -N select-quoted
+zle -N select-bracketed
+for km in visual viopp; do
+    bindkey -M $km -- '-' vi-up-line-or-history
+    for c in {a,i}${(s..)^:-\'\"\`\|,./:;-=+@}; do
+        bindkey -M $km $c select-quoted
+    done
+    for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
+        bindkey -M $km $c select-bracketed
+    done
+done
+
 # Callback for vim mode change
 function zle-keymap-select () {
     if [ $KEYMAP = vicmd ]; then
