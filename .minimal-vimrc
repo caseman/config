@@ -49,6 +49,7 @@ map <C-L> <C-W>l
 " Close all on exit
 nnoremap ZZ :wqa<CR>
 cnoremap wq wqa
+cnoremap q qa
 
 " Minimal, but useful status line
 " Note filename is omitted since it is generally a tmp file
