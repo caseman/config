@@ -212,9 +212,10 @@ endif
 " or kill the buffer entirely if it's the last window looking into that buffer
 function! CloseWindowOrKillBuffer()
   let number_of_windows_to_this_buffer = len(filter(range(1, winnr('$')), "winbufnr(v:val) == bufnr('%')"))
+  let l:winname = expand('%')
 
-  " We should never bdelete a nerd tree
-  if matchstr(expand("%"), 'NERD') == 'NERD'
+  " We should never bdelete a nerd tree or the command line window
+  if matchstr(l:winname, 'NERD') == 'NERD' || l:winname == '[Command Line]'
     wincmd c
     return
   endif
