@@ -18,3 +18,27 @@ set show-all-if-ambiguous On
 set show-all-if-unmodified On
 set visible-stats On
 TAB: menu-complete
+# fake vi text object support
+$if mode=vi
+set keymap vi-command
+"diw": "lbdw"
+"ciw": "diwi"
+"diW": "lBdW"
+"ciW": "diWi"
+"di'": "f'dT'"
+"ci'": "di'i"
+"di\"": "f\"dT\""
+"ci\"": "di\"i"
+"di(": "f)dT("
+"di)": "di("
+"ci(": "di(i"
+"ci)": "ci("
+"di[": "f]dT["
+"di]": "di["
+"ci[": "di[i"
+"ci]": "ci["
+"di{": "f}dT{"
+"di}": "di{"
+"ci{": "di{i"
+"ci}": "ci{"
+$endif
