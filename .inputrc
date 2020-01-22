@@ -1,6 +1,7 @@
 # vim mode
 set editing-mode vi
 set show-mode-in-prompt on
+# Change cursor based on vi mode
 set vi-ins-mode-string \1\e[6 q\2
 set vi-cmd-mode-string \1\e[2 q\2
 # vim command line bindings
