@@ -254,6 +254,40 @@ nnoremap <silent> == <C-W>=
 
 " Navigation {{{
 
+" Find past a character on the current line
+nmap <expr> L 'f'..nr2char(getchar())..'w'
+omap <expr> L ':<c-u>normal! v'..v:count1..'f'..nr2char(getchar())..'wh<CR>'
+nmap <expr> H 'F'..nr2char(getchar())..'ge'
+omap <expr> H ':<c-u>normal! v'..v:count1..'F'..nr2char(getchar())..'gel<CR>'
+
+" Repeat a motion command until the character under the cursor matches a regex
+"   motion -- normal motion command to execute
+"   regex  -- regular expression to match. must match a single character
+"   visual -- pass 1 to perform the motion in visual mode, 0 for normal mode
+function RepeatMotionUntilMatch(motion, regex, visual)
+    if a:visual
+        normal! gv
+    endif
+    let l:count = v:count1
+    while l:count
+        let l:lastpos = getpos('.')
+        exec 'silent normal! '..a:motion..'\r'
+        if getpos('.') == l:lastpos
+             " didn't move
+            return
+        endif
+        let l:char = getline('.')[col('.') - 1]
+        if l:char =~# a:regex
+            let l:count -= 1
+        endif
+    endwhile
+endfunction
+" remap sentence movement to 'token/name movement'
+nnoremap <silent> ) :<C-u>call RepeatMotionUntilMatch('w', '[a-zA-Z0-9_]', 0)<CR>
+vnoremap <silent> ) :<C-u>call RepeatMotionUntilMatch('w', '[a-zA-Z0-9_]', 1)<CR>
+nnoremap <silent> ( :<C-u>call RepeatMotionUntilMatch('b', '[a-zA-Z0-9_]', 0)<CR>
+vnoremap <silent> ( :<C-u>call RepeatMotionUntilMatch('b', '[a-zA-Z0-9_]', 1)<CR>
+
 " press CTRL-return in normal mode to click links for help nav
 nnoremap <c-CR> <C-]>
 
