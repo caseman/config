@@ -336,17 +336,17 @@ function! GoFoldLevel(lnum)
     if l:line =~# '^\<func\>' || (l:line =~# '^\<type\>' && l:line =~# '\s{$')
         return 'a1'
     endif
-    if l:line =~# '\s($' && l:line !~# '^)' && l:linebelow !~# ',$'
-        return 'a1'
-    endif
     if l:line =~# 'err != nil {$'
         return 'a1'
     endif
     if l:line =~# '^[})]$' && l:lineabove !~# ',$'
         return 's1'
     endif
-    if l:line =~# '^\s*[})]$' && l:lineabove !~# ',$'
-        let l:indent = indent(a:lnum)
+    let l:indent = indent(a:lnum)
+    if l:indent == 0 && l:line =~# '\s($' && l:line !~# '^)' && l:linebelow !~# ',$'
+        return 'a1'
+    endif
+    if l:line =~# '^\s*}$' && l:lineabove !~# ',$'
         let l:cursor = a:lnum
         while l:cursor > 0
             let l:cursor = prevnonblank(l:cursor - 1)
