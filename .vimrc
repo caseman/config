@@ -241,6 +241,8 @@ map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-H> <C-W>h
 map <C-L> <C-W>l
+" Yank line and return to previous window
+nnoremap yp yy<C-W>p
 " Open and close splits easily
 nnoremap <silent> vv :set columns=205<BAR>:vsplit<CR>
 nnoremap ss <C-W>s
