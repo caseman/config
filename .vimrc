@@ -243,6 +243,8 @@ map <C-H> <C-W>h
 map <C-L> <C-W>l
 " Yank line and return to previous window
 nnoremap yp yy<C-W>p
+" Yank line and close window
+nnoremap yc yy<C-W>c
 " Open and close splits easily
 nnoremap <silent> vv :set columns=205<BAR>:vsplit<CR>
 nnoremap ss <C-W>s
