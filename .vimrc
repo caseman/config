@@ -102,9 +102,10 @@ augroup highlighting
     autocmd InsertLeave * :let @/=get(b:,'_search','')
 augroup END
 
-" Tab to indent in visual mode.
-vnoremap <Tab> >gv
-vnoremap <S-Tab> <gv
+" Stay in visual mode after indenting or formatting
+vmap < <gv
+vmap > >gv
+vmap = =gv
 "}}}
 
 " Tab Completion {{{
