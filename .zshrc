@@ -7,7 +7,7 @@ fi
 export EDITOR='vim -u ~/.minimal-vimrc'
 alias vim-minimal="$EDITOR"
 export VISUAL="$EDITOR"
-export PSQL_EDITOR="$EDITOR -c 'below split ~/scratch/queries.sql | split ~/.psql_history | set ft=sql | 2wincmd k'"
+export PSQL_EDITOR="vim -u ~/.vim/scripts/psql.vim"
 
 # Load custom prompt
 source ~/.zsh/prompt.zsh
