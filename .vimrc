@@ -245,9 +245,6 @@ map <C-L> <C-W>l
 nnoremap yp yy<C-W>p
 " Yank line and close window
 nnoremap yc yy<C-W>c
-" Open and close splits easily
-nnoremap <silent> vv :set columns=205<BAR>:vsplit<CR>
-nnoremap ss <C-W>s
 " Resize splits efficiently
 nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
