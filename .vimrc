@@ -84,6 +84,8 @@ vmap r "_dP
 vnoremap p pgvy
 " highlight last inserted text
 nnoremap gV `[v`]
+" disable macros
+nmap q <NOP>
 
 " Remove training wheels you weak minded fool
 noremap <Up> <NOP>
