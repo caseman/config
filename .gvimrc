@@ -1,4 +1,5 @@
-set lines=70 columns=210
+" Maximize
+set lines=999 columns=999
 "set gfn=ProFontWindows:h12
 "set gfn=DejaVu\ Sans\ Mono:h13.00
 "set gfn=Source\ Code\ Pro:h13.00
