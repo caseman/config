@@ -61,6 +61,7 @@ alias gstash='git-stash-fzf | xargs git stash'
 alias glog='git-log-fzf | xargs git'
 alias gs='git stash -u'
 alias ga='git add -A'
+alias gcd='cd $(git-root)'
 alias gchanged='(git diff --name-only master... && git diff --name-only) | sort -u'
 alias gmerge='git fetch origin master && git merge origin master && git push'
 alias ghurl="git config --get remote.origin.url | sed -e 's/.*@//' -e 's/.git$//' -e 's/:/\//'"
