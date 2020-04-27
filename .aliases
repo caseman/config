@@ -51,6 +51,7 @@ git-log-fzf() {
 }
 
 alias gfu='git fetch upstream && git checkout master && git merge upstream/master'
+alias grbfp='git fetch upstream && git rebase upstream/master && git push -f'
 alias gbr='git-branch-fzf | xargs git checkout'
 alias gpsup='git push --set-upstream origin $(git-branch-current)'
 alias gdob='git diff origin/$(git-branch-current)...$(git-branch-current)'
