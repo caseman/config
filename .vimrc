@@ -82,6 +82,10 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 vmap r "_dP
 " Don't clobber the unnamed register when pasting over text in visual mode.
 vnoremap p pgvy
+" "i" goes directly to insert-mode from visual-mode
+vnoremap <silent> i :<c-u>startinsert<CR>
+" still allow visual object select from normal mode
+nnoremap vi vi
 " highlight last inserted text
 nnoremap gV `[v`]
 " disable macros
