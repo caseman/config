@@ -1,5 +1,8 @@
 " CTRL-P Extension to fuzzy search go.mod to add imports
 
+" Add this to your .vimrc to invoke via <leader>i
+" nnoremap <silent> <leader>i :CtrlPGoImport<CR>
+
 if !( exists('g:loaded_ctrlp') && g:loaded_ctrlp )
     " bail if ctrlp is not loaded
 	fini
