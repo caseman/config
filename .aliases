@@ -50,14 +50,25 @@ git-log-fzf() {
     | fzf +m --preview-window='top:75%' --preview='git show --color=always {1}' | awk '{print $1}'
 }
 
-alias gfu='git fetch upstream && git checkout master && git merge upstream/master'
+tags() {
+    ctags -R -f ~/.cache/tags \
+       ~/cbhq/monorepo/brokerage \
+       ~/cbhq/monorepo/pro \
+       ~/cbhq/moonbase/db/support \
+       ~/cbhq/moonbase/go-db \
+       ~/cbhq/moonbase/rates \
+       ~/cbhq/payments \
+       2>/dev/null
+}
+
+alias gfu='git fetch upstream && git checkout master && git merge upstream/master && tags'
 alias grbfp='git fetch upstream && git rebase upstream/master && git push -f'
 alias grb='git fetch upstream && git rebase upstream/master'
 alias gbr='git-branch-fzf | xargs git checkout'
 alias gpsup='git push --set-upstream origin $(git-branch-current)'
 alias gdob='git diff origin/$(git-branch-current)...$(git-branch-current)'
 alias gcm='git checkout master'
-alias gcmu='git checkout master && gup'
+alias gcmu='git checkout master && gup && tags'
 alias gcob='git checkout -b'
 alias gst='git status'
 alias gss='git status -s'
