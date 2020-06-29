@@ -547,6 +547,7 @@ let g:undotree_HelpLine = 0
 " key mappings for plugins
 map <C-p> :CtrlPMixed<CR>
 nnoremap <leader>r :CtrlPRegisters<CR>
+nnoremap <silent> <leader>i :CtrlPGoImport<CR>
 map <C-n> :NERDTreeToggle<CR>
 map <C-u> :UndotreeToggle<CR>
 
