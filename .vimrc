@@ -310,6 +310,45 @@ nnoremap [l :lprevious<CR>
 nnoremap ]c :cnext<CR>
 nnoremap [c :cprevious<CR>
 
+" toggle location list
+let g:location_open = 0
+function! LocationToggle()
+    if g:location_open
+        lclose
+        let g:location_open = 0
+    else
+        lopen
+        let g:location_open = 1
+    endif
+endfunction
+
+function! s:BufferCount() abort
+    return len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+endfunction
+
+function! ListToggle(listtype)
+  " https://github.com/Valloric/ListToggle/blob/master/plugin/listtoggle.vim
+  let buffer_count_before = s:BufferCount()
+
+  " Location list can't be closed if there's cursor in it, so we need
+  " to call lclose twice to move cursor to the main pane
+  exec 'silent! ' .. a:listtype .. 'close'
+  exec 'silent! ' .. a:listtype .. 'close'
+
+  if s:BufferCount() == buffer_count_before
+      exec 'silent! ' .. a:listtype .. 'open'
+  endif
+endfunction
+nnoremap <silent> <leader>q :call ListToggle('c')<CR>
+nnoremap <silent> <leader>l :call ListToggle('l')<CR>
+
+" Toggle line numbers
+nnoremap <silent> <leader># :set invnumber<CR>
+nnoremap <silent> <leader>@ :set invrelativenumber<CR>
+set number
+set relativenumber
+"}}}
+
 " Folding {{{
 set foldenable
 " Auto open/close folds
