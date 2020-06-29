@@ -78,6 +78,12 @@ set listchars=tab:▸\ ,eol:↲,nbsp:␣,trail:•,extends:⟫,precedes:⟪
 " Highlight VCS conflict markers.
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
+set tags=./tags,tags,/Users/caseyduncan/.cache/tags
+" better default behavior for ambiguous tags
+noremap <C-]> g<C-]>
+" intuitive mapping to pop tag stack
+noremap <silent> <C-\> :pop<CR>
+
 " Replace current visual selection with yank buffer contents with "r"
 vmap r "_dP
 " Don't clobber the unnamed register when pasting over text in visual mode.
