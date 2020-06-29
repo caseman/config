@@ -185,7 +185,7 @@ imap <D-8> <C-R>8
 imap <D-9> <C-R>9
 
 " Faster normal magic
-nnoremap <Leader>n :%g//norm <Left><Left><Left><Left><Left>
+nnoremap <Leader>n :%g//norm <Left><Left><Left><Left><Left><Left>
 vnoremap <Leader>n :norm 
 
 " Strip trailing whitespace
