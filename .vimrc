@@ -457,7 +457,7 @@ nnoremap zl :echo 'expr: ' . GoFoldLevel(line('.')) .' level: ' . foldlevel(line
 autocmd FileType go set noexpandtab shiftwidth=4
 
 " for js, use indent folding o_O
-autocmd FileType javascript set foldmethod=indent
+autocmd FileType javascript set foldnestmax=1 foldmethod=indent
 
 " Enable spellcheck for content files
 autocmd BufNewFile,BufRead *.md,*.rst,*.txt,*.html,README set spell
@@ -468,15 +468,15 @@ autocmd FileType text set foldmethod=manual
 " Fold vim config files by marker
 autocmd FileType vim set foldmethod=marker
 
-autocmd FileType python,c,cpp,ruby set foldmethod=syntax
+autocmd FileType python,c,cpp,ruby set foldnestmax=1 foldmethod=syntax
 
 autocmd FileType go set foldmethod=expr foldexpr=GoFoldLevel(v:lnum)
 
 " Unfold gitcommits
 autocmd FileType gitcommit set foldlevel=1
 
-" Use pgsql highlighting
-autocmd BufNewFile,BufRead *.sql set filetype=pgsql
+" Use pgsql highlighting, spaces for indent
+autocmd BufNewFile,BufRead *.sql set expandtab filetype=pgsql foldmethod=manual
 
 augroup END " formatting }}}
 
