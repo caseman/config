@@ -29,7 +29,7 @@ set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
 set wildignore+=*.DS_Store
 
 " Don't interrupt so much
-set shortmess=atI
+set shortmess=atIF
 set noerrorbells
 
 " Redraw immediately when replacing text within a line
@@ -515,6 +515,30 @@ command! File let @+=expand('%:p')
 command! Term term ++close /usr/bin/env ZDOTDIR=/Users/caseyduncan/.minimal zsh
 
 " Plugins {{{
+
+call plug#begin(stdpath('data') . '/plugged')
+
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tacahiroy/ctrlp-funky'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'mbbill/undotree'
+Plug 'airblade/vim-gitgutter'
+Plug 'miyakogi/conoline.vim'
+Plug 'kshenoy/vim-signature'
+Plug 'fatih/vim-go'
+Plug 'dense-analysis/ale'
+Plug 'AndrewRadev/splitjoin.vim'
+
+call plug#end()
+
+" Add fzf plugin installed via brew
+set runtimepath+=/usr/local/opt/fzf
 
 " fugitive
 nnoremap <silent> <leader>gd :Gdiff<cr>
