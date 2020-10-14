@@ -116,6 +116,9 @@ augroup END
 vmap < <gv
 vmap > >gv
 vmap = =gv
+
+" reload config while running
+command! R so $MYVIMRC
 "}}}
 
 " Tab Completion {{{
