@@ -7,6 +7,8 @@
 " Basics {{{
 filetype plugin indent on
 
+colors casey
+
 " 4 space tabs
 set tabstop=4
 set softtabstop=4
@@ -253,6 +255,9 @@ function! CloseWindowOrKillBuffer()
 endfunction
 
 nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
+
+" Close all on ZZ
+nnoremap ZZ :wqa<CR>
 
 " Fast buffer switching
 nnoremap <leader><leader> <c-^>
