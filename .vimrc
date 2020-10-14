@@ -1,5 +1,10 @@
 " Note this assumes sensible.vim: https://github.com/tpope/vim-sensible
 
+" Debugging
+" set verbose=9
+" set verbosefile=~/.vim/debug.log
+
+" Basics {{{
 filetype plugin indent on
 
 " 4 space tabs
