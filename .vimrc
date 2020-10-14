@@ -75,6 +75,10 @@ set showbreak=↪
 set list
 set listchars=tab:▸\ ,eol:↲,nbsp:␣,trail:•,extends:⟫,precedes:⟪
 
+" Mark 80 columns
+set colorcolumn=80
+highlight ColorColumn ctermbg=232
+
 " Highlight VCS conflict markers.
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
