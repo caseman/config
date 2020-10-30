@@ -271,6 +271,10 @@ map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-H> <C-W>h
 map <C-L> <C-W>l
+" Y is yank to clipboard
+nnoremap Y "*y
+nnoremap YY "*yy
+vnoremap Y "*y
 " Yank line and return to previous window
 nnoremap yp yy<C-W>p
 " Yank line and close window
