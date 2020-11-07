@@ -512,7 +512,7 @@ let g:diff_translations = 0
 nnoremap <leader>t :set syntax=
 
 " Where to look for tags
-set tags+=./TAGS;,$HOME/.cache/tags
+set tags=./tags,tags;,$HOME/.cache/tags
 
 " Open URL under cursor
 command! -bar -nargs=1 OpenURL :!open <args>
