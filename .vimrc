@@ -7,7 +7,7 @@
 " Basics {{{
 filetype plugin indent on
 
-colors casey
+colors casey2020
 
 " 4 space tabs
 set tabstop=4
