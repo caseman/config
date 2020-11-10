@@ -121,6 +121,9 @@ alias src='source  ~/.zshrc'
 namedir() { eval $1=\"$PWD\" ;  : ~$1 }
 alias debugzsh='zsh -xv |& ts "%.S"'
 
+docker-sh() {
+    docker exec -it $1 /bin/bash
+}
 dbr() { 
     tag="$(basename $(pwd))-test"
     echo "build and run: $tag"
