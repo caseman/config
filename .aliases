@@ -61,7 +61,7 @@ tags() {
        2>/dev/null
 }
 
-alias gfu='git fetch upstream && git checkout master && git merge upstream/master && tags'
+alias gfu='git fetch upstream && git checkout master && git merge upstream/master && git prunelocal && tags'
 alias grbfp='git fetch upstream && git rebase upstream/master && git push -f'
 alias grb='git fetch upstream && git rebase upstream/master'
 alias gbr='git-branch-fzf | xargs git checkout'
