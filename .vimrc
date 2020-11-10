@@ -24,8 +24,6 @@ set hidden
 set encoding=utf-8
 let mapleader = ","
 
-call pathogen#infect()
-
 " Tab complete like shell
 set wildmode=list:longest,full
 set wildignore+=*/.git/**/*,*/.hg/**/*,*/.svn/**/*
