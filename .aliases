@@ -51,14 +51,12 @@ git-log-fzf() {
 }
 
 tags() {
-    ctags -R -f ~/.cache/tags \
-       ~/cbhq/monorepo/brokerage \
-       ~/cbhq/monorepo/pro \
-       ~/cbhq/moonbase/db/support \
-       ~/cbhq/moonbase/go-db \
-       ~/cbhq/moonbase/rates \
-       ~/cbhq/payments \
-       2>/dev/null
+    ctags -R -f ~/.cache/tags --exclude=node_modules \
+        ~/cbhq/monorepo/eng \
+        ~/cbhq/monorepo/pro \
+        ~/cbhq/monorepo/custodian \
+        ~/cbhq/moonbase/dbmonitor \
+        2>/dev/null
 }
 
 alias gfu='git fetch upstream && git checkout master && git merge upstream/master && git prunelocal && tags'
