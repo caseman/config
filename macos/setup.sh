@@ -36,6 +36,7 @@ brew install grpcurl
 brew install cmake
 brew install kitty
 brew install pidof
+brew install pstree
 brew install bazelisk
 pip3 install localstack
 pip3 install awscli-local
