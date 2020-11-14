@@ -58,6 +58,8 @@ v() {
     fi
 }
 
+alias v="nvim"
+
 # Fuzzy find files by content and open in vim
 vg() {
     ag --count $@ | sed 's/\(.*\):/\1 /' | sort -r -k2 -n | fzf -0 -1 -m --preview="egrep --context=3 $@ {1}" | awk '{print $1}' | xargs mvim --servername "$(mvim-server-name)" --remote-silent
