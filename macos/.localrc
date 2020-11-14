@@ -69,7 +69,17 @@ vg() {
 vf() {
     local PREVIEW_CMD
     PREVIEW_CMD="bat --color always --style snip --line-range :100 {}"
-    ag --nocolor -g "$1" -print | fzf -0 -1 -m --preview="$PREVIEW_CMD" | xargs mvim --servername "$(mvim-server-name)" --remote-silent
+    ag --nocolor -g "$1" -print | fzf -0 -1 -m --preview="$PREVIEW_CMD" | xargs nvim
+}
+
+# Open vim to line number for paths in style of /path/to/file:num
+vl() {
+    if [[ $# == 0 ]]; then
+        exit 0
+    fi
+    for arg in $@; do
+        nvim +$(echo $arg | cut -f 2 -d ":") "$(echo $arg | cut -f 1 -d ":")"
+    done
 }
 
 
