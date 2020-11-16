@@ -476,8 +476,8 @@ nnoremap zl :echo 'expr: ' . GoFoldLevel(line('.')) .' level: ' . foldlevel(line
 " for Go, use tabs
 autocmd FileType go set noexpandtab shiftwidth=4
 
-" for js, use indent folding o_O
-autocmd FileType javascript set foldnestmax=1 foldmethod=indent
+" for js & c, use indent folding o_O
+autocmd FileType javascript,c set foldnestmax=1 foldmethod=indent
 
 " Enable spellcheck for content files
 autocmd BufNewFile,BufRead *.md,*.rst,*.txt,*.html,README set spell
