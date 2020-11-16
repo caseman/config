@@ -260,8 +260,6 @@ nnoremap ZZ :wqa<CR>
 
 " Fast buffer switching
 nnoremap <leader><leader> <c-^>
-nnoremap <Tab> :bnext!<CR>
-nnoremap <S-Tab> :bprev!<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>B :buffers<CR>:buffer<Space>
 
