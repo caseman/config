@@ -23,12 +23,16 @@ alias x='chmod +x'
 alias ll='ls -lh'
 alias la='ls -AF'
 alias ls='ls -F'
+unalias lt
+alias lt='ls -lht | head -n 20'
 md() {
     mkdir -p "$1" && pushd "$1"
 }
 c() {
 	pushd "$1" && ls -F
 }
+
+alias realpath='python3 -c "import os,sys; print(os.path.realpath(sys.argv[1]))"'
 
 # Git
 git-branch-fzf() {
@@ -51,25 +55,26 @@ git-log-fzf() {
 }
 
 tags() {
-    ctags -R -f ~/.cache/tags --exclude=node_modules \
-        ~/cbhq/monorepo/eng \
-        ~/cbhq/monorepo/pro \
-        ~/cbhq/monorepo/custodian \
-        ~/cbhq/moonbase/dbmonitor \
+    ctags -R -f ~/.cache/tags --exclude=node_modules --exclude='bazel-*' \
+        ~/cbhq/exrepo \
+        ~/cbhq/financing \
+        ~/cbhq/moonbase \
         2>/dev/null
 }
 
-alias gfu='git fetch upstream && git checkout master && git merge upstream/master && git prunelocal && tags'
-alias grbfp='git fetch upstream && git rebase upstream/master && git push -f'
-alias grb='git fetch upstream && git rebase upstream/master'
+alias gfo='git fetch origin && git checkout master && git merge origin/master && git prunelocal && (tags&)'
+alias gfu='git fetch upstream && git checkout master && git merge upstream/master && git prunelocal'
+alias grbfp='git fetch origin && git rebase origin/master && git push --force-with-lease'
+alias grb='git fetch origin && git rebase origin/master'
 alias gbr='git-branch-fzf | xargs git checkout'
 alias gpsup='git push --set-upstream origin $(git-branch-current)'
 alias gdob='git diff origin/$(git-branch-current)...$(git-branch-current)'
 alias gcm='git checkout master'
-alias gcmu='git checkout master && gup && tags'
+alias gcmu='git checkout master && gup && tags&'
 alias gcob='git checkout -b'
 alias gst='git status'
 alias gss='git status -s'
+alias gls='git ls-files -dmo'
 alias gstatus='git-status-fzf | xargs git'
 alias gstash='git-stash-fzf | xargs git stash'
 alias glog='git-log-fzf | xargs git'
@@ -78,13 +83,14 @@ alias ga='git add -A'
 alias gcd='cd $(git-root)'
 alias gmod='(gcd; git checkout go.mod go.sum)'
 alias git-diff-name-only-abs='git diff --name-only --line-prefix=$(git rev-parse --show-toplevel)/'
-alias gchanged='(git-diff-name-only-abs master... && git-diff-name-only-abs) | sort -u'
+alias gchanged='(git-diff-name-only-abs master... && git-diff-name-only-abs) | sort -u | grep $(realpath "$(pwd)")'
 alias gmerge='git fetch origin master && git merge origin master && git push'
 alias ghurl="git config --get remote.origin.url | sed -e 's/.*@//' -e 's/.git$//' -e 's/:/\//'"
 alias prs='open "https://$(ghurl)/pulls"'
 alias mprs='open "https://$(ghurl)/pulls/$USER"'
 alias ish='open "https://$(ghurl)/issues"'
 alias gh='open "https://$(ghurl)"'
+alias gsubup='git pull --recurse-submodules && git submodule update --remote --recursive'
 gbdp() {
     BRANCH="${$1:-$(git-branch-current)}"
     git checkout master && \
@@ -104,7 +110,7 @@ goog() {
 alias pd='popd >/dev/null'
 alias psg='ps awx | grep'
 alias grep='egrep'
-alias rgrep='egrep -r'
+alias rgrep="egrep -r --exclude-dir={node_modules,.git,'bazel-*'}"
 alias tf='tail -F'
 alias ymd='date +%Y%m%d'
 

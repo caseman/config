@@ -1,4 +1,5 @@
-" Note this assumes sensible.vim: https://github.com/tpope/vim-sensible
+" Begin sensibly
+source ~/.local/share/nvim/plugged/vim-sensible/plugin/sensible.vim
 
 " Debugging
 " set verbose=9
@@ -149,7 +150,7 @@ function! Smart_TabComplete()
     return "\<C-X>\<C-O>"
   endif
 endfunction
-inoremap <expr> <tab> Smart_TabComplete()<BAR>!pumvisible()?"\<C-X>\<C-P>":""
+"inoremap <expr> <tab> Smart_TabComplete()<BAR>!pumvisible()?"\<C-X>\<C-P>":""
 " Shift tab reverts completion
 inoremap <s-tab> <c-n>
 
@@ -227,13 +228,15 @@ endif
 
 " ,gr to grep the word under the cursor
 :nnoremap <leader>gr :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><CR>
+:nnoremap \\ :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><CR>
 " grep for selection
 :vnoremap <leader>gr :grep! "<c-r>"" %<CR>:cw<CR><CR>
+:vnoremap \\ :grep! "<c-r>"" %<CR>:cw<CR><CR>
 "}}}
 
 " Buffers, windows, and splits {{{
 " Stolen fron yadr: https://github.com/skwp/dotfiles/blob/master/vim/settings/yadr-window-killer.vim
-" Use Q to intelligently close a window 
+" Use Q to intelligently close a window
 " (if there are multiple windows into the same buffer)
 " or kill the buffer entirely if it's the last window looking into that buffer
 function! CloseWindowOrKillBuffer()
@@ -284,6 +287,9 @@ nnoremap <silent> == <C-W>=
 " }}}
 
 " Navigation {{{
+
+" Auto-set the ' mark when lingering
+autocmd CursorHold * normal! m'
 
 " Find past a character on the current line
 nmap <expr> L 'f'..nr2char(getchar())..'w'
@@ -382,10 +388,12 @@ set foldclose=all
 function! AutoFoldToggle()
     let l:cursetting = &foldclose
     if l:cursetting == 'all'
-        setlocal foldclose= foldopen=
+        " setlocal foldclose= foldopen=
+        setlocal foldclose=
         echo 'auto-folding disabled'
     else
-        setlocal foldclose=all foldopen=all
+        " setlocal foldclose=all foldopen=all
+        setlocal foldclose=all
         echo 'auto-folding enabled'
     endif
 endfunction
@@ -453,7 +461,7 @@ function! GoFoldLevel(lnum)
         let l:cursor = a:lnum
         while l:cursor > 0
             let l:cursor = prevnonblank(l:cursor - 1)
-            if indent(l:cursor) == l:indent 
+            if indent(l:cursor) == l:indent
                 if getline(l:cursor) =~# 'err != nil {$'
                     return 's1'
                 else
@@ -462,7 +470,7 @@ function! GoFoldLevel(lnum)
             endif
         endwhile
     endif
-    if l:line != '' && l:line[0] !~# '\s' && l:line !~# '\s{$' 
+    if l:line != '' && l:line[0] !~# '\s' && l:line !~# '\s{$'
         return 0
     endif
     return '='
@@ -486,7 +494,7 @@ autocmd FileType text set foldmethod=manual
 " Fold vim config files by marker
 autocmd FileType vim set foldmethod=marker
 
-autocmd FileType python,c,cpp,ruby set foldnestmax=1 foldmethod=syntax
+autocmd FileType python,cpp,ruby set foldnestmax=1 foldmethod=syntax
 
 autocmd FileType go set foldmethod=expr foldexpr=GoFoldLevel(v:lnum)
 
@@ -532,122 +540,22 @@ command! File let @+=expand('%:p')
 " Lightweight embedded shell
 command! Term term ++close /usr/bin/env ZDOTDIR=/Users/caseyduncan/.minimal zsh
 
-" Plugins {{{
+" Debugging syntax
+function! SynGroup()
+    let l:s = synID(line('.'), col('.'), 1)
+    echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+endfun
+command! S :call SynGroup()<CR>
 
-call plug#begin(stdpath('data') . '/plugged')
+inoremap {{ {<CR><C-O>o<BS>}<UP><END>
+iabbrev if! if err != nil {{
+iabbrev zapE zap.S().Errorw("!", zap.Error(err))<ESC>2F"
+iabbrev zapW zap.S().Warnw("!", zap.Error(err))<ESC>2F"
+iabbrev zapI zap.S().Infow("!")<ESC>2F"
 
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tacahiroy/ctrlp-funky'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'mbbill/undotree'
-Plug 'airblade/vim-gitgutter'
-Plug 'miyakogi/conoline.vim'
-Plug 'kshenoy/vim-signature'
-Plug 'fatih/vim-go'
-Plug 'dense-analysis/ale'
-Plug 'AndrewRadev/splitjoin.vim'
+nnoremap <leader>n :split ~/notes.md<CR>
 
-call plug#end()
+autocmd FileType go nmap <leader>T :GoTestFunc<CR>
 
-" Add fzf plugin installed via brew
-set runtimepath+=/usr/local/opt/fzf
+set path+=$HOME/opt/sdl/include/SDL2/
 
-" fugitive
-nnoremap <silent> <leader>gd :Gdiff<cr>
-nnoremap <silent> <leader>gs :Gstatus<cr>
-nnoremap <silent> <leader>gw :Gwrite<cr>
-nnoremap <silent> <leader>gb :Gblame<cr>
-nnoremap <silent> <leader>gco :Gcheckout<cr>
-nnoremap <silent> <leader>gci :Gcommit --verbose<cr><C-W>_
-nnoremap <silent> <leader>gp :Gpush<cr>
-nnoremap <silent> <leader>pr :term ++close<cr>ghpr<cr>
-
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeDirArrows = 1
-let g:NERDTreeAutoDeleteBuffer = 1
-
-let g:airline_powerline_fonts = 1
-let g:airline_theme='solarized'
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#buffer_nr_format = '%s '
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#ale = 1
-
-" Right split for undo tree with full width diff at bottom
-let g:undotree_WindowLayout = 4
-let g:undotree_ShortIndicators = 1
-let g:undotree_HelpLine = 0
-
-" key mappings for plugins
-map <C-p> :CtrlPMixed<CR>
-nnoremap <leader>r :CtrlPRegisters<CR>
-nnoremap <silent> <leader>i :CtrlPGoImport<CR>
-map <C-n> :NERDTreeToggle<CR>
-map <C-u> :UndotreeToggle<CR>
-
-" ctrl-p funky
-nnoremap <leader>f :CtrlPFunky<CR>
-" Find function under cursor
-nnoremap <leader>F :execute 'CtrlPFunky ' . expand('<cword>')<CR>
-let g:ctrlp_funky_syntax_highlight = 1
-let g:ctrlp_funky_after_jump = 'zo'
-
-" vim-gitgutter
-nmap ]h <Plug>(GitGutterNextHunk)
-nmap [h <Plug>(GitGutterPrevHunk)
-nmap <Leader>ha <Plug>(GitGutterStageHunk)
-nmap <Leader>hu <Plug>(GitGutterUndoHunk)
-nmap <silent> <Leader>hc yy:GitGutterStageHunk<CR>:Gcommit<CR>
-
-" vim-go
-au FileType go nmap <silent> <leader>gob :w<CR>:GoBuild<CR>
-au FileType go nmap <silent> <leader>got :w<CR>:GoTest<CR>
-au FileType go nmap <silent> <leader>gof :w<CR>:GoTestFunc<CR>
-au FileType go nmap <silent> <leader>goi :GoImport<CR>
-au FileType go nmap <silent> <leader>god :GoDelsDir<CR>
-au FileType go nmap <silent> <leader>goa :GoAlternate<CR>
-let g:go_test_timeout =  '30s'
-let g:go_fmt_command = 'gofmt' " don't auto-delete imports!
-let g:go_auto_type_info = 1    " get signature/type info for object under cursor
-" syntax highlighting
-let g:go_highlight_functions = 1
-let g:go_highlight_function_parameters = 1
-let g:go_highlight_format_strings = 1
-" nnoremap <leader>gol :GoLint<BAR>:GoVet<CR>
-
-" conoline
-let g:conoline_auto_enable = 1
-
-" ale
-let g:ale_linters = {
-    \   'go': ['gometalinter', 'gofmt'],
-    \   'javascript': ['eslint'],
-\}
-let g:ale_go_gometalinter_options = '--fast'
-" linters can be slow, so don't invoke them needlessly
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_insert_leave = 0
-
-" vim-signature mapping config (removes conflicting [' ]' mappings)
-let g:SignatureMap = {
-    \ 'Leader'             :  "m",
-    \ 'PlaceNextMark'      :  "m,",
-    \ 'ToggleMarkAtLine'   :  "m.",
-    \ 'PurgeMarksAtLine'   :  "m-",
-    \ 'DeleteMark'         :  "dm",
-    \ 'PurgeMarks'         :  "m<Space>",
-    \ 'PurgeMarkers'       :  "m<BS>",
-    \ 'GotoNextSpotAlpha'  :  "]m",
-    \ 'GotoPrevSpotAlpha'  :  "[m",
-    \ 'ListBufferMarks'    :  "m/",
-    \ 'ListBufferMarkers'  :  "m?"
-\ }
-" }}}

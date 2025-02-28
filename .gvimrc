@@ -5,7 +5,7 @@ set lines=999 columns=999
 "set gfn=Source\ Code\ Pro:h13.00
 "set gfn=Menlo:h14.00
 "set gfn=Meslo\ LG\ M\ DZ\ for\ Powerline:h15.00
-set gfn=Roboto\ Mono\ Medium\ for\ Powerline:h17.00
+set gfn=Roboto\ Mono\ Medium\ for\ Powerline:h16.00
 set linespace=1
 " No gui toolbar
 set guioptions-=T

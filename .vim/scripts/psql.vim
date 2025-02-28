@@ -1,8 +1,8 @@
 " vim script for PSQL_EDITOR
 source ~/.minimal-vimrc
-silent! below split ~/scratch/queries.sql
+" silent! below split ~/scratch/queries.sql
 " Read the psql history file into a temporary buffer
-silent! split PSQL_HISTORY
+silent! below split PSQL_HISTORY
 setlocal buftype=nofile
 silent! read ~/.psql_history
 " munge the history file format into something more readable
