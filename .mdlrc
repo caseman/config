@@ -1,0 +1,4 @@
+# ~MD013 disable line length
+# ~MD029 disable order list item prefix
+rules "~MD013", "~MD029"
+
