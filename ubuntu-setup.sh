@@ -21,7 +21,8 @@ get silversearch-ag
 # Python stuff
 get python3-pip
 # Ocaml stuff
-get opam
+# Grab the latest opam, apt version is old
+bash -c "sh <(curl -fsSL https://opam.ocaml.org/install.sh)"
 opam -y install merlin
 # Rust stuff
 get rustup
