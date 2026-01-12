@@ -1,6 +1,8 @@
 export XDG_CONFIG_HOME=/home/casey/.config/
 
 set -o vi
+export VISUAL=nvim
+export EDITOR="$VISUAL"
 
 # Enable bash completion
 if [[ -z $BASH_COMPLETION_VERSINFO && -f /usr/share/bash-completion/bash_completion ]]; then
