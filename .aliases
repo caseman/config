@@ -1,35 +1,55 @@
 # Casey's Aliases
 
-alias -g L='| less'
-alias -g LL='2>&1 | less'
-alias -g G='| grep'
-alias -g GG='2>&1 | grep'
-alias -g T='| tee'
-alias -g TT='2>&1 | tee'
-alias -g XV='| xargs nvim'
-alias -g V='| nvim -'
-alias -g VV='2>&1 | nvim -'
-alias -g HD='| head'
-alias -g TL='| tail'
-alias -g NUL='> /dev/null 2>&1'
-alias -g F='| fzf'
-alias -g C='| cut -f1 -d'
-alias -g B='| bat --color always --plain'
-alias -g XB='| xargs bat --color always --plain'
-alias -g U='| up'
-alias -g UU='2>&1 | up'
+# shortcuts for piping 
+alias L='less'
+alias G='grep'
+alias T='tee'
+alias XV='xargs nvim'
+alias V='nvim -'
+alias H='head'
+alias T='tail'
+#alias NUL='> /dev/null 2>&1' rip zsh
+alias F='fzf'
+alias C='cut -f1 -d'
+alias B='bat --color always --plain'
+alias XB='xargs bat --color always --plain'
+#alias U='up' I forgot what up was :'(
 
+alias v=nvim
+alias bat=batcat
 alias x='chmod +x'
 alias ll='ls -lh'
 alias la='ls -AF'
 alias ls='ls -F'
-unalias lt
 alias lt='ls -lht | head -n 20'
 md() {
     mkdir -p "$1" && pushd "$1"
 }
 c() {
 	pushd "$1" && ls -F
+}
+cpd() {
+    if [[ -z "$@" || "$@" == "-" ]]; then
+        pushd ~/ >/dev/null
+    else
+        pushd $@ >/dev/null
+    fi
+}
+alias cd='cpd'
+alias pd='popd >/dev/null'
+alias ".."="cd .."
+alias "..."="cd ../.."
+alias "...."="cd ../../.."
+alias "....."="cd ../../../.."
+
+function install {
+    sudo apt-get -y install $@ && nvim "+:norm Goget $@" ~/gh/config/ubuntu-setup.sh
+}
+alias setup="nvim ~/gh/config/ubuntu-setup.sh"
+alias vrc="nvim ~/.bashrc ~/.aliases && source ~/.bashrc"
+alias vspec="~/.local/share/nvim/plugged/vim-vspec/bin/vspec"
+function colors {
+    for colour in {1..255};     do echo -en "\033[38;5;${colour}m38;5;${colour} \n"; done | column -x
 }
 
 alias realpath='python3 -c "import os,sys; print(os.path.realpath(sys.argv[1]))"'
@@ -53,6 +73,9 @@ git-log-fzf() {
     git --no-pager log --oneline \
     | fzf +m --preview-window='top:75%' --preview='git show --color=always {1}' | awk '{print $1}'
 }
+git-branch-current() {
+    git rev-parse --abbrev-ref HEAD
+}
 
 tags() {
     ctags -R -f ~/.cache/tags --exclude=node_modules --exclude='bazel-*' \
@@ -62,6 +85,11 @@ tags() {
         2>/dev/null
 }
 
+alias g=git
+alias gc='git commit -m '
+alias gca='git add --all && git commit'
+alias g+='git add'
+alias gp='git push'
 alias gfo='git fetch origin && git checkout master && git merge origin/master && git prunelocal && (tags&)'
 alias gfu='git fetch upstream && git checkout master && git merge upstream/master && git prunelocal'
 alias grbfp='git fetch origin && git rebase origin/master && git push --force-with-lease'
@@ -69,6 +97,7 @@ alias grb='git fetch origin && git rebase origin/master'
 alias gbr='git-branch-fzf | xargs git checkout'
 alias gpsup='git push --set-upstream origin $(git-branch-current)'
 alias gdob='git diff origin/$(git-branch-current)...$(git-branch-current)'
+alias gco='git checkout'
 alias gcm='git checkout master'
 alias gcmu='git checkout master && gup && tags&'
 alias gcob='git checkout -b'
@@ -92,11 +121,12 @@ alias ish='open "https://$(ghurl)/issues"'
 alias gh='open "https://$(ghurl)"'
 alias gsubup='git pull --recurse-submodules && git submodule update --remote --recursive'
 gbdp() {
-    BRANCH="${$1:-$(git-branch-current)}"
+    BRANCH="$(git-branch-current)"
     git checkout master && \
     git branch --delete $BRANCH && \
     git push origin --delete $BRANCH
 }
+
 gac() {
     git-status-fzf | xargs git add && git commit --verbose
 }
@@ -107,43 +137,18 @@ goog() {
         "https://www.google.com/search?q=$Q" --new-window NUL
 }
 
-alias pd='popd >/dev/null'
 alias psg='ps awx | grep'
 alias grep='egrep'
 alias rgrep="egrep -r --exclude-dir={node_modules,.git,'bazel-*'}"
 alias tf='tail -F'
 alias ymd='date +%Y%m%d'
 
-redis-del() {
-    PATTERN=${@:$#}
-    OPTIONS=${@:1:-1}
-    eval "redis-cli $OPTIONS KEYS '$PATTERN' | xargs redis-cli $OPTIONS DEL"
-}
-
 alias h='history'
-alias src='source  ~/.zshrc'
-namedir() { eval $1=\"$PWD\" ;  : ~$1 }
-alias debugzsh='zsh -xv |& ts "%.S"'
-
-docker-sh() {
-    docker exec -it $1 /bin/bash
+alias src='source  ~/.bashrc'
+namedir() {
+    eval $1=\"$PWD\" ;  : ~$1
 }
-dbr() { 
-    tag="$(basename $(pwd))-test"
-    echo "build and run: $tag"
-    docker build -t "$tag" . && docker run --rm "$tag" $@
-}
-
-dkill() {
-    tag="$(basename $(pwd))-test"
-    id="$(docker ps -q --filter ancestor="$tag")"
-    if [ "$id" != "" ]; then
-        echo -n "kill container image $tag "
-        docker kill "$id"
-    else
-        echo "No running container for $tag"
-    fi
-}
+# alias debugzsh='zsh -xv |& ts "%.S"'
 
 gup() {
     find . -type d -name ".git" | while read dir; do
@@ -152,5 +157,5 @@ gup() {
     done
 }
 
-# vi: ft=zsh
+# vi: ft=bash
 

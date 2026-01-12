@@ -17,7 +17,7 @@ RESTORE=$'\033[0m' #0m restores to the terminal's default colour
 function job_status {
     count=$(jobs -p | wc -l)
     if [[ $count == 0 ]]; then
-        echo ""
+        echo " "
     else if [[ $count == 1 ]]; then
         echo "🏃"
     else

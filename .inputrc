@@ -12,13 +12,7 @@ set vi-cmd-mode-string \1\e[2 q\2
 "\e[1;2D": backward-word
 # keep this emacs key binding
 "\C-a": beginning-of-line
-# completions
-set colored-stats On
-set completion-prefix-display-length 3
-set show-all-if-ambiguous On
-set show-all-if-unmodified On
-set visible-stats On
-TAB: menu-complete
+
 # fake vi text object support
 $if mode=vi
 set keymap vi-command
@@ -43,3 +37,18 @@ set keymap vi-command
 "ci{": "di{i"
 "ci}": "ci{"
 $endif
+
+# completions
+set colored-stats on
+set completion-prefix-display-length 3
+set colored-completion-prefix on
+#set show-all-if-ambiguous on
+set show-all-if-unmodified on
+set visible-stats on
+set menu-complete-display-prefix on
+TAB: menu-complete
+
+set history-size 1000
+# Cycle through history based on characters already typed on the line
+"\e[A":history-search-backward
+"\e[B":history-search-forward
