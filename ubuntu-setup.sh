@@ -15,11 +15,14 @@ get tig
 get fzf
 get wget
 get curl
-get neovim
 get bat
 get silversearch-ag
 # Python stuff
 get python3-pip
+get pipx
+# nvim stuff
+get neovim
+pipx install pynvim # Ensure pynvim is up to date
 # Ocaml stuff
 # Grab the latest opam, apt version is old
 bash -c "sh <(curl -fsSL https://opam.ocaml.org/install.sh)"

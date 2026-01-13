@@ -17,7 +17,7 @@ shopt -s progcomp_alias # expand aliases
 source ~/.aliases
 
 if [ -z $HOME_BIN ]; then
-    export HOME_BIN="$PWD/bin"
+    export HOME_BIN="$PWD/.local/bin"
     export PATH="$HOME_BIN:$PATH"
 fi
 
