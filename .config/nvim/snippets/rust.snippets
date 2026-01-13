@@ -1,0 +1,28 @@
+snippet disp "fmt::Display implementation"
+	impl fmt::Display for ${1:Struct} {
+		fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+			write!(f, "${2}", ${3})
+		}
+	}
+
+snippet dead "I'm not dead yet"
+	#[allow(dead_code)]
+snippet tests "tests module"
+	#[cfg(test)]
+	mod tests {
+		use super::*;
+
+		#[test]
+		fn test_${1:test_name}() {
+			${2}
+		}
+	}
+
+snippet iter "Iterator impl"
+	impl Iterator for ${1:Struct} {
+		type Item = ${2};
+
+		fn next(&mut self) -> Option<Self::Item> {
+			${3}
+		}
+	}
