@@ -37,4 +37,4 @@ GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWDIRTYSTATE=1
 source ~/.bash/git-prompt.sh
 source ~/.bash/prompt.sh
-export PS1='$(__git_ps1 "${GRAY}┠╴%s ")${LT_BLUE}$(short_pwd)${RESTORE}$(job_status)${YELLOW}\$ ${RESTORE}'
+export PS1='$(cmd_status)$(__git_ps1 "${GRAY}┠╴%s ")${LT_BLUE}$(short_pwd)${RESTORE}$(job_status)${YELLOW}\$ ${RESTORE}'

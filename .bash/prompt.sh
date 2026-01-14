@@ -28,3 +28,7 @@ function job_status {
 function short_pwd {
     echo -n $PWD | sed -re "s@^$HOME@~@" -re 's|(~?/[^/]*/).*(/.{20,})|\1...\2|'
 }
+
+function cmd_status {
+    [[ $? != 0 ]] && echo -n "😵"
+}
