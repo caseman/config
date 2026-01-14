@@ -190,8 +190,8 @@ endfunction
 " Shift tab reverts completion
 " inoremap <s-tab> <c-n>
 
-let g:UltiSnipsExpandOrJumpTrigger="<tab>"
-let g:UltiSnipsListSnippets="<c-s>"
+let g:UltiSnipsExpandOrJumpTrigger="<c-s>"
+let g:UltiSnipsListSnippets="<c-u>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 
 let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit="~/.config/nvim/snippets"
@@ -538,8 +538,17 @@ endfunction
 nnoremap zl :echo 'expr: ' . GoFoldLevel(line('.')) .' level: ' . foldlevel(line('.'))<CR>
 
 " for Ocaml use 2 space indent
-autocmd FileType ocaml set tabstop=2 softtabstop=2 shiftwidth=2
-nnoremap <leader>t <Plug>OCamlPrintType
+autocmd FileType ocaml set tabstop=2 softtabstop=2 shiftwidth=2 formatoptions-=t
+" Ocaml file merlin bindings
+nnoremap <localleader>e :MerlinErrorCheck<CR>
+nnoremap <localleader>y :MerlinYankLatestType<CR>
+nnoremap <localleader>l :MerlinLocate<CR>
+nnoremap <localleader>L :MerlinILocate<CR>
+nnoremap <localleader>o :MerlinOccurrences<CR><CR>
+nnoremap <localleader>s :MerlinSearchType 
+nnoremap <localleader>p :MerlinSearchPolarity 
+nnoremap <localleader>h :MerlinToggleTypeHistory<CR>
+let g:merlin_type_history_auto_open = 1
 
 " for Go, use tabs
 autocmd FileType go set noexpandtab shiftwidth=4

@@ -1,0 +1,5 @@
+snippet itest "inline test"
+	let%test_unit "${1}" =
+	  [%test_eq ${2:type}] (${3:actual}) ${4:expected}
+
+# vim:ft=snippets:
