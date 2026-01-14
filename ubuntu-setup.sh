@@ -30,3 +30,4 @@ opam -y install merlin
 # Rust stuff
 get rustup
 rustup default stable
+get lynx
