@@ -76,6 +76,9 @@ git-log-fzf() {
 git-branch-current() {
     git rev-parse --abbrev-ref HEAD
 }
+git-main-branch() {
+    git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+}
 
 tags() {
     ctags -R -f ~/.cache/tags --exclude=node_modules --exclude='bazel-*' \
@@ -90,16 +93,16 @@ alias gc='git commit -m '
 alias gca='git add --all && git commit'
 alias g+='git add'
 alias gp='git push'
-alias gfo='git fetch origin && git checkout master && git merge origin/master && git prunelocal && (tags&)'
-alias gfu='git fetch upstream && git checkout master && git merge upstream/master && git prunelocal'
-alias grbfp='git fetch origin && git rebase origin/master && git push --force-with-lease'
-alias grb='git fetch origin && git rebase origin/master'
+alias gfo='git fetch origin && git checkout $(git-main-branch) && git merge origin/$(git-main-branch) && git prunelocal && (tags&)'
+alias gfu='git fetch upstream && git checkout $(git-main-branch) && git merge upstream/$(git-main-branch) && git prunelocal'
+alias grbfp='git fetch origin && git rebase origin/$(git-main-branch) && git push --force-with-lease'
+alias grb='git fetch origin && git rebase origin/$(git-main-branch)'
 alias gbr='git-branch-fzf | xargs git checkout'
 alias gpsup='git push --set-upstream origin $(git-branch-current)'
 alias gdob='git diff origin/$(git-branch-current)...$(git-branch-current)'
 alias gco='git checkout'
-alias gcm='git checkout master'
-alias gcmu='git checkout master && gup && tags&'
+alias gcm='git checkout $(git-main-branch)'
+alias gcmu='git checkout $(git-main-branch) && gup && tags&'
 alias gcob='git checkout -b'
 alias gst='git status'
 alias gss='git status -s'
@@ -112,8 +115,8 @@ alias ga='git add -A'
 alias gcd='cd $(git-root)'
 alias gmod='(gcd; git checkout go.mod go.sum)'
 alias git-diff-name-only-abs='git diff --name-only --line-prefix=$(git rev-parse --show-toplevel)/'
-alias gchanged='(git-diff-name-only-abs master... && git-diff-name-only-abs) | sort -u | grep $(realpath "$(pwd)")'
-alias gmerge='git fetch origin master && git merge origin master && git push'
+alias gchanged='(git-diff-name-only-abs $(git-main-branch)... && git-diff-name-only-abs) | sort -u | grep $(realpath "$(pwd)")'
+alias gmerge='git fetch origin $(git-main-branch) && git merge origin $(git-main-branch) && git push'
 alias ghurl="git config --get remote.origin.url | sed -e 's/.*@//' -e 's/.git$//' -e 's/:/\//'"
 alias prs='open "https://$(ghurl)/pulls"'
 alias mprs='open "https://$(ghurl)/pulls/$USER"'
@@ -122,7 +125,7 @@ alias gh='open "https://$(ghurl)"'
 alias gsubup='git pull --recurse-submodules && git submodule update --remote --recursive'
 gbdp() {
     BRANCH="$(git-branch-current)"
-    git checkout master && \
+    git checkout $(git-main-branch) && \
     git branch --delete $BRANCH && \
     git push origin --delete $BRANCH
 }
