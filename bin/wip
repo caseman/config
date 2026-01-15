@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+set -e # Bail if any command errors
+
+current_branch_name="$(git rev-parse --abbrev-ref HEAD)"
+
+if [[ "$@" == "--diff" ]]; then
+    # diff the wip branch against master
+    master_branch=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
+    exec git diff --merge-base $master_branch
+fi
+
+if [[ "$@" == "--merge" ]]; then
+    # squash and merge the wip branch to master
+    if [[ ! "$current_branch_name" =~ ^"wip-" ]]; then
+        echo >&2 "Switch to a wip branch first to merge it"
+        exit 1
+    fi
+    unstaged_count=$(git status --porcelain=v1 2>/dev/null | wc -l)
+    if [[ "$unstaged_count" != "0" ]]; then
+        echo >&2 "There are unstaged changes, stash or commit them first"
+        exit 1
+    fi
+    master_branch=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
+    git checkout $master_branch
+    git merge --squash $current_branch_name
+    git commit
+    echo "To delete the wip branch:"
+    echo "    git branch -d $current_branch_name"
+    echo "    git push -d origin $current_branch_name"
+    exit 0
+fi
+
+if [[ ! "$current_branch_name" =~ ^"wip-" ]]; then
+    # prompt user for wip branch name and create it
+    read -p "Enter WIP branch name: wip-" branch_suffix
+    wip_branch_name="wip-$branch_suffix"
+    # try to switch to the branch, if that fails, create it and switch to it
+    git switch $wip_branch_name 2>/dev/null || git switch --create $wip_branch_name
+fi
+
+if [[ -z "$@" ]]; then
+    commit_msg="wip"
+else
+    commit_msg="$@"
+fi
+
+git add --all --verbose
+git commit -m "$commit_msg"
